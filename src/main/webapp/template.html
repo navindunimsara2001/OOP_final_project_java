@@ -4,22 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/preflight.css">
     <link rel="stylesheet" href="styles/main.css">
     <title></title>
 </head>
 
 <body>
     <nav class="main-menu">
-        <div class="logo item"></div>
-        <h1 class="my-auto ml-5 text-lg font-medium item"> Site Name</h2>
+        <div class="header item no-hover">
+            <img class="logo" src="images/logo.png" alt="Logo" width="40px" height="40px"></img>
+            Site Name
+        </div>
+        <div class="item spacer no-hover"></div>
+        <a class="item" href="#">My Appointments</a>
+        <div class="item dropdown no-hover" id="profile-dropdown">
+            <img src="images/profile.svg" width="26px">
+            <div class="dropdown-content">
+                aaa
+            </div>
+
+        </div>
     </nav>
     <div class="main-menu-placeholder"></div>
 
 
-    <main class="flex-grow px-16 mx-auto my-8 max-w-screen-2xl min-w-full bg-red-100"></main>
+    <main></main>
     <footer>
-        <div class="copyright">© 2023 site name</div>
+        <div class="copyright">© 2023 Site Name</div>
     </footer>
 
     <a href="./dash_template.html"></a>
