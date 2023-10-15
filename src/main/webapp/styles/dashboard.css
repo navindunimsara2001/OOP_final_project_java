@@ -1,0 +1,35 @@
+:root {
+    --menu-bg-color: #222222;
+    --menu-color: white;
+
+    --sidebar-width: 200px;
+    --menu-height: 40px;
+}
+
+
+.sidebar-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+}
+
+.sidebar-container .sidebar {
+    width: var(--sidebar-width);
+    background-color: #222222;
+    color: white;
+}
+
+.mini-menu-placeholder {
+    margin-bottom: 0;
+}
+
+.mini-menu {
+    border-bottom: none !important;
+}
+
+.sidebar-container main {
+    max-height: calc(100vh - var(--mini-menu-height));
+    max-width: calc(100vw - var(--sidebar-width));
+    overflow: auto;
+}

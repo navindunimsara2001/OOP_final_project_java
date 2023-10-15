@@ -1,6 +1,7 @@
 :root {
     --menu-height: 74px;
-    --menu-color: white;
+    --mini-menu-height: 40px;
+    --menu-color: black;
     --menu-bg-color: white;
 }
 
@@ -27,33 +28,27 @@ nav {
     box-sizing: border-box;
 }
 
-nav.main-menu {
+nav.menu {
     min-width: 100vw;
-    flex-grow: 1;
     align-items: center;
-
     position: fixed;
-    background-color: var(--menu-bg-color);
-    height: var(--menu-height);
     padding: 0px 20px;
     display: flex;
     font-family: 'roboto';
 }
 
-nav.floating {
+
+
+nav.menu.floating {
     box-shadow: rgba(20, 20, 20, 0.1) 3px 2px 2px 3px;
 }
 
-nav:not(.floating) {
+nav.menu:not(.floating) {
     border-bottom: 1px solid rgba(114, 114, 114, 0.3);
 }
 
-.main-menu-placeholder {
-    height: var(--menu-height);
-    margin-bottom: 2.5rem;
-}
 
-nav.main-menu>.item {
+nav.menu>.item {
     display: inline;
     padding: 0px 12px;
 
@@ -62,23 +57,61 @@ nav.main-menu>.item {
     height: 100%;
 
     vertical-align: middle;
-    line-height: var(--menu-height);
 
     cursor: pointer;
     user-select: none;
+    color: var(--menu-color);
+
 }
 
-nav.main-menu>.item:not(.no-hover) {
-    color: rgba(0, 0, 0, 0.7);
+
+nav.menu>.item:not(.no-hover) {
+    filter: opacity(0.8);
 }
 
-nav.main-menu>.item:hover:not(.no-hover) {
-    color: #000;
+nav.menu>.item:hover:not(.no-hover) {
+    filter: none;
 }
 
-nav.main-menu>.item:not(:last-child) {
+nav.menu>.item:not(:last-child) {
     margin-right: 8px;
 }
+
+
+
+nav.menu>.item.spacer {
+    flex-grow: 1;
+    cursor: default;
+}
+
+nav.menu.fixed {
+    position: inherit;
+}
+
+nav.main-menu {
+    background-color: var(--menu-bg-color);
+    height: var(--menu-height);
+}
+
+nav.main-menu>.item {
+    line-height: var(--menu-height);
+}
+
+
+.main-menu-placeholder {
+    height: var(--menu-height);
+    margin-bottom: 2.5rem;
+}
+
+nav.mini-menu {
+    background-color: var(--menu-bg-color);
+    height: var(--mini-menu-height);
+}
+
+nav.mini-menu>.item {
+    line-height: var(--mini-menu-height);
+}
+
 
 
 nav.main-menu>.item.header .logo {
@@ -96,9 +129,6 @@ nav.main-menu>.header.item {
     font-size: 1.05rem;
 }
 
-nav>.item.spacer {
-    flex-grow: 1;
-}
 
 .button {
     padding: 10px;
