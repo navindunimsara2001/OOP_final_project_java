@@ -1,55 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Body styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-/* Header styles */
-header {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 0;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-nav .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-nav .nav-links {
-    list-style: none;
-}
-
-nav .nav-links li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav .nav-links a:hover {
-    color: #0056b3;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Hero section styles */
@@ -57,9 +17,9 @@ nav .nav-links a:hover {
     background-image: url('/src/main/webapp/images/DALL·E\ 2023-10-18\ 13.03.41.png');
     background-size: cover;
     background-position: right;
-    color: #fff;
-    text-align: center;
-    padding: 100px 0;
+    color: #213555;
+    text-align: right;
+    padding: 100px 50px;
 }
 
 .hero h2 {
@@ -81,6 +41,7 @@ nav .nav-links a:hover {
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s;
+    text-align: left;
 }
 
 .hero .btn:hover {
@@ -88,6 +49,32 @@ nav .nav-links a:hover {
 }
 
 /* Features and services section styles */
+.card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.feature {
+    width:300px;
+    height: 350px;;
+    margin: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.feature:hover {
+    box-shadow: 0px 0px 10px 10px rgb(79, 112, 156, 0.5);
+}
+
 .features, .services {
     max-width: 1200px;
     margin: 0 auto;
