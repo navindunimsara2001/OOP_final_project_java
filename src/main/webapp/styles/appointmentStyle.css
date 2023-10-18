@@ -24,7 +24,8 @@ body {
 }
 
 .column {
-    width: 60%;
+    min-width: 60%;
+    width:200px;
     margin-top: 50px;
 }
 
@@ -39,7 +40,9 @@ body {
     background-color: rgb(33, 53, 85, 0.8);
     padding: 20px;
     border-radius: 10px;
-    min-width: 400px;
+    max-width: 100%;
+    width: 500px;
+    margin: 0 auto;
 }
 
 .column input {
