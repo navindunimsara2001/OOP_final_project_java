@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public interface IManagerService {
-    static Logger logger = Logger.getLogger(IManagerService.class.getName());
+    Logger logger = Logger.getLogger(IManagerService.class.getName());
 
     /**
      * Gets the manager with the given id.

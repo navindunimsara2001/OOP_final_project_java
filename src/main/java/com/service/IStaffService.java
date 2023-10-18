@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public interface IStaffService {
-	// initialize logger
-    static Logger logger = Logger.getLogger(IStaffService.class.getName());
+    // initialize logger
+    Logger logger = Logger.getLogger(IStaffService.class.getName());
 
     /**
      * Gets the staff member with the given id.
