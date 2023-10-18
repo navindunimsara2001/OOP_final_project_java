@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 public class CustomerService implements ICustomerService {
-    private static final String addQuery = "insert into `customer` (`name`, `email`, `password`, `phone`, `district`,`dob`,`gender`) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private static final String getQuery = "select * from `customer` where id=?";
-    private static final String getAllQuery = "select * from `customer`";
-    private static final String updateQuery = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
+    private static final String ADD_QUERY = "insert into `customer` (`name`, `email`, `password`, `phone`, `district`,`dob`,`gender`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String GET_QUERY = "select * from `customer` where id=?";
+    private static final String GET_ALL_QUERY = "select * from `customer`";
+    private static final String UPDATE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
 
 
     /**
@@ -26,7 +26,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public void addCustomer(Customer cus) {
         try (Connection con = DBUtil.connect()) {
-            PreparedStatement stmt = con.prepareStatement(addQuery);
+            PreparedStatement stmt = con.prepareStatement(ADD_QUERY);
             stmt.setString(1, cus.getName());
             stmt.setString(2, cus.getEmail());
             stmt.setString(3, cus.getPassword());
@@ -50,7 +50,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer getCustomerById(int ID) {
         try (Connection con = DBUtil.connect()) {
-            PreparedStatement stmt = con.prepareStatement(getQuery);
+            PreparedStatement stmt = con.prepareStatement(GET_QUERY);
             stmt.setInt(1, ID);
 
             ResultSet result = stmt.executeQuery();
@@ -95,7 +95,7 @@ public class CustomerService implements ICustomerService {
         ArrayList<Customer> customers = new ArrayList<>();
 
         try (Connection con = DBUtil.connect()) {
-            PreparedStatement stmt = con.prepareStatement(getAllQuery);
+            PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY);
 
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
@@ -117,7 +117,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public void updateCustomer(int ID, Customer c) {
         try (Connection con = DBUtil.connect()) {
-            PreparedStatement stmt = con.prepareStatement(updateQuery);
+            PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY);
             stmt.setString(1, c.getName());
             stmt.setString(2, c.getEmail());
             stmt.setString(3, c.getPassword());
@@ -125,7 +125,7 @@ public class CustomerService implements ICustomerService {
             stmt.setString(5, c.getDistrict());
             stmt.setString(6, c.getDOB());
             stmt.setString(7, c.getGender());
-            stmt.setInt(8, c.getID());
+            stmt.setInt(8, ID);
 
             stmt.execute();
             stmt.close();
