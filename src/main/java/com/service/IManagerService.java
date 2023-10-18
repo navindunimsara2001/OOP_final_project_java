@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public interface IManagerService {
-    public static Logger logger = Logger.getLogger(IManagerService.class.getName());
+    static Logger logger = Logger.getLogger(IManagerService.class.getName());
 
     /**
      * Gets the manager with the given id.
@@ -14,7 +14,7 @@ public interface IManagerService {
      * @param id the id of the manager
      * @return the manager.
      */
-    public Manager getManagerById(int id);
+    Manager getManagerById(int id);
 
 
     /**
@@ -22,14 +22,14 @@ public interface IManagerService {
      *
      * @return a list of all managers
      */
-    public ArrayList<Manager> getManagers();
+    ArrayList<Manager> getManagers();
 
     /**
      * Adds the given manager to the database
      *
      * @param mgr the manager object
      */
-    public void addManager(Manager mgr);
+    void addManager(Manager mgr);
 
 
     /**
@@ -37,7 +37,7 @@ public interface IManagerService {
      *
      * @param mgrId the id of the manager
      */
-    public void removeManager(int mgrId);
+    void removeManager(int mgrId);
 
 
     /**
@@ -46,5 +46,5 @@ public interface IManagerService {
      * @param mgrId the id of the manager.
      * @param mgr   the new manager details.
      */
-    public void updateManager(int mgrId, Manager mgr);
+    void updateManager(int mgrId, Manager mgr);
 }
