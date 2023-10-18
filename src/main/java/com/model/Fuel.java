@@ -1,7 +1,9 @@
 package com.model;
 
 public class Fuel {
+	private int ID;
     private String type;
+    private String subtype;
     private float amount;
 
     public String getType() {
@@ -20,5 +22,19 @@ public class Fuel {
         this.amount = amount;
     }
 
+	public int getID() {
+		return ID;
+	}
 
+	public String getSubtype() {
+		return subtype;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public void setSubtype(String subtype) {
+		this.subtype = subtype;
+	}
 }

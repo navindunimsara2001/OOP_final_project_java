@@ -7,6 +7,7 @@ public class Appointment {
     private String year;
     private String type;
     private String date;
+    private Customer cus;
 
     // getters & setters
     public int getID() {
@@ -56,4 +57,13 @@ public class Appointment {
     public void setDate(String date) {
         this.date = date;
     }
+
+	public Customer getCus() {
+		return cus;
+	}
+
+	public void setCus(Customer cus) {
+		this.cus = cus;
+	}
+    
 }

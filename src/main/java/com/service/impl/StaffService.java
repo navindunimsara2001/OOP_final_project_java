@@ -1,45 +1,51 @@
-package com.service;
+package com.service.impl;
 
 import com.model.Staff;
+import com.service.IStaffService;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
-public interface IStaffService {
-	// initialize logger
-    static Logger logger = Logger.getLogger(IStaffService.class.getName());
-
+public class StaffService implements IStaffService {
     /**
      * Gets the staff member with the given id.
      *
      * @param id the id of the staff member.
      * @return the staff member.
      */
-    Staff getStaffById(int id);
-
+    @Override
+    public Staff getStaffById(int id) {
+        return null;
+    }
 
     /**
      * Gets all staff members in the database
      *
      * @return a list of all staff members
      */
-    ArrayList<Staff> getStaffs();
+    @Override
+    public ArrayList<Staff> getStaffs() {
+        return null;
+    }
 
     /**
      * Adds the given staff member to the database
      *
      * @param mgr the staff object
      */
-    void addStaff(Staff mgr);
+    @Override
+    public void addStaff(Staff mgr) {
 
+    }
 
     /**
      * Removes the staff member with the given id from the database.
      *
      * @param mgrId the id of the staff member
      */
-    void removeStaff(int mgrId);
+    @Override
+    public void removeStaff(int mgrId) {
 
+    }
 
     /**
      * Updates the staff member details for the staff member with the given id.
@@ -47,5 +53,8 @@ public interface IStaffService {
      * @param mgrId the id of the staff member.
      * @param mgr   the new staff member details.
      */
-    void updateStaff(int mgrId, Staff mgr);
+    @Override
+    public void updateStaff(int mgrId, Staff mgr) {
+
+    }
 }
