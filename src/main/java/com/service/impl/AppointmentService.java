@@ -87,7 +87,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public ArrayList<Appointment> getAppointments() {
     	try(Connection con = DBUtil.connect();
-        		PreparedStatement stmt = con.prepareStatement(GET_QUERY)
+        		PreparedStatement stmt = con.prepareStatement(GETALL_QUERY)
         	){
     		
     		ArrayList<Appointment> appList = new ArrayList<>();
@@ -95,8 +95,10 @@ public class AppointmentService implements IAppointmentService {
     		ResultSet rs = stmt.executeQuery();
     		
     		while(rs.next()) {
-    			
+    			appList.add(this.loadAppoinment(rs));
     		}
+    		
+    		return appList;
     		
     	} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,6 +115,18 @@ public class AppointmentService implements IAppointmentService {
      */
     @Override
     public void updateAppointment(int ID, Appointment app) {
+    	try(Connection con = DBUtil.connect();
+        		PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)
+        	){
+    		
+    		stmt.setInt(1, ID);
+    		
+    		
+    		
+    	} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
 
     }
 
