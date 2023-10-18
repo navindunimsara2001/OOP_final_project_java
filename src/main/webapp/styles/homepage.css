@@ -1,0 +1,141 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Header styles */
+header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav .nav-links {
+    list-style: none;
+}
+
+nav .nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav .nav-links a:hover {
+    color: #0056b3;
+}
+
+/* Hero section styles */
+.hero {
+    background-image: url('/src/main/webapp/images/DALL·E\ 2023-10-18\ 13.03.41.png');
+    background-size: cover;
+    background-position: right;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Features and services section styles */
+.features, .services {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.features h2, .services h2 {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.feature, .service {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.feature h3, .service h3 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.feature p, .service p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Contact section styles */
+.contact {
+    background-color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
