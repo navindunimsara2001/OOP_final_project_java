@@ -29,7 +29,7 @@ public interface ICustomerService {
      *
      * @return a list of all customers
      */
-    public ArrayList<Customer> getAllCustomers();
+    public ArrayList<Customer> getCustomers();
 
     /**
      * update customer details

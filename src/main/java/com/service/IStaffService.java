@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public interface IStaffService {
+	// initialize logger
     static Logger logger = Logger.getLogger(IStaffService.class.getName());
 
     /**

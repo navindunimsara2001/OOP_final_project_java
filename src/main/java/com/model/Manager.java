@@ -1,5 +1,5 @@
 package com.model;
 
-public class Manager extends Person{
-
+public class Manager extends Staff{
+	
 }
