@@ -82,7 +82,7 @@ public class AppointmentService implements IAppointmentService {
     /**
      * get all Appointments
      *
-     * @return
+     * @return a list of all appointments
      */
     @Override
     public ArrayList<Appointment> getAppointments() {

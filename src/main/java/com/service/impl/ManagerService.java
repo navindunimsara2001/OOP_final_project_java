@@ -1,6 +1,5 @@
 package com.service.impl;
 
-import com.model.Customer;
 import com.model.Manager;
 import com.service.IManagerService;
 import com.util.DBUtil;

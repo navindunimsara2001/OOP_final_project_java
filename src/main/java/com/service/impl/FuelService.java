@@ -1,11 +1,13 @@
 package com.service.impl;
 
-import com.model.Customer;
 import com.model.Fuel;
 import com.service.IFuelService;
 import com.util.DBUtil;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 

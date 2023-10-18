@@ -27,9 +27,9 @@ public interface IAppointmentService {
     /**
      * get all Appointments
      *
-     * @return
+     * @return a list of all appointment
      */
-    public ArrayList<Appointment> getAppointments();
+    ArrayList<Appointment> getAppointments();
 
     /**
      * update appointment status
