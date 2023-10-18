@@ -65,6 +65,13 @@ public class CustomerService implements ICustomerService {
         return null;
     }
 
+    /**
+     * Loads the data from a single row into a Customer object
+     *
+     * @param result the ResultSet that contains the row
+     * @return the customer object
+     * @throws SQLException if any errors occur while reading the data.
+     */
     private Customer loadCustomer(ResultSet result) throws SQLException {
         Customer cus = new Customer();
         cus.setID(result.getInt("id"));

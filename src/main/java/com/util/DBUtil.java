@@ -10,6 +10,11 @@ public class DBUtil {
     private static final String user = "OOPacc";
     private final static String password = "1234";
 
+    /**
+     * loads the mysql jdbc driver and creates a new connection to the database
+     *
+     * @return a new connection
+     */
     public static Connection connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,8 +28,8 @@ public class DBUtil {
             throw new RuntimeException(e);
         }
     }
-    
+
     public static void main(String[] args) {
-		connect();
-	}
+        connect();
+    }
 }
