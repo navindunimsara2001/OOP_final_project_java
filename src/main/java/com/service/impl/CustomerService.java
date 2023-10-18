@@ -41,20 +41,6 @@ public class CustomerService implements ICustomerService {
         }
     }
 
-    public static void testCreate() {
-        CustomerService cs = new CustomerService();
-        Customer c = new Customer();
-        c.setName("test");
-        c.setEmail("a@b.com");
-        c.setPassword("SecurePassword");
-        c.setPhone("0717171717");
-        c.setDistrict("District 1");
-        c.setDOB("2000/01/01");
-        c.setGender("Male");
-
-        cs.addCustomer(c);
-    }
-
     /**
      * get customer details by using id
      *
@@ -98,7 +84,7 @@ public class CustomerService implements ICustomerService {
      * @return a list of all customers
      */
     @Override
-    public ArrayList<Customer> getAllCustomers() {
+    public ArrayList<Customer> getCustomers() {
         ArrayList<Customer> customers = new ArrayList<>();
 
         try (Connection con = DBUtil.connect()) {
@@ -113,11 +99,6 @@ public class CustomerService implements ICustomerService {
         }
 
         return customers;
-    }
-
-    public static void testGet() {
-        CustomerService cs = new CustomerService();
-        System.out.println(cs.getAllCustomers());
     }
 
     /**
