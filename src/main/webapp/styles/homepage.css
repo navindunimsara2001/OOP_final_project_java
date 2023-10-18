@@ -12,6 +12,10 @@ html {
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background-color: whitesmoke;
+}
+
 /* Hero section styles */
 .hero {
     background-image: url('/src/main/webapp/images/DALL·E\ 2023-10-18\ 13.03.41.png');
@@ -65,10 +69,13 @@ html {
     height: 350px;;
     margin: 20px;
     padding: 40px 20px;
+    border-style: solid;
+    border-width: 1px;
     text-align: center;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
 .feature:hover {
