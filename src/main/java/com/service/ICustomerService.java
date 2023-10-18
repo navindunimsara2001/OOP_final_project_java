@@ -7,14 +7,14 @@ import com.model.Customer;
 
 public interface ICustomerService {
     // initialize logger
-    public static final Logger logger = Logger.getLogger(ICustomerService.class.getName());
+    Logger logger = Logger.getLogger(ICustomerService.class.getName());
 
     /**
      * add customer to database
      *
      * @param cus the customer
      */
-    public void addCustomer(Customer cus);
+    void addCustomer(Customer cus);
 
     /**
      * get customer details by using id
@@ -22,14 +22,14 @@ public interface ICustomerService {
      * @param ID the id of the customer
      * @return the customer
      */
-    public Customer getCustomerById(int ID);
+    Customer getCustomerById(int ID);
 
     /**
      * get all customers in database
      *
      * @return a list of all customers
      */
-    public ArrayList<Customer> getCustomers();
+    ArrayList<Customer> getCustomers();
 
     /**
      * update customer details
@@ -37,6 +37,6 @@ public interface ICustomerService {
      * @param ID  the id of the customer
      * @param cus the new details of the customer.
      */
-    public void updateCustomer(int ID, Customer cus);
+    void updateCustomer(int ID, Customer cus);
 
 }
