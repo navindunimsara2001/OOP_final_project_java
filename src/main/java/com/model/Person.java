@@ -1,11 +1,12 @@
 package com.model;
 
-public class Person {
+public abstract class Person {
     private int ID;
     private String name;
-    private int age;
+    private String DOB;
     private String email;
     private String phone;
+    private String password;
 
 
     // getters & setters
@@ -17,8 +18,8 @@ public class Person {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public String getDOB() {
+        return DOB;
     }
 
     public String getEmail() {
@@ -29,6 +30,10 @@ public class Person {
         return phone;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setID(int iD) {
         ID = iD;
     }
@@ -37,8 +42,8 @@ public class Person {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDOB(String dOB) {
+        DOB = dOB;
     }
 
     public void setEmail(String email) {
@@ -48,4 +53,9 @@ public class Person {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 }

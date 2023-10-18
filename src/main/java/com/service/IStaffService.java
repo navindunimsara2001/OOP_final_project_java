@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public interface IStaffService {
-    public static Logger logger = Logger.getLogger(IStaffService.class.getName());
+    static Logger logger = Logger.getLogger(IStaffService.class.getName());
 
     /**
      * Gets the staff member with the given id.
@@ -14,7 +14,7 @@ public interface IStaffService {
      * @param id the id of the staff member.
      * @return the staff member.
      */
-    public Staff getStaffById(int id);
+    Staff getStaffById(int id);
 
 
     /**
@@ -22,14 +22,14 @@ public interface IStaffService {
      *
      * @return a list of all staff members
      */
-    public ArrayList<Staff> getStaffs();
+    ArrayList<Staff> getStaffs();
 
     /**
      * Adds the given staff member to the database
      *
      * @param mgr the staff object
      */
-    public void addStaff(Staff mgr);
+    void addStaff(Staff mgr);
 
 
     /**
@@ -37,7 +37,7 @@ public interface IStaffService {
      *
      * @param mgrId the id of the staff member
      */
-    public void removeStaff(int mgrId);
+    void removeStaff(int mgrId);
 
 
     /**
@@ -46,5 +46,5 @@ public interface IStaffService {
      * @param mgrId the id of the staff member.
      * @param mgr   the new staff member details.
      */
-    public void updateStaff(int mgrId, Staff mgr);
+    void updateStaff(int mgrId, Staff mgr);
 }
