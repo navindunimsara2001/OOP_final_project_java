@@ -16,6 +16,7 @@ public class CustomerService implements ICustomerService {
     private static final String GET_QUERY = "select * from `customer` where id=?";
     private static final String GET_ALL_QUERY = "select * from `customer`";
     private static final String UPDATE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
+    private static final String DELETE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
 
     /**
      * add customer to database
@@ -134,9 +135,22 @@ public class CustomerService implements ICustomerService {
             stmt.setString(7, c.getGender());
             stmt.setInt(8, ID);
 
-            stmt.execute();
+            stmt.executeUpdate();
+            
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update customer", e);
         }
+    }
+    
+    @Override
+    public void removeCustomer(int ID) {
+    	try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)) {
+    		
+    		stmt.setInt(1, ID);
+    		stmt.executeUpdate();
+    		
+    	} catch (SQLException e) {
+    		logger.log(Level.SEVERE, "Failed to delete customer", e);
+		}
     }
 }

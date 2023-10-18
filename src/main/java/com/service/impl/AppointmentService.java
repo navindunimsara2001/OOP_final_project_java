@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import com.model.Appointment;
+import com.model.Customer;
 import com.service.IAppointmentService;
 import com.util.DBUtil;
 
@@ -14,7 +16,7 @@ public class AppointmentService implements IAppointmentService {
 	private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`)";
 	private final static String GET_QUERY = "SELECT * FROM `appointment` WHERE `id`= ?";
 	private final static String GETALL_QUERY = "SELECT * FROM `appointment`";
-	private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=?";
+	private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=? WHERE `id`= ?";
 	private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
 	
     /**
@@ -38,7 +40,7 @@ public class AppointmentService implements IAppointmentService {
     		// execute 
     		stmt.executeUpdate();
     		} catch (SQLException e) {
-			e.printStackTrace();
+    			logger.log(Level.SEVERE, "Failed to insert appointment", e);
 		}
     }
     
@@ -49,8 +51,12 @@ public class AppointmentService implements IAppointmentService {
     	app.setBrand(rs.getString("brand"));
     	app.setModel(rs.getString("model"));
     	app.setYear(rs.getString("year"));
-    	app.setType(rs.getString("date"));
-    	app.setDate(rs.getString("date"));
+    	app.setType(rs.getString("type"));
+    	
+    	Customer cs = new CustomerService().getCustomerById(rs.getInt("customer_id"));
+    	app.setCus(cs);
+    	
+    	app.setStatus(rs.getString("status"));
     	
     	return app;
     }
@@ -73,7 +79,7 @@ public class AppointmentService implements IAppointmentService {
     		return this.loadAppoinment(rs);
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to get appointment", e);
 			return null;
 		}
         
@@ -101,7 +107,7 @@ public class AppointmentService implements IAppointmentService {
     		return appList;
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to get appointment lis", e);
 		}
     	
         return null;
@@ -118,13 +124,19 @@ public class AppointmentService implements IAppointmentService {
     	try(Connection con = DBUtil.connect();
         		PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)
         	){
-    		
-    		stmt.setInt(1, ID);
-    		
+    		//for query
+    		stmt.setString(1,app.getBrand());
+    		stmt.setString(2,app.getModel());
+    		stmt.setString(3,app.getYear());
+    		stmt.setString(4,app.getType());
+    		stmt.setString(5,app.getDate());
+    		stmt.setInt(6,app.getCus().getID());
+    		stmt.setString(7,app.getStatus());
+    		stmt.setInt(8, ID);
     		
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to update appointment", e);
 		}
     	
 
@@ -137,6 +149,16 @@ public class AppointmentService implements IAppointmentService {
      */
     @Override
     public void removeAppointment(int ID) {
-
+    	try(Connection con = DBUtil.connect();
+        		PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)
+        	){
+    		
+    		stmt.setInt(1, ID);
+    		
+    		stmt.executeUpdate();
+    		
+    	} catch (SQLException e) {
+    		logger.log(Level.SEVERE, "Failed to delete appointment", e);
+		}
     }
 }

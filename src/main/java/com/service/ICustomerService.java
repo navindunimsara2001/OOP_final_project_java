@@ -35,8 +35,14 @@ public interface ICustomerService {
      * update customer details
      *
      * @param ID  the id of the customer
-     * @param cus the new details of the customer.
+     * @param cus the new details of the customer
      */
     void updateCustomer(int ID, Customer cus);
+    
+    /**
+     * 
+     * @param ID the id of the customer
+     */
+    void removeCustomer(int ID);
 
 }
