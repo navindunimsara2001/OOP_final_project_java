@@ -33,7 +33,7 @@ public interface IAppointmentService {
      * @param ID the id of appointment
      * @param app object of appointment
      */
-    public void updataAppointment(int ID ,  Appointment app);
+    public void updateAppointment(int ID ,  Appointment app);
     
     /**
      * delete Appointment from database
