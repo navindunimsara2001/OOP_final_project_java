@@ -98,7 +98,7 @@ public class CustomerService implements ICustomerService {
      * @return a list of all customers
      */
     @Override
-    public ArrayList<Customer> getAllCustomers() {
+    public ArrayList<Customer> getCustomers() {
         ArrayList<Customer> customers = new ArrayList<>();
 
         try (Connection con = DBUtil.connect()) {
@@ -117,7 +117,7 @@ public class CustomerService implements ICustomerService {
 
     public static void testGet() {
         CustomerService cs = new CustomerService();
-        System.out.println(cs.getAllCustomers());
+        System.out.println(cs.getCustomers());
     }
 
     /**
