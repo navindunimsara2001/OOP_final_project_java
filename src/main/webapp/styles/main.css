@@ -32,7 +32,6 @@ nav.menu {
     min-width: 100vw;
     align-items: center;
     position: fixed;
-    padding: 0px 20px;
     display: flex;
     font-family: 'roboto';
 }
@@ -194,4 +193,13 @@ footer .copyright {
     margin-top: auto;
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
+}
+
+/* TODO: remove these*/
+body:not(.logged-in) .if-login {
+    display: none;
+}
+
+body.logged-in .if-not-login {
+    display: none;
 }
