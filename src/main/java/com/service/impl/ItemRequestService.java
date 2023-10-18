@@ -41,7 +41,7 @@ public class ItemRequestService implements IItemRequestService {
      * update Item request from database
      *
      * @param ID the id of Item Request
-     * @param ir
+     * @param ir the requested item
      */
     @Override
     public void updateItemRequest(int ID, ItemRequest ir) {

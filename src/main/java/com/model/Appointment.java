@@ -8,6 +8,7 @@ public class Appointment {
     private String type;
     private String date;
     private Customer cus;
+    private String status;
 
     // getters & setters
     public int getID() {
@@ -65,5 +66,14 @@ public class Appointment {
 	public void setCus(Customer cus) {
 		this.cus = cus;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
     
 }
