@@ -25,6 +25,14 @@ public interface ICustomerService {
     Customer getCustomerById(int ID);
 
     /**
+     * get customer for the given email
+     *
+     * @param email the email address of the customer
+     * @return the customer
+     */
+    Customer getCustomerByEmail(String email);
+
+    /**
      * get all customers in database
      *
      * @return a list of all customers
@@ -38,9 +46,8 @@ public interface ICustomerService {
      * @param cus the new details of the customer
      */
     void updateCustomer(int ID, Customer cus);
-    
+
     /**
-     * 
      * @param ID the id of the customer
      */
     void removeCustomer(int ID);
