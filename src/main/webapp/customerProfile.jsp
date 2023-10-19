@@ -31,7 +31,7 @@
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="name">
+                                    <input type="text" name="name" value= "">
                                 </div>
                             </th>
                         </tr>
