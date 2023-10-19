@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 public class SessionUtil {
 
     public static Customer getCustomer(HttpServletRequest req) {
-        Person u;
         try {
             return (Customer) req.getSession(false).getAttribute("user");
         } catch (NullPointerException | ClassCastException ignored) {
@@ -18,7 +17,6 @@ public class SessionUtil {
     }
 
     public static Staff getStaff(HttpServletRequest req) {
-        Person u;
         try {
             return (Staff) req.getSession(false).getAttribute("user");
         } catch (NullPointerException | ClassCastException ignored) {
