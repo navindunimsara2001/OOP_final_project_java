@@ -5,6 +5,7 @@ import com.service.ICustomerService;
 import com.service.IStaffService;
 import com.service.impl.CustomerService;
 import com.service.impl.StaffService;
+import com.util.URLS;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         // check if the login type is valid
         if (!Objects.equals(loginType, "staff") && !Objects.equals(loginType, "user")) {
             logger.log(Level.INFO, "invalid login type");
-            resp.sendRedirect("/");
+            resp.sendRedirect(URLS.HOME);
             return;
         }
 
@@ -42,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 
         if (Objects.isNull(email) || Objects.isNull(password)) {
             logger.log(Level.INFO, "username or password not set");
-            resp.sendRedirect(isStaff ? "/admin/login.html" : "/login.html");
+            resp.sendRedirect(isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN);
             return;
         }
 
@@ -52,7 +53,7 @@ public class LoginServlet extends HttpServlet {
         // check if the login details are valid.
         if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
             logger.log(Level.INFO, "incorrect password");
-            resp.sendRedirect(isStaff ? "/admin/login.html" : "/login.html");
+            resp.sendRedirect(isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN);
             return;
         }
 
@@ -62,7 +63,7 @@ public class LoginServlet extends HttpServlet {
         sess.setAttribute("isStaff", isStaff);
 
         // redirect user
-        String redirect = isStaff ? "/admin/" : "/";
+        String redirect = isStaff ? URLS.ADMIN_HOME : URLS.HOME;
         String redirectParam = req.getParameter("to");
         if (!Objects.isNull(redirectParam)) {
             try {
