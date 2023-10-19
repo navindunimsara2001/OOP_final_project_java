@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 public class StaffService implements IStaffService {
-    private static final String ADD_QUERY = "insert into `staff` (`name`, `email`, `password`, `phone`, `dob`, `is_manager`) VALUES (?, ?, ?, ?, ?, 0)";
-    private static final String GET_QUERY = "select * from `staff` where id=? and is_manager=0";
-    private static final String GET_QUERY_EMAIL = "select * from `staff` where email=? and is_manager=0";
-    private static final String GET_ALL_QUERY = "select * from `staff` where is_manager=0";
-    private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=? where id=? and is_manager=0";
-    private static final String REMOVE_QUERY = "delete from `staff` where id=? and is_manager=0";
+    private static final String ADD_QUERY = "insert into `staff` (`name`, `email`, `password`, `phone`, `dob`, `is_manager`) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String GET_QUERY = "select * from `staff` where id=?";
+    private static final String GET_QUERY_EMAIL = "select * from `staff` where email=?";
+    private static final String GET_ALL_QUERY = "select * from `staff`";
+    private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=?, is_manager=? where id=?";
+    private static final String REMOVE_QUERY = "delete from `staff` where id=?";
 
     /**
      * Gets the staff with the given id.
@@ -102,6 +102,7 @@ public class StaffService implements IStaffService {
         stf.setPassword(result.getString("password"));
         stf.setPhone(result.getString("phone"));
         stf.setDOB(result.getString("dob"));
+        stf.setManager(result.getBoolean("is_manager"));
         return stf;
     }
 
@@ -118,6 +119,7 @@ public class StaffService implements IStaffService {
             stmt.setString(3, stf.getPassword());
             stmt.setString(4, stf.getPhone());
             stmt.setString(5, stf.getDOB());
+            stmt.setBoolean(6, stf.isManager());
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to add staff", e);
@@ -154,7 +156,8 @@ public class StaffService implements IStaffService {
             stmt.setString(3, stf.getPassword());
             stmt.setString(4, stf.getPhone());
             stmt.setString(5, stf.getDOB());
-            stmt.setInt(6, stfId);
+            stmt.setBoolean(6, stf.isManager());
+            stmt.setInt(7, stfId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update staff", e);
