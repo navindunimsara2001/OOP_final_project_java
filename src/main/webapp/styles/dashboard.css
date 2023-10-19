@@ -1,5 +1,5 @@
 :root {
-    --menu-bg-color: #222222;
+    --menu-bg-color: #213555;
     --menu-color: white;
 
     --sidebar-width: 200px;
@@ -16,7 +16,7 @@
 
 .sidebar-container .sidebar {
     width: var(--sidebar-width);
-    background-color: #222222;
+    background-color: #213555;
     color: white;
 }
 
