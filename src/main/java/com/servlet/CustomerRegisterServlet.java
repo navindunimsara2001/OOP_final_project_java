@@ -4,6 +4,7 @@ import com.model.Customer;
 import com.service.impl.CustomerService;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,13 +36,14 @@ public class CustomerRegisterServlet extends HttpServlet {
 		String DOB = request.getParameter("DOB");
 		String password = request.getParameter("password");
 		String gender = request.getParameter("gender");
-		String district = request.getParameter("District");
+		String district = request.getParameter("district");
 
 		final String regex = "^(.+)@(.+)$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(email);
 
 		if (matcher.matches() && password.length() >= 8) {
+			System.out.println("valid");
 			cus.setName(name);
 			cus.setEmail(email);
 			cus.setPhone(phone);
@@ -57,6 +59,8 @@ public class CustomerRegisterServlet extends HttpServlet {
 			response.sendRedirect(rediret);
 		}
 		
+		PrintWriter pw  = response.getWriter();
+		pw.print(name);
 		
 		
 		
