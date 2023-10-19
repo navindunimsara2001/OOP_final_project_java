@@ -54,3 +54,13 @@ hr {
     max-width: calc(100vw - var(--sidebar-width));
     overflow: auto;
 }
+
+main {
+    padding: 2% 1%;
+    transition: all 0.2s ease-in-out;
+}
+
+.table {
+    margin-top: 20px;
+    width: 100%;
+    }
