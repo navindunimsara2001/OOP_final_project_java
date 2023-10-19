@@ -18,7 +18,7 @@ body {
 
 /* Hero section styles */
 .hero {
-    background-image: url('/src/main/webapp/images/DALL·E\ 2023-10-18\ 13.03.41.png');
+    background-image: url('/images/DALL·E 2023-10-18 13.03.41.png');
     background-size: cover;
     background-position: right;
     color: #213555;
@@ -65,7 +65,7 @@ body {
 }
 
 .feature {
-    width:300px;
+    width: 300px;
     height: 350px;;
     margin: 20px;
     padding: 40px 20px;

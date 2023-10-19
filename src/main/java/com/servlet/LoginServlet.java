@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
      * Gets the user with the given email
      *
      * @param email   the email address
-     * @param isStaff is the user is trying to login as a staff member
+     * @param isStaff is the user is trying to log in as a staff member
      * @return the user or null
      */
     private Person getUser(String email, boolean isStaff) {

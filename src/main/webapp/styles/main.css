@@ -23,7 +23,7 @@ body {
 
 }
 
-nav>*,
+nav > *,
 nav {
     box-sizing: border-box;
 }
@@ -33,9 +33,8 @@ nav.menu {
     align-items: center;
     position: fixed;
     display: flex;
-    font-family: 'roboto';
+    font-family: 'roboto', serif;
 }
-
 
 
 nav.menu.floating {
@@ -47,9 +46,9 @@ nav.menu:not(.floating) {
 }
 
 
-nav.menu>.item {
+nav.menu > .item {
     display: inline;
-    padding: 0px 12px;
+    padding: 0 12px;
 
     text-decoration: none;
 
@@ -64,21 +63,20 @@ nav.menu>.item {
 }
 
 
-nav.menu>.item:not(.no-hover) {
+nav.menu > .item:not(.no-hover) {
     filter: opacity(0.8);
 }
 
-nav.menu>.item:hover:not(.no-hover) {
+nav.menu > .item:hover:not(.no-hover) {
     filter: none;
 }
 
-nav.menu>.item:not(:last-child) {
+nav.menu > .item:not(:last-child) {
     margin-right: 8px;
 }
 
 
-
-nav.menu>.item.spacer {
+nav.menu > .item.spacer {
     flex-grow: 1;
     cursor: default;
 }
@@ -92,7 +90,7 @@ nav.main-menu {
     height: var(--menu-height);
 }
 
-nav.main-menu>.item {
+nav.main-menu > .item {
     line-height: var(--menu-height);
 }
 
@@ -107,13 +105,12 @@ nav.mini-menu {
     height: var(--mini-menu-height);
 }
 
-nav.mini-menu>.item {
+nav.mini-menu > .item {
     line-height: var(--mini-menu-height);
 }
 
 
-
-nav.main-menu>.item.header .logo {
+nav.main-menu > .item.header .logo {
     height: 32px;
 
     align-self: center;
@@ -122,7 +119,7 @@ nav.main-menu>.item.header .logo {
 }
 
 
-nav.main-menu>.header.item {
+nav.main-menu > .header.item {
     display: flex;
     font-size: 1.05rem;
 }
@@ -143,7 +140,7 @@ nav.main-menu>.header.item {
 }
 
 
-#profile-dropdown>img {
+#profile-dropdown > img {
     align-self: center;
     transform: translateY(6px);
 }
@@ -152,18 +149,18 @@ nav.main-menu>.header.item {
     right: 0;
 }
 
-.dropdown>.dropdown-content {
+.dropdown > .dropdown-content {
     background-color: white;
     padding: 16px 40px;
     display: none;
     line-height: initial;
 
     box-sizing: border-box;
-    box-shadow: #0d14301e 0px 2px 2px 2px;
+    box-shadow: #0d14301e 0 2px 2px 2px;
 }
 
-.dropdown:hover>.dropdown-content,
-.dropdown>.dropdown-content:hover {
+.dropdown:hover > .dropdown-content,
+.dropdown > .dropdown-content:hover {
     display: block;
     position: absolute;
 }
@@ -180,7 +177,7 @@ footer {
     background-color: #0d1430;
     color: white;
     min-height: 100px;
-    font-family: 'roboto';
+    font-family: 'roboto', serif;
 
     display: flex;
     flex-direction: column;

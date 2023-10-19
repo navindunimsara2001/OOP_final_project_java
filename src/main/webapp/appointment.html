@@ -4,58 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles\appointmentStyle.css">
+    <link rel="stylesheet" href="styles/appointmentStyle.css">
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Appointment</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="column">
-            <h3>Appointment</h3>
-            <form method="post" action="">
-                <div class="input">
-                    <label for="">Vehicle Brand : </label>
-                    <input type="text" name="brand" id="" required>
+<div class="container">
+    <div class="column">
+        <h3>Appointment</h3>
+        <form method="post" action="">
+            <div class="input">
+                <label for="">Vehicle Brand : </label>
+                <input type="text" name="brand" id="" required>
+            </div>
+            <div class="input">
+                <label for="">Vehicle model : </label>
+                <input type="text" name="model" id="" required>
+            </div>
+            <div class="input">
+                <label for="">Vehicle year : </label>
+                <input type="text" name="year" id="" required>
+            </div>
+            <div class="input">
+                <div class="col">
+                    <label for="service-type">Service Type:</label>
+                    <select id="service-type" name="serviceType" required>
+                        <option value="Full Service">Full Service</option>
+                        <option value="Oil Change">Oil Change</option>
+                        <option value="Wheel Alignment">Wheel Alignment</option>
+                        <option value="Tire Rotation">Tire Rotation</option>
+                        <option value="Interior Clean">Interior Cleaning</option>
+                        <option value="Brake Inspection">Brake Inspection</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
-                <div class="input">
-                    <label for="">Vehicle model : </label>
-                    <input type="text" name="model" id="" required>
+                <div class="col">
+                    <label for="appointment-date">Appointment Date:</label>
+                    <input type="date" id="appointment-date" name="appointmentDate" required>
                 </div>
-                <div class="input">
-                    <label for="">Vehicle year : </label>
-                    <input type="text" name="year" id="" required>
-                </div>
-                <div class="input">
-                    <div class="col">
-                        <label for="service-type">Service Type:</label>
-                        <select id="service-type" name="serviceType" required>
-                            <option value="Full Service">Full Service</option>
-                            <option value="Oil Change">Oil Change</option>
-                            <option value="Wheel Alignment">Wheel Alignment</option>
-                            <option value="Tire Rotation">Tire Rotation</option>
-                            <option value="Interior Clean">Interior Cleaning</option>
-                            <option value="Brake Inspection">Brake Inspection</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="appointment-date">Appointment Date:</label>
-                        <input type="date" id="appointment-date" name="appointmentDate" required>
-                    </div>
-                </div>
-                <div class="input">
-                    <label for="comments">Additional Comments:</label>
-                    <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
-                </div>
-                <div class="submit">
-                    <input class="btn" type="submit" name="submit" value="Submit">
-                    <input class="btn" type="reset" name="reset" value="Reset">
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="input">
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
+            </div>
+            <div class="submit">
+                <input class="btn" type="submit" name="submit" value="Submit">
+                <input class="btn" type="reset" name="reset" value="Reset">
+            </div>
+        </form>
     </div>
+</div>
 </body>
 
 </html>
