@@ -29,10 +29,11 @@ public class AppointmentServlet extends HttpServlet {
 		app.setModel(request.getParameter("model"));
 		app.setYear(request.getParameter("year"));
 		app.setType(request.getParameter("serviceType"));
-		app.setDate(request.getParameter("date"));
+		app.setDate(request.getParameter("appointmentDate"));
 		app.setComment(request.getParameter("comment"));
-		 CustomerService cs  = new CustomerService();
-		app.setCus(cs.getCustomerById(3));
+		// use session
+		app.setCus(SessionUtil.getCustomer(request));
+		app.setStatus("pending");
 		
 		
 		AppointmentService appser = new AppointmentService();

@@ -14,7 +14,7 @@ import com.service.IAppointmentService;
 import com.util.DBUtil;
 
 public class AppointmentService implements IAppointmentService {
-    private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`assigned`,`comment`) VALUES ?,?,?,?,?,?,?,?,?";
+    private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`comment`, `assigned`) VALUES (?,?,?,?,?,?,?,?,NULL)";
     private final static String GET_QUERY = "SELECT * FROM `appointment` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
     private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=?, `assigned`=? , `comment`=? WHERE `id`= ?";
@@ -38,8 +38,7 @@ public class AppointmentService implements IAppointmentService {
             stmt.setString(5, app.getDate());
             stmt.setInt(6, app.getCus().getID());
             stmt.setString(7, app.getStatus());
-            stmt.setInt(8, app.getStaff().getID());
-            stmt.setString(9, app.getComment());
+            stmt.setString(8, app.getComment());
             // execute
             stmt.executeUpdate();
         } catch (SQLException e) {
