@@ -2,6 +2,7 @@ package com.servlet;
 
 import com.model.Person;
 import com.util.SessionUtil;
+import com.util.URLS;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpFilter;
@@ -30,7 +31,6 @@ public class AuthFilter extends HttpFilter {
         HttpServletRequest request = (HttpServletRequest) req;
 
         HttpSession sess = request.getSession(false);
-        Logger.getLogger("auth").log(Level.INFO, String.format("Session: %s %b", sess, Objects.isNull(sess)));
         if (Objects.isNull(sess)) {
             this.redirect(request, (HttpServletResponse) res);
             return;
@@ -52,7 +52,7 @@ public class AuthFilter extends HttpFilter {
     }
 
     private void redirect(HttpServletRequest request, HttpServletResponse res) throws IOException {
-        String redirect = this.isAdmin ? "admin/login.html" : "login.html";
+        String redirect = this.isAdmin ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN;
         try {
             redirect += "?to=" + new URI(request.getRequestURI()).getPath();
         } catch (URISyntaxException ignored) {

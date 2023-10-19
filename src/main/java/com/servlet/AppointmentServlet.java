@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Appointment;
-import com.model.Staff;
 import com.service.impl.AppointmentService;
-import com.service.impl.CustomerService;
-import com.service.impl.StaffService;
 import com.util.SessionUtil;
 
 /**
@@ -31,7 +28,6 @@ public class AppointmentServlet extends HttpServlet {
 		app.setType(request.getParameter("serviceType"));
 		app.setDate(request.getParameter("appointmentDate"));
 		app.setComment(request.getParameter("comment"));
-		// use session
 		app.setCus(SessionUtil.getCustomer(request));
 		app.setStatus("pending");
 		
