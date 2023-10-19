@@ -23,7 +23,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String loginType = req.getParameter("type");
-        
+
+        // check if the login type is valid
         if (!Objects.equals(loginType, "staff") && !Objects.equals(loginType, "user")) {
             resp.sendRedirect("/");
             return;
@@ -34,25 +35,28 @@ public class LoginServlet extends HttpServlet {
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+
         if (Objects.isNull(email) || Objects.isNull(password)) {
             resp.sendRedirect(isStaff ? "/admin/login.html" : "/login.html");
             return;
         }
 
-        Person user = getUser(email, password, isStaff);
+        // get the user
+        Person user = getUser(email, isStaff);
 
-        if (Objects.isNull(user)) {
+        // check if the login details are valid.
+        if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
             resp.sendRedirect(isStaff ? "/admin/login.html" : "/login.html");
             return;
         }
 
+        // create session
         HttpSession sess = req.getSession(true);
         sess.setAttribute("user", user);
         sess.setAttribute("isStaff", isStaff);
 
+        // redirect user
         String redirect = isStaff ? "/admin/" : "/";
-
-
         String redirectParam = req.getParameter("to");
         if (!Objects.isNull(redirectParam)) {
             try {
@@ -65,22 +69,21 @@ public class LoginServlet extends HttpServlet {
         resp.sendRedirect(redirect);
     }
 
-    private Person getUser(String email, String password, boolean isStaff) {
-        Person user;
+    /**
+     * Gets the user with the given email
+     *
+     * @param email   the email address
+     * @param isStaff is the user is trying to login as a staff member
+     * @return the user or null
+     */
+    private Person getUser(String email, boolean isStaff) {
         if (isStaff) {
             IStaffService ss = new StaffService();
-            user = ss.getStaffByEmail(email);
+            return ss.getStaffByEmail(email);
         } else {
             ICustomerService cs = new CustomerService();
-            user = cs.getCustomerByEmail(email);
+            return cs.getCustomerByEmail(email);
         }
-
-
-        if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
-            return null;
-        }
-
-        return user;
     }
 
 }
