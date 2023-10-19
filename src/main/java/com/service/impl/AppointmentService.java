@@ -14,7 +14,7 @@ import com.service.IAppointmentService;
 import com.util.DBUtil;
 
 public class AppointmentService implements IAppointmentService {
-    private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`assigned`,`comment`) VALUES '`brand`=?,`model`=?,`year`=?,`type`=?,`date`=?,`customer_id`=?,`status`=?,`assigned`=?,`comment`=?";
+    private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`assigned`,`comment`) VALUES ?,?,?,?,?,?,?,?,?";
     private final static String GET_QUERY = "SELECT * FROM `appointment` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
     private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=?, `assigned`=? , `comment`=? WHERE `id`= ?";
