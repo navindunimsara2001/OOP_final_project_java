@@ -40,6 +40,20 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>adminLogin</servlet-name>
+        <servlet-class>com.servlet.LoginServlet</servlet-class>
+        <init-param>
+            <param-name>admin</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminLogin</servlet-name>
+        <url-pattern>/admin/login</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>AuthFilter</filter-name>

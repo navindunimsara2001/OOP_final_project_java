@@ -7,6 +7,9 @@ import com.service.impl.CustomerService;
 import com.service.impl.StaffService;
 import com.util.URLS;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,21 +26,24 @@ import java.util.logging.Logger;
 public class LoginServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+    private boolean isStaff;
+
+    @Override
+    public void init(ServletConfig config) {
+        String admin = config.getInitParameter("admin");
+        this.isStaff = !Objects.isNull(admin) && Boolean.parseBoolean(admin);
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/login.jsp");
+        req.setAttribute("staff", this.isStaff);
+        dispatcher.forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String loginType = req.getParameter("type");
-
-        // check if the login type is valid
-        if (!Objects.equals(loginType, "staff") && !Objects.equals(loginType, "user")) {
-            logger.log(Level.INFO, "invalid login type");
-            resp.sendRedirect(URLS.HOME);
-            return;
-        }
-
-
-        boolean isStaff = loginType.equals("staff");
-
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
@@ -48,7 +54,14 @@ public class LoginServlet extends HttpServlet {
         }
 
         // get the user
-        Person user = getUser(email, isStaff);
+        Person user;
+        if (isStaff) {
+            IStaffService ss = new StaffService();
+            user = ss.getStaffByEmail(email);
+        } else {
+            ICustomerService cs = new CustomerService();
+            user = cs.getCustomerByEmail(email);
+        }
 
         // check if the login details are valid.
         if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
@@ -74,23 +87,6 @@ public class LoginServlet extends HttpServlet {
         }
 
         resp.sendRedirect(redirect);
-    }
-
-    /**
-     * Gets the user with the given email
-     *
-     * @param email   the email address
-     * @param isStaff is the user is trying to log in as a staff member
-     * @return the user or null
-     */
-    private Person getUser(String email, boolean isStaff) {
-        if (isStaff) {
-            IStaffService ss = new StaffService();
-            return ss.getStaffByEmail(email);
-        } else {
-            ICustomerService cs = new CustomerService();
-            return cs.getCustomerByEmail(email);
-        }
     }
 
 }
