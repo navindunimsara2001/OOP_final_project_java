@@ -14,14 +14,14 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 20px;
-	background: linear-gradient(180deg, rgb(9, 105, 100), rgb(173, 223, 221));
+	background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
 }
 
 .container {
 	position: relative;
 	max-width: 600px;
 	width: 100%;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.7);
 	padding: 25px;
 	border-radius: 8px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -115,12 +115,13 @@ body {
 	font-size: 1rem;
 	border-radius: 7px;
 	margin-top: 20px;
+	transition: all 0.3s ease;
 }
 
 .form button:hover {
 	color: black;
-	background-color: white;
-
+	background-color: rgb(229, 210, 131);
+    border: 1px solid rgba(0,0,0,0.2);
 }
 
 .form .a {
