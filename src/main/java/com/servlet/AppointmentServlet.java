@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.Appointment;
 import com.service.impl.AppointmentService;
 import com.util.SessionUtil;
+import com.util.URLS;
 
 /**
  * Servlet implementation class AppointmentServlet
@@ -35,8 +36,7 @@ public class AppointmentServlet extends HttpServlet {
 		AppointmentService appser = new AppointmentService();
 		appser.addAppointment(app);
 		
-		String rediret = "home.html";
-		response.sendRedirect(rediret);
+		response.sendRedirect(URLS.USER_LOGIN);
 		
 	}
 
