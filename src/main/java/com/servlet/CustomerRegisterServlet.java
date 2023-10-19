@@ -41,7 +41,9 @@ public class CustomerRegisterServlet extends HttpServlet {
 		final String regex = "^(.+)@(.+)$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(email);
-
+		
+		// nedd to check email exist or not
+		
 		if (matcher.matches() && password.length() >= 8) {
 			System.out.println("valid");
 			cus.setName(name);

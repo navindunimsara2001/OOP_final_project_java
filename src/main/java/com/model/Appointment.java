@@ -7,6 +7,7 @@ public class Appointment {
     private String year;
     private String type;
     private String date;
+    private String comment;
     private Customer cus;
     private String status;
     private Staff staff;
@@ -83,6 +84,15 @@ public class Appointment {
 	public void setStaff(Staff staff) {
 		this.staff = staff;
 	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
 	
  
 }

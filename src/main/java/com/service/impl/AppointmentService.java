@@ -9,14 +9,15 @@ import java.util.logging.Level;
 
 import com.model.Appointment;
 import com.model.Customer;
+import com.model.Staff;
 import com.service.IAppointmentService;
 import com.util.DBUtil;
 
 public class AppointmentService implements IAppointmentService {
-    private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`)";
+    private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`assigned`,`comment`) VALUES '`brand`=?,`model`=?,`year`=?,`type`=?,`date`=?,`customer_id`=?,`status`=?,`assigned`=?,`comment`=?";
     private final static String GET_QUERY = "SELECT * FROM `appointment` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
-    private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=? WHERE `id`= ?";
+    private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=?, `assigned`=? , `comment`=? WHERE `id`= ?";
     private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
 
     /**
@@ -37,6 +38,8 @@ public class AppointmentService implements IAppointmentService {
             stmt.setString(5, app.getDate());
             stmt.setInt(6, app.getCus().getID());
             stmt.setString(7, app.getStatus());
+            stmt.setInt(8, app.getStaff().getID());
+            stmt.setString(9, app.getComment());
             // execute
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -57,6 +60,11 @@ public class AppointmentService implements IAppointmentService {
         app.setCus(cs);
 
         app.setStatus(rs.getString("status"));
+        
+        Staff stf = new StaffService().getStaffById(rs.getInt("assigned"));
+        app.setStaff(stf);
+        
+        app.setComment(rs.getString("comment"));
 
         return app;
     }
