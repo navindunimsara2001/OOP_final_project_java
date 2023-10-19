@@ -3,6 +3,7 @@ package com.servlet;
 import com.model.Customer;
 import com.service.impl.CustomerService;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,17 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/CustomerRegister")
-public class CustomerRegister extends HttpServlet {
+public class CustomerRegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 	}
 
 	/**
+	 * @throws IOException 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html");
 
 		Customer cus = new Customer();
@@ -47,10 +49,17 @@ public class CustomerRegister extends HttpServlet {
 			cus.setPassword(password);
 			cus.setGender(gender);
 			cus.setDistrict(district);
+			
+			CustomerService cs = new CustomerService();
+			cs.addCustomer(cus);
+			
+			String rediret = "login.html";
+			response.sendRedirect(rediret);
 		}
 		
-		CustomerService cs = new CustomerService();
-		cs.addCustomer(cus);
+		
+		
+		
 	}
 
 }

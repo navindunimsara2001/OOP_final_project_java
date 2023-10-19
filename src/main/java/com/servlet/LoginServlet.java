@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 
         // redirect user
         String redirect = isStaff ? "/admin/" : "/";
-        String redirectParam = req.getParameter("to");
+        String redirectParam = req.getParameter("to"); //need url
         if (!Objects.isNull(redirectParam)) {
             try {
                 URI uri = new URI(redirectParam);
