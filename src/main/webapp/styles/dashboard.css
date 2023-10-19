@@ -3,7 +3,7 @@
     --menu-color: white;
 
     --sidebar-width: 200px;
-    --menu-height: 40px;
+    --menu-height: 60px;
 }
 
 
@@ -26,6 +26,7 @@
 
 .mini-menu {
     border-bottom: none !important;
+    
 }
 
 .sidebar-container main {
