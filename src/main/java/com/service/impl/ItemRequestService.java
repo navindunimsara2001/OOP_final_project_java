@@ -14,11 +14,12 @@ import com.service.IItemRequestService;
 import com.util.DBUtil;
 
 public class ItemRequestService implements IItemRequestService {
-	private static final String ADD_QUERY = "INSERT INTO `item_request` VALUES `item_id`=? , `staff_id`=? , `qty`=?"; 
-	private static final String GET_QUERY = "SELECT * FROM `item_request` WHERE `id`=?";
-	private static final String GETALL_QUERY = "SELECT * FROM `item_request`";
-	private static final String UPDATE_QUERY = "UPDATE `item_request` SET `item_id`=? , `staff_id`=? , `qty`=?` WHERE id='?'";
-	private static final String DELETE_QUERY = "DELETE FROM `item_request` WHERE `id`=?";
+    private static final String ADD_QUERY = "INSERT INTO `item_request` (`item_id`, `staff_id`, `qty`) VALUES (? ,? , ?)";
+    private static final String GET_QUERY = "SELECT * FROM `item_request` WHERE `id`=?";
+    private static final String GET_ALL_QUERY = "SELECT * FROM `item_request`";
+    private static final String UPDATE_QUERY = "UPDATE `item_request` SET `item_id`=? , `staff_id`=? , `qty`=? where id=?";
+    private static final String DELETE_QUERY = "DELETE FROM `item_request` WHERE `id`=?";
+
     /**
      * add Item request to database
      *
@@ -38,20 +39,20 @@ public class ItemRequestService implements IItemRequestService {
     		logger.log(Level.SEVERE, "Failed to add Item request", e);
 		}
     }
-    
+
     private ItemRequest loadRequest(ResultSet rs) throws SQLException {
-    	ItemRequest ir = new ItemRequest();
-    	ir.setID(rs.getInt("id"));
-    	
-    	Item itm = new ItemService().getItemById(rs.getInt("item_id"));   
-    	ir.setItem(itm); 
-    	
-    	Staff stf = new StaffService().getStaffById(rs.getInt("staff_id"));
-    	ir.setStaff(stf);
-    	
-    	ir.setQty(rs.getInt("qty"));
-    	
-    	return ir;
+        ItemRequest ir = new ItemRequest();
+        ir.setID(rs.getInt("id"));
+
+        Item itm = new ItemService().getItemById(rs.getInt("item_id"));
+        ir.setItem(itm);
+
+        Staff stf = new StaffService().getStaffById(rs.getInt("staff_id"));
+        ir.setStaff(stf);
+
+        ir.setQty(rs.getInt("qty"));
+
+        return ir;
     }
 
     /**
