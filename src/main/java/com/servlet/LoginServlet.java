@@ -15,17 +15,21 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "login", value = "/login")
 public class LoginServlet extends HttpServlet {
 
+    private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String loginType = req.getParameter("type");
 
         // check if the login type is valid
         if (!Objects.equals(loginType, "staff") && !Objects.equals(loginType, "user")) {
+            logger.log(Level.INFO, "invalid login type");
             resp.sendRedirect("/");
             return;
         }
@@ -37,6 +41,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (Objects.isNull(email) || Objects.isNull(password)) {
+            logger.log(Level.INFO, "username or password not set");
             resp.sendRedirect(isStaff ? "/admin/login.html" : "/login.html");
             return;
         }
@@ -46,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 
         // check if the login details are valid.
         if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
+            logger.log(Level.INFO, "incorrect password");
             resp.sendRedirect(isStaff ? "/admin/login.html" : "/login.html");
             return;
         }
@@ -57,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 
         // redirect user
         String redirect = isStaff ? "/admin/" : "/";
-        String redirectParam = req.getParameter("to"); //need url
+        String redirectParam = req.getParameter("to");
         if (!Objects.isNull(redirectParam)) {
             try {
                 URI uri = new URI(redirectParam);

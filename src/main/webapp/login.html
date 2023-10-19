@@ -2,30 +2,31 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>User Login</title>
-	<link rel="stylesheet" href="styles/loginStyle.css">
-	<link rel="stylesheet" type="text/css"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" href="assets/styles/loginStyle.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-	<section class="container">
-		<header class="header">User Login</header>
-		<form method="post" action="" class="form">
-			<div class="input-box">
-				<label>Username : </label>
-				<input type="text" id="username" name="username" required>
-			</div>
-			<div class="input-box">
-				<label>Password : </label>
-				<input type="password" id="password" name="password" required>
-			</div>
-			<button type="submit" disabled>Submit</button>
-			<br>
-			<div class="a"><a href="registration.html">Don't have an account?</a></div>
-		</form>
-	</section>
+<section class="container">
+    <header class="header">User Login</header>
+    <form method="post" action="./login" class="form">
+        <div class="input-box">
+            <label for="email">Email : </label>
+            <input type="text" id="email" name="email" required>
+        </div>
+        <div class="input-box">
+            <label for="password">Password : </label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <input type="hidden" name="type" value="user">
+        <button type="submit">Submit</button>
+        <br>
+        <div class="a"><a href="registration.html">Don't have an account?</a></div>
+    </form>
+</section>
 
 </body>
 
