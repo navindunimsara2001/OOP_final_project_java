@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 import com.model.Item;
 import com.service.IItemService;
@@ -26,7 +27,7 @@ public class ItemService implements IItemService {
 			return itm;
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "Failed to get Item by Id", e);
 		}
 		return null;
 	}

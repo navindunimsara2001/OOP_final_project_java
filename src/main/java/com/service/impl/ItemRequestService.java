@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import com.model.Item;
 import com.model.ItemRequest;
@@ -34,7 +35,7 @@ public class ItemRequestService implements IItemRequestService {
     		stmt.executeUpdate();
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to add Item request", e);
 		}
     }
     
@@ -74,7 +75,7 @@ public class ItemRequestService implements IItemRequestService {
     		return ir;
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to get Item request by Id", e);
 		}
     	
         return null;
@@ -101,7 +102,7 @@ public class ItemRequestService implements IItemRequestService {
     		return irList;
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to get all Item request by Id", e);
 		}
     	
         return null;
@@ -125,7 +126,7 @@ public class ItemRequestService implements IItemRequestService {
     		stmt.executeUpdate();
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to update Item request by Id", e);
 		}
     }
 
@@ -144,7 +145,7 @@ public class ItemRequestService implements IItemRequestService {
     		stmt.executeUpdate();
     		
     	} catch (SQLException e) {
-			e.printStackTrace();
+    		logger.log(Level.SEVERE, "Failed to delete Item request by Id", e);
 		}
     }
 }
