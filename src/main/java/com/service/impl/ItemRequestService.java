@@ -89,7 +89,7 @@ public class ItemRequestService implements IItemRequestService {
      */
     @Override
     public ArrayList<ItemRequest> getAllItemRequest() {
-    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GETALL_QUERY)){
+    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)){
     		
     		// execute sql statement
     		ResultSet rs = stmt.executeQuery();
