@@ -2,59 +2,165 @@ package com.service.impl;
 
 import com.model.Staff;
 import com.service.IStaffService;
+import com.util.DBUtil;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class StaffService implements IStaffService {
+    private static final String ADD_QUERY = "insert into `staff` (`name`, `email`, `password`, `phone`, `dob`, `is_manager`) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String GET_QUERY = "select * from `staff` where id=?";
+    private static final String GET_QUERY_EMAIL = "select * from `staff` where email=?";
+    private static final String GET_ALL_QUERY = "select * from `staff`";
+    private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=?, is_manager=? where id=?";
+    private static final String REMOVE_QUERY = "delete from `staff` where id=?";
+
     /**
-     * Gets the staff member with the given id.
+     * Gets the staff with the given id.
      *
-     * @param id the id of the staff member.
-     * @return the staff member.
+     * @param id the id of the staff
+     * @return the staff.
      */
     @Override
     public Staff getStaffById(int id) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
+            stmt.setInt(1, id);
+
+            ResultSet result = stmt.executeQuery();
+            if (!result.next()) {
+                return null;
+            }
+
+            return loadStaff(result);
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get staff", e);
+        }
         return null;
     }
 
     /**
-     * Gets all staff members in the database
+     * Gets the staff with the given email
      *
-     * @return a list of all staff members
+     * @param email the email address
+     * @return the staff or null
+     */
+    @Override
+    public Staff getStaffByEmail(String email) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY_EMAIL)) {
+            stmt.setString(1, email);
+
+            ResultSet result = stmt.executeQuery();
+            if (!result.next()) {
+                return null;
+            }
+
+            return loadStaff(result);
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get staff", e);
+        }
+        return null;
+    }
+
+    /**
+     * Gets all staff in the database
+     *
+     * @return a list of all staffs
      */
     @Override
     public ArrayList<Staff> getStaffs() {
-        return null;
+        ArrayList<Staff> staff = new ArrayList<>();
+
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)) {
+            ResultSet result = stmt.executeQuery();
+            while (result.next()) {
+                staff.add(loadStaff(result));
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get staffs", e);
+        }
+
+        return staff;
+    }
+
+
+    /**
+     * Loads the data from a single row into a Staff object
+     *
+     * @param result the ResultSet that contains the row
+     * @return the staff object
+     * @throws SQLException if any errors occur while reading the data.
+     */
+    private Staff loadStaff(ResultSet result) throws SQLException {
+        Staff stf = new Staff();
+        stf.setID(result.getInt("id"));
+        stf.setName(result.getString("name"));
+        stf.setEmail(result.getString("email"));
+        stf.setPassword(result.getString("password"));
+        stf.setPhone(result.getString("phone"));
+        stf.setDOB(result.getString("dob"));
+        stf.setManager(result.getBoolean("is_manager"));
+        return stf;
     }
 
     /**
-     * Adds the given staff member to the database
+     * Adds the given staff to the database
      *
-     * @param mgr the staff object
+     * @param stf the staff object
      */
     @Override
-    public void addStaff(Staff mgr) {
+    public void addStaff(Staff stf) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(ADD_QUERY)) {
+            stmt.setString(1, stf.getName());
+            stmt.setString(2, stf.getEmail());
+            stmt.setString(3, stf.getPassword());
+            stmt.setString(4, stf.getPhone());
+            stmt.setString(5, stf.getDOB());
+            stmt.setBoolean(6, stf.isManager());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to add staff", e);
+        }
+    }
+
+    /**
+     * Removes the staff with the given id from the database.
+     *
+     * @param stfId the id of the staff
+     */
+    @Override
+    public void removeStaff(int stfId) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(REMOVE_QUERY)) {
+            stmt.setInt(1, stfId);
+            stmt.execute();
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to delete staff", e);
+        }
 
     }
 
     /**
-     * Removes the staff member with the given id from the database.
+     * Updates the staff details for the staff with the given id.
      *
-     * @param mgrId the id of the staff member
+     * @param stfId the id of the staff.
+     * @param stf   the new staff details.
      */
     @Override
-    public void removeStaff(int mgrId) {
-
-    }
-
-    /**
-     * Updates the staff member details for the staff member with the given id.
-     *
-     * @param mgrId the id of the staff member.
-     * @param mgr   the new staff member details.
-     */
-    @Override
-    public void updateStaff(int mgrId, Staff mgr) {
-
+    public void updateStaff(int stfId, Staff stf) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
+            stmt.setString(1, stf.getName());
+            stmt.setString(2, stf.getEmail());
+            stmt.setString(3, stf.getPassword());
+            stmt.setString(4, stf.getPhone());
+            stmt.setString(5, stf.getDOB());
+            stmt.setBoolean(6, stf.isManager());
+            stmt.setInt(7, stfId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to update staff", e);
+        }
     }
 }

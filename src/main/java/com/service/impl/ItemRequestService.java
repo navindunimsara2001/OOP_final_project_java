@@ -27,17 +27,17 @@ public class ItemRequestService implements IItemRequestService {
      */
     @Override
     public void addItemRequest(ItemRequest ir) {
-    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(ADD_QUERY)){
-    		stmt.setInt(1, ir.getItem().getID());
-    		stmt.setInt(2,ir.getStaff().getID());
-    		stmt.setInt(3, ir.getQty());
-    		
-    		// execute sql statement
-    		stmt.executeUpdate();
-    		
-    	} catch (SQLException e) {
-    		logger.log(Level.SEVERE, "Failed to add Item request", e);
-		}
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(ADD_QUERY)) {
+            stmt.setInt(1, ir.getItem().getID());
+            stmt.setInt(2, ir.getStaff().getID());
+            stmt.setInt(3, ir.getQty());
+
+            // execute sql statement
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to add Item request", e);
+        }
     }
 
     private ItemRequest loadRequest(ResultSet rs) throws SQLException {
@@ -63,22 +63,22 @@ public class ItemRequestService implements IItemRequestService {
      */
     @Override
     public ItemRequest getItemRequestById(int ID) {
-    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)){
-    		stmt.setInt(1, ID);
-    		
-    		// execute sql statement
-    		ResultSet rs = stmt.executeQuery();
-    		
-    		ItemRequest ir = new ItemRequest();
-    		
-    		ir = this.loadRequest(rs);
-    		
-    		return ir;
-    		
-    	} catch (SQLException e) {
-    		logger.log(Level.SEVERE, "Failed to get Item request by Id", e);
-		}
-    	
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
+            stmt.setInt(1, ID);
+
+            // execute sql statement
+            ResultSet rs = stmt.executeQuery();
+
+            ItemRequest ir = new ItemRequest();
+
+            ir = this.loadRequest(rs);
+
+            return ir;
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get Item request by Id", e);
+        }
+
         return null;
     }
 
@@ -89,23 +89,23 @@ public class ItemRequestService implements IItemRequestService {
      */
     @Override
     public ArrayList<ItemRequest> getAllItemRequest() {
-    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)){
-    		
-    		// execute sql statement
-    		ResultSet rs = stmt.executeQuery();
-    		
-    		ArrayList<ItemRequest> irList=  new ArrayList<>();
-    		
-    		while(rs.next()) {
-    			irList.add(loadRequest(rs));
-    		}
-    		
-    		return irList;
-    		
-    	} catch (SQLException e) {
-    		logger.log(Level.SEVERE, "Failed to get all Item request by Id", e);
-		}
-    	
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)) {
+
+            // execute sql statement
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<ItemRequest> irList = new ArrayList<>();
+
+            while (rs.next()) {
+                irList.add(loadRequest(rs));
+            }
+
+            return irList;
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get all Item request by Id", e);
+        }
+
         return null;
     }
 
@@ -117,18 +117,18 @@ public class ItemRequestService implements IItemRequestService {
      */
     @Override
     public void updateItemRequest(int ID, ItemRequest ir) {
-    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)){
-    		stmt.setInt(1,ir.getItem().getID());
-    		stmt.setInt(2,ir.getStaff().getID());
-    		stmt.setInt(3,ir.getQty());
-    		stmt.setInt(4,ID);
-    		
-    		// execute sql statement
-    		stmt.executeUpdate();
-    		
-    	} catch (SQLException e) {
-    		logger.log(Level.SEVERE, "Failed to update Item request by Id", e);
-		}
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
+            stmt.setInt(1, ir.getItem().getID());
+            stmt.setInt(2, ir.getStaff().getID());
+            stmt.setInt(3, ir.getQty());
+            stmt.setInt(4, ID);
+
+            // execute sql statement
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to update Item request by Id", e);
+        }
     }
 
     /**
@@ -138,15 +138,15 @@ public class ItemRequestService implements IItemRequestService {
      */
     @Override
     public void removeItemRequest(int ID) {
-    	try(Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)){
-    		
-    		stmt.setInt(1, ID);
-    		
-    		// execute sql statement
-    		stmt.executeUpdate();
-    		
-    	} catch (SQLException e) {
-    		logger.log(Level.SEVERE, "Failed to delete Item request by Id", e);
-		}
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)) {
+
+            stmt.setInt(1, ID);
+
+            // execute sql statement
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to delete Item request by Id", e);
+        }
     }
 }

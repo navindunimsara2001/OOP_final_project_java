@@ -14,6 +14,7 @@ import java.util.logging.Level;
 public class CustomerService implements ICustomerService {
     private static final String ADD_QUERY = "insert into `customer` (`name`, `email`, `password`, `phone`, `district`,`dob`,`gender`) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String GET_QUERY = "select * from `customer` where id=?";
+    private static final String GET_EMAIL_QUERY = "select * from `customer` where `email`=?";
     private static final String GET_ALL_QUERY = "select * from `customer`";
     private static final String UPDATE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
     private static final String DELETE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
@@ -63,6 +64,29 @@ public class CustomerService implements ICustomerService {
     public Customer getCustomerById(int ID) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
             stmt.setInt(1, ID);
+
+            ResultSet result = stmt.executeQuery();
+            if (!result.next()) {
+                return null;
+            }
+
+            return loadCustomer(result);
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get customer", e);
+        }
+        return null;
+    }
+
+    /**
+     * get customer for the given email
+     *
+     * @param email the email address of the customer
+     * @return the customer
+     */
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_EMAIL_QUERY)) {
+            stmt.setString(1, email);
 
             ResultSet result = stmt.executeQuery();
             if (!result.next()) {
@@ -136,21 +160,21 @@ public class CustomerService implements ICustomerService {
             stmt.setInt(8, ID);
 
             stmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update customer", e);
         }
     }
-    
+
     @Override
     public void removeCustomer(int ID) {
-    	try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)) {
-    		
-    		stmt.setInt(1, ID);
-    		stmt.executeUpdate();
-    		
-    	} catch (SQLException e) {
-    		logger.log(Level.SEVERE, "Failed to delete customer", e);
-		}
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)) {
+
+            stmt.setInt(1, ID);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to delete customer", e);
+        }
     }
 }

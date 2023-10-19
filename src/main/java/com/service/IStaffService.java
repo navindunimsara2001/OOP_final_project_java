@@ -19,6 +19,14 @@ public interface IStaffService {
 
 
     /**
+     * Gets the staff with the given email
+     *
+     * @param email the email address
+     * @return the staff or null
+     */
+    Staff getStaffByEmail(String email);
+
+    /**
      * Gets all staff members in the database
      *
      * @return a list of all staff members
