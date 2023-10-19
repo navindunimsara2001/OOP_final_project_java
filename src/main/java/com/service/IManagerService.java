@@ -16,6 +16,14 @@ public interface IManagerService {
      */
     Manager getManagerById(int id);
 
+    /**
+     * Gets the manager with the given email
+     *
+     * @param email the email address
+     * @return the manager or null
+     */
+    Manager getManagerByEmail(String email);
+
 
     /**
      * Gets all manager in the database

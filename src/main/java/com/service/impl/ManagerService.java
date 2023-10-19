@@ -14,6 +14,7 @@ import java.util.logging.Level;
 public class ManagerService implements IManagerService {
     private static final String ADD_QUERY = "insert into `staff` (`name`, `email`, `password`, `phone`, `dob`, `is_manager`) VALUES (?, ?, ?, ?, ?, 1)";
     private static final String GET_QUERY = "select * from `staff` where id=? and is_manager=1";
+    private static final String GET_QUERY_EMAIL = "select * from `staff` where email=? and is_manager=1";
     private static final String GET_ALL_QUERY = "select * from `staff` where is_manager=1";
     private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=? where id=? and is_manager=1";
     private static final String REMOVE_QUERY = "delete from `staff` where id=? and is_manager=1";
@@ -28,6 +29,29 @@ public class ManagerService implements IManagerService {
     public Manager getManagerById(int id) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
             stmt.setInt(1, id);
+
+            ResultSet result = stmt.executeQuery();
+            if (!result.next()) {
+                return null;
+            }
+
+            return loadManager(result);
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get manager", e);
+        }
+        return null;
+    }
+
+    /**
+     * Gets the manager with the given email
+     *
+     * @param email the email address
+     * @return the manager or null
+     */
+    @Override
+    public Manager getManagerByEmail(String email) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY_EMAIL)) {
+            stmt.setString(1, email);
 
             ResultSet result = stmt.executeQuery();
             if (!result.next()) {
