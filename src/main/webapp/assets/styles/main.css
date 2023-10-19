@@ -198,19 +198,36 @@ footer {
     color: white;
     min-height: 100px;
     font-family: 'roboto', serif;
-
-    display: flex;
-    flex-direction: column;
-
     padding: 12px;
 }
 
+.footerlogo {
+    height: 32px;
+    margin-right: 10px;
+    padding-bottom: 5%;
+    padding-top: 3%;
+}
+
+.aboutus {
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    width: 500px;
+}
+
 .footer-menu {
-    display:inline-table;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 12px;
+}
+
+.quicklinks {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: flex-start;
+    padding-right: 4%;
 }
 
 .fitem > p {
@@ -244,3 +261,40 @@ body:not(.logged-in) .if-login {
 body.logged-in .if-not-login {
     display: none;
 }
+
+.social {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-gap: 5px;
+    justify-content: flex-start;
+    color: #162742;
+    padding: 0;
+}
+
+.social li {
+    list-style: none;
+}
+
+.social li a {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.social li a:hover {
+    background: #E5D283;
+}
+
+.social li ion-icon{
+    font-size: 1.5em;
+    color: #162742;
+}
+
