@@ -1,9 +1,9 @@
 :root {
-    --menu-bg-color: #222222;
+    --menu-bg-color: #213555;
     --menu-color: white;
 
     --sidebar-width: 200px;
-    --menu-height: 40px;
+    --menu-height: 60px;
 }
 
 
@@ -16,7 +16,7 @@
 
 .sidebar-container .sidebar {
     width: var(--sidebar-width);
-    background-color: #222222;
+    background-color: #213555;
     color: white;
 }
 
@@ -26,6 +26,7 @@
 
 .mini-menu {
     border-bottom: none !important;
+    
 }
 
 .sidebar-container main {
