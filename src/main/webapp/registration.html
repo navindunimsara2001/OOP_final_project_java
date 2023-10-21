@@ -2,89 +2,89 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Registration Page</title>
-	<link rel="stylesheet" href="assets/styles/registrationstyle.css">
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="assets/styles/registrationstyle.css">
 </head>
 
 <body>
-	<section class="container">
-		<header class="header">Registration Form</header>
-		<form action="./registeruser" method="post" class="form">
-			<div class="input-box">
-				<label>Full Name : </label>
-				<input type="text" placeholder="Enter full name" name="name" required>
-			</div>
-			<div class="input-box">
-				<label>Email : </label>
-				<input type="email" placeholder="Enter email" name="email" required>
-			</div>
-			<div class="column">
-				<div class="input-box">
-					<label>Phone Number : </label>
-					<input type="text" placeholder="Enter phone number" name="phone" required>
-				</div>
-				<div class="input-box">
-					<label>Birth Date : </label> 
-					<input type="date" name="DOB" required>
-				</div>
-			</div>
-			<div class="input-box">
-				<label>Password : </label>
-				<input type="password" name="password" id="password" required>
-			</div>
-			<div class="input-box">
-				<label>Confirm Password : </label>
-				<input type="password" id="repassword" required>
-			</div>
+<section class="container">
+    <header class="header">Registration Form</header>
+    <form action="./registeruser" method="post" class="form">
+        <div class="input-box">
+            <label>Full Name : </label>
+            <input type="text" placeholder="Enter full name" name="name" required>
+        </div>
+        <div class="input-box">
+            <label>Email : </label>
+            <input type="email" placeholder="Enter email" name="email" required>
+        </div>
+        <div class="column">
+            <div class="input-box">
+                <label>Phone Number : </label>
+                <input type="text" placeholder="Enter phone number" name="phone" required>
+            </div>
+            <div class="input-box">
+                <label>Birth Date : </label>
+                <input type="date" name="DOB" required>
+            </div>
+        </div>
+        <div class="input-box">
+            <label>Password : </label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="input-box">
+            <label>Confirm Password : </label>
+            <input type="password" id="repassword" required>
+        </div>
 
-			<div class="gender-box">
-				<h3>Gender</h3>
-				<div class="gender-option">
-					<div class="gender">
-						<input type="radio" id="check" name="gender" value="male" checked>
-						<lable for="check">Male</lable>
-					</div>
-					<div class="gender">
-						<input type="radio" id="check" name="gender" value="female">
-						<lable for="check">Female</lable>
-					</div>
-				</div>
-			</div>
-			<div class="select-box">
-				<label>District : </label>
-				<select name="district">
-					<option value="Colombo">Colombo</option>
-					<option value="Gampaha">Gampaha</option>
-					<option value="Kalutara">Kalutara</option>
-					<option value="Kandy">Kandy</option>
-					<option value="Matale">Matale</option>
-					<option value="Nuwara Eliya">Nuwara Eliya</option>
-					<option value="Galle">Galle</option>
-					<option value="Matara">Matara</option>
-					<option value="Hambantota">Hambantota</option>
-					<option value="Jaffna">Jaffna</option>
-					<option value="Kilinochchi">Kilinochchi</option>
-					<option value="Mannar">Mannar</option>
-					<option value="Vavuniya">Vavuniya</option>
-					<option value="Mullaitivu">Mullaitivu</option>
-					<option value="Batticaloa">Batticaloa</option>
-					<option value="Ampara">Ampara</option>
-					<option value="Trincomalee">Trincomalee</option>
-					<option value="Kurunegala">Kurunegala</option>
-					<option value="Puttalam">Puttalam</option>
-					<option value="Anuradhapura">Anuradhapura</option>
-					<option value="Polonnaruwa">Polonnaruwa</option>
-					<option value="Badulla">Badulla</option>
-					<option value="Moneragala">Moneragala</option>
-					<option value="Ratnapura">Ratnapura</option>
-					<option value="Kegalle">Kegalle</option>
-				</select>
-			</div>
-			<button type="submit">Submit</button>
-			<div class="a"><a href="login.html">Already have an account?</a></div>
-		</form>
-	</section>
+        <div class="gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
+                <div class="gender">
+                    <input type="radio" id="check" name="gender" value="male" checked>
+                    <lable for="check">Male</lable>
+                </div>
+                <div class="gender">
+                    <input type="radio" id="check" name="gender" value="female">
+                    <lable for="check">Female</lable>
+                </div>
+            </div>
+        </div>
+        <div class="select-box">
+            <label>District : </label>
+            <select name="district">
+                <option value="Colombo">Colombo</option>
+                <option value="Gampaha">Gampaha</option>
+                <option value="Kalutara">Kalutara</option>
+                <option value="Kandy">Kandy</option>
+                <option value="Matale">Matale</option>
+                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                <option value="Galle">Galle</option>
+                <option value="Matara">Matara</option>
+                <option value="Hambantota">Hambantota</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Kilinochchi">Kilinochchi</option>
+                <option value="Mannar">Mannar</option>
+                <option value="Vavuniya">Vavuniya</option>
+                <option value="Mullaitivu">Mullaitivu</option>
+                <option value="Batticaloa">Batticaloa</option>
+                <option value="Ampara">Ampara</option>
+                <option value="Trincomalee">Trincomalee</option>
+                <option value="Kurunegala">Kurunegala</option>
+                <option value="Puttalam">Puttalam</option>
+                <option value="Anuradhapura">Anuradhapura</option>
+                <option value="Polonnaruwa">Polonnaruwa</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Moneragala">Moneragala</option>
+                <option value="Ratnapura">Ratnapura</option>
+                <option value="Kegalle">Kegalle</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+        <div class="a"><a href="./login">Already have an account?</a></div>
+    </form>
+</section>
 
 </body>
 
