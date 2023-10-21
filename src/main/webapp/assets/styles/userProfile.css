@@ -2,10 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
+}
+
+.container {
+	position: relative;
+	max-width: 600px;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 25px;
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -24,11 +43,11 @@ h2 {
 }
 
 #col {
-    padding-top: 30px;
+    padding-top: 10px;
     margin-top: 40px;
     padding-bottom: 50px;
     margin-bottom: 80px;
-    border: 1px solid black;
+    border: none;
     border-radius: 8px;
 }
 
@@ -46,7 +65,7 @@ table {
 input {
     height: 30px;
     border-radius: 6px;
-    border: 1px solid black;
+    border: none;
 }
 
 label {
