@@ -32,7 +32,7 @@ public class AppointmentServlet extends HttpServlet {
 		app.setCus(SessionUtil.getCustomer(request));
 		app.setStatus("pending");
 		
-		
+		// set data to services for insert DB
 		AppointmentService appser = new AppointmentService();
 		appser.addAppointment(app);
 		

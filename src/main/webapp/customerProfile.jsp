@@ -31,7 +31,7 @@
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="name" value= "">
+                                    <input type="text" name="name" value="<%= request.getAttribute("name") %>">
                                 </div>
                             </th>
                         </tr>
@@ -43,7 +43,7 @@
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="email" name="email">
+                                    <input type="email" name="email" value="<%= request.getAttribute("email") %>">
                                 </div>
                             </th>
 
@@ -51,12 +51,12 @@
                         <tr>
                             <th>
                                 <div class="field">
-                                    <label class="label" for="Phone Number">Phone : </label>
+                                    <label class="label" for="Phone">Phone : </label>
                                 </div>
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="phone">
+                                    <input type="text" name="phone" value="<%= request.getAttribute("phone") %>">
                                 </div>
                             </th>
                         </tr>
@@ -64,14 +64,14 @@
 
                             <th>
                                 <div class="field">
-                                    <label class="label" for="New password : ">Password : </label>
+                                    <label class="label" for="district">District : </label>
                                 </div>
                             </th>
 
 
                             <th>
                                 <div class="field">
-                                    <input type="password" name="password" id="password">
+                                    <input type="text" name="district" id="district" value="<%= request.getAttribute("district") %>" >
                                 </div>
                             </th>
 
@@ -79,18 +79,18 @@
                         <tr>
                             <th>
                                 <div class="field">
-                                    <label class="label" for="Re-enter password : "> Confirm : </label>
+                                    <label class="label" for="DOB"> DOB : </label>
                                 </div>
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="password" name="repassword" id="repassword">
+                                    <input type="text" name="DOB" id="DOB" value="<%= request.getAttribute("DOB") %>" >
                                 </div>
                             </th>
                         </tr>
                     </table>
                     <div class="button">
-                        <button class="btn btn-outline-primary"> Edit</button>
+                        <a class="btn btn-outline-primary"> Edit</a>
                         <button class="btn btn-outline-danger">Delete</button>
                     </div>
                 </form>
