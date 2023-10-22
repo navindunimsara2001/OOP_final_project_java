@@ -46,7 +46,7 @@
         <init-param>
             <param-name>admin</param-name>
             <param-value>true</param-value>
-        </init-param>
+       </init-param>
     </servlet>
 
     <servlet-mapping>
@@ -56,7 +56,7 @@
     
     <servlet>
 		<servlet-name>showUserProfile</servlet-name>
-		<servlet-class>com.servlet.ShowUserProfile</servlet-class>
+		<servlet-class>com.servlet.ShowUserProfileServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -66,12 +66,22 @@
     
     <servlet>
 		<servlet-name>customerEditProfile</servlet-name>
-		<servlet-class>com.servlet.UserProfileEdit</servlet-class>
+		<servlet-class>com.servlet.UserProfileEditServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>customerEditProfile</servlet-name>
 		<url-pattern>/userProfileEdit</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>customerDeleteProfile</servlet-name>
+		<servlet-class>com.servlet.CustomerDeleteServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>customerDeleteProfile</servlet-name>
+		<url-pattern>/userProfileDelete</url-pattern>
 	</servlet-mapping>
 
 

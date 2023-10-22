@@ -36,8 +36,8 @@
 								</th>
 								<th>
 									<div class="field">
-										<input type="text" name="ID"
-											value="<%=request.getAttribute("ID")%>">
+										<input type="text" name=""
+											value="<%=request.getAttribute("ID")%>" disabled>
 									</div>
 								</th>
 							</tr>
@@ -112,10 +112,10 @@
 								</th>
 							</tr>
 						</table>
-						
+						<input type="hidden" name="ID" value="<%=request.getAttribute("ID")%>">
 						<div class="button">
 							<input class="btn btn-outline-primary" type="submit" value="Update">
-							<button class="btn btn-outline-danger">Delete</button>
+							<a class="btn btn-outline-danger" href="./userProfileDelete?ID=<%=request.getAttribute("ID")%>">Delete</a>
 						</div>
 					</form>
 				</div>

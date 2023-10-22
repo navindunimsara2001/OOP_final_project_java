@@ -17,7 +17,7 @@ public class CustomerService implements ICustomerService {
     private static final String GET_EMAIL_QUERY = "select * from `customer` where `email`=?";
     private static final String GET_ALL_QUERY = "select * from `customer`";
     private static final String UPDATE_QUERY = "update `customer` set `name`=?, `password`=?, `phone`=?, `district`=?,`dob`=? where id=?";
-    private static final String DELETE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
+    private static final String DELETE_QUERY = "delete from `customer` where id=?";
 
     /**
      * add customer to database

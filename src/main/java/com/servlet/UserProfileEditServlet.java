@@ -13,7 +13,7 @@ import com.model.Customer;
 import com.service.impl.CustomerService;
 
 
-public class UserProfileEdit extends HttpServlet {
+public class UserProfileEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// create customer object for database operation
 	Customer cus = new Customer();
@@ -35,7 +35,7 @@ public class UserProfileEdit extends HttpServlet {
 		request.setAttribute("district", cus.getDistrict());
 		request.setAttribute("password", cus.getPassword());
 		// redirect
-		RequestDispatcher dispatcher = request.getRequestDispatcher("UserProfileEdit.java");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("customerEditProfile.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -57,8 +57,7 @@ public class UserProfileEdit extends HttpServlet {
 
 		// pass values to update database
 		cs.updateCustomer(ID, cus);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("customerProfile.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect("./showUserProfile");  
 		
 		
 	}

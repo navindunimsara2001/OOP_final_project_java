@@ -101,7 +101,6 @@
 						</table>
 						<div class="button">
 							<a class="btn btn-outline-primary" href="./userProfileEdit?ID=<%=request.getAttribute("ID")%>">Edit</a>
-							<button class="btn btn-outline-danger">Delete</button>
 						</div>
 					</form>
 				</div>

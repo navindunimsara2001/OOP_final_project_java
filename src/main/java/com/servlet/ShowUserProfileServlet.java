@@ -14,13 +14,13 @@ import com.service.impl.CustomerService;
 import com.util.SessionUtil;
 
 
-public class ShowUserProfile extends HttpServlet {
+public class ShowUserProfileServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		int ID = SessionUtil.getCustomer(request).getID();
 		
-		int ID = 3; // testing
+		int ID = 4; // testing
 		
 		// create service object
 		CustomerService cs = new CustomerService();
