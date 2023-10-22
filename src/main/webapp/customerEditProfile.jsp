@@ -26,8 +26,22 @@
 			<div class="row">
 				<div class="col-3"></div>
 				<div class="col d-flex justify-content-center" id="col">
-					<form action="">
+					<form action="./userProfileEdit" method="post">
 						<table>
+						<tr>
+								<th>
+									<div class="field">
+										<label class="label" for="ID">ID : </label>
+									</div>
+								</th>
+								<th>
+									<div class="field">
+										<input type="text" name="ID"
+											value="<%=request.getAttribute("ID")%>">
+									</div>
+								</th>
+							</tr>
+							<tr>
 							<tr>
 								<th>
 									<div class="field">
@@ -37,23 +51,9 @@
 								<th>
 									<div class="field">
 										<input type="text" name="name"
-											value="<%=request.getAttribute("name")%>" disabled>
+											value="<%=request.getAttribute("name")%>">
 									</div>
 								</th>
-							</tr>
-							<tr>
-								<th>
-									<div class="field">
-										<label class="label" for="Email : ">Email : </label>
-									</div>
-								</th>
-								<th>
-									<div class="field">
-										<input type="email" name="email"
-											value="<%=request.getAttribute("email")%>" disabled>
-									</div>
-								</th>
-
 							</tr>
 							<tr>
 								<th>
@@ -64,7 +64,7 @@
 								<th>
 									<div class="field">
 										<input type="text" name="phone"
-											value="<%=request.getAttribute("phone")%>" disabled>
+											value="<%=request.getAttribute("phone")%>">
 									</div>
 								</th>
 							</tr>
@@ -80,7 +80,7 @@
 								<th>
 									<div class="field">
 										<input type="date" name="DOB" id="DOB"
-											value="<%=request.getAttribute("DOB")%>" disabled>
+											value="<%=request.getAttribute("DOB")%>">
 									</div>
 								</th>
 
@@ -94,13 +94,27 @@
 								<th>
 									<div class="field">
 										<input type="text" name="district" id="district"
-											value="<%=request.getAttribute("district")%>" disabled>
+											value="<%=request.getAttribute("district")%>">
+									</div>
+								</th>
+							</tr>
+							<tr>
+								<th>
+									<div class="field">
+										<label class="label" for="password"> Password : </label>
+									</div>
+								</th>
+								<th>
+									<div class="field">
+										<input type="password" name="password" id="passsword"
+											value="<%=request.getAttribute("password")%>">
 									</div>
 								</th>
 							</tr>
 						</table>
+						
 						<div class="button">
-							<a class="btn btn-outline-primary" href="./userProfileEdit?ID=<%=request.getAttribute("ID")%>">Edit</a>
+							<input class="btn btn-outline-primary" type="submit" value="Update">
 							<button class="btn btn-outline-danger">Delete</button>
 						</div>
 					</form>

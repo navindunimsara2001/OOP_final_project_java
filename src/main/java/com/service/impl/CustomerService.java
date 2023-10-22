@@ -16,7 +16,7 @@ public class CustomerService implements ICustomerService {
     private static final String GET_QUERY = "select * from `customer` where id=?";
     private static final String GET_EMAIL_QUERY = "select * from `customer` where `email`=?";
     private static final String GET_ALL_QUERY = "select * from `customer`";
-    private static final String UPDATE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
+    private static final String UPDATE_QUERY = "update `customer` set `name`=?, `password`=?, `phone`=?, `district`=?,`dob`=? where id=?";
     private static final String DELETE_QUERY = "update `customer` set `name`=?, `email`=?, `password`=?, `phone`=?, `district`=?,`dob`=?,`gender`=? where id=?";
 
     /**
@@ -151,13 +151,11 @@ public class CustomerService implements ICustomerService {
     public void updateCustomer(int ID, Customer c) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
             stmt.setString(1, c.getName());
-            stmt.setString(2, c.getEmail());
-            stmt.setString(3, c.getPassword());
-            stmt.setString(4, c.getPhone());
-            stmt.setString(5, c.getDistrict());
-            stmt.setString(6, c.getDOB());
-            stmt.setString(7, c.getGender());
-            stmt.setInt(8, ID);
+            stmt.setString(2, c.getPassword());
+            stmt.setString(3, c.getPhone());
+            stmt.setString(4, c.getDistrict());
+            stmt.setString(5, c.getDOB());
+            stmt.setInt(6, ID);
 
             stmt.executeUpdate();
 

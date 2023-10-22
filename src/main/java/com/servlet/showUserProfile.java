@@ -13,9 +13,9 @@ import com.model.Customer;
 import com.service.impl.CustomerService;
 import com.util.SessionUtil;
 
-@WebServlet("/showUserProfile")
-public class showUserProfile extends HttpServlet {
 
+public class ShowUserProfile extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		int ID = SessionUtil.getCustomer(request).getID();

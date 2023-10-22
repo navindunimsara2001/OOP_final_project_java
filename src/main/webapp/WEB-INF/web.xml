@@ -53,6 +53,26 @@
         <servlet-name>adminLogin</servlet-name>
         <url-pattern>/admin/login</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+		<servlet-name>showUserProfile</servlet-name>
+		<servlet-class>com.servlet.ShowUserProfile</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>showUserProfile</servlet-name>
+		<url-pattern>/showUserProfile</url-pattern>
+	</servlet-mapping>
+    
+    <servlet>
+		<servlet-name>customerEditProfile</servlet-name>
+		<servlet-class>com.servlet.UserProfileEdit</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>customerEditProfile</servlet-name>
+		<url-pattern>/userProfileEdit</url-pattern>
+	</servlet-mapping>
 
 
     <filter>
