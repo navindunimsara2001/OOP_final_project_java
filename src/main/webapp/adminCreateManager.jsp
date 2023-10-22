@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +55,7 @@
         <main>
             <section class="container">
                 <header class="header">Manager Registration Form</header>
-                <form action="./registeruser" method="post" class="form">
+                <form action="./adminCreateStaff" method="post" class="form">
                     <div class="input-box">
                         <label>Full Name : </label>
                         <input type="text" placeholder="Enter full name" name="name" required>
@@ -80,6 +82,8 @@
                         <label>Confirm Password : </label>
                         <input type="password" id="repassword" required>
                     </div>
+                    <!-- role selection -->
+                    <input type="hidden" name="role" value="1">
                     <button type="submit">Submit</button>
                 </form>
             </section>

@@ -83,7 +83,16 @@
 		<servlet-name>customerDeleteProfile</servlet-name>
 		<url-pattern>/userProfileDelete</url-pattern>
 	</servlet-mapping>
-
+	
+	<servlet>
+		<servlet-name>adminCreateStaffMember</servlet-name>
+		<servlet-class>com.servlet.adminServlet.AdminCreateStaffServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>adminCreateStaffMember</servlet-name>
+		<url-pattern>/adminCreateStaff</url-pattern>
+	</servlet-mapping>
 
     <filter>
         <filter-name>AuthFilter</filter-name>

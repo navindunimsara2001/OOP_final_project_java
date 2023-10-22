@@ -11,5 +11,16 @@ public class Staff extends Person {
         isManager = manager;
     }
 
-
+    public void setRole(boolean role) {
+    	if(role = true) {
+    		isManager = true;
+    	}
+    	else {
+    		isManager = false;
+    	}
+    }
+    
+    public boolean getRole() {
+    	return isManager;
+    }
 }

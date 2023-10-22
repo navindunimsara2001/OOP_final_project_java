@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
     <link rel="stylesheet" href="assets/styles/main.css">
     <link rel="stylesheet" href="assets/styles/dashboard.css">
     <link rel="stylesheet" href="assets/styles/staffregistration.css">
-    <title>Manager Registration</title>
+    <title>Staff Registration</title>
 </head>
 <body>
     <nav class="menu mini-menu fixed floating">
@@ -52,8 +54,8 @@
 
         <main>
             <section class="container">
-                <header class="header">Manager Registration Form</header>
-                <form action="./registeruser" method="post" class="form">
+                <header class="header">Staff Registration Form</header>
+                <form action="./adminCreateStaff" method="post" class="form">
                     <div class="input-box">
                         <label>Full Name : </label>
                         <input type="text" placeholder="Enter full name" name="name" required>
@@ -80,6 +82,8 @@
                         <label>Confirm Password : </label>
                         <input type="password" id="repassword" required>
                     </div>
+                    <!-- role selection -->
+                    <input type="hidden" name="role" value="0">
                     <button type="submit">Submit</button>
                 </form>
             </section>

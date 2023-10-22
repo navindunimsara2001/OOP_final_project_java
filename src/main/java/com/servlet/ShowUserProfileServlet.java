@@ -18,7 +18,7 @@ public class ShowUserProfileServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		int ID = SessionUtil.getCustomer(request).getID();
+		//int ID = SessionUtil.getCustomer(request).getID();
 		
 		int ID = 4; // testing
 		
