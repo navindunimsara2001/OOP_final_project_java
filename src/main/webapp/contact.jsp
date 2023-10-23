@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <jsp:include page="/includes/header.jsp"/>
     <title>Contact Us</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-        }
 
         .container {
             max-width: 800px;
@@ -32,28 +24,38 @@
         h1 {
             text-align: center;
         }
+
         .contact-info {
             margin-top: 20px;
         }
+
         .contact-info p {
             margin: 10px 0;
         }
+
         .map-container {
             text-align: center;
         }
     </style>
 </head>
 <body>
+<jsp:include page="/includes/site_menu.jsp"/>
+<main>
+
     <div class="container">
         <div class="contact-info">
             <h1>Contact Us</h1>
             <p><strong>Phone Number:</strong> +94 71 1231231</p>
             <p><strong>Address:</strong> 123 Main Street, City, Country</p>
-            <p><strong>Location:</strong> <a href="https://www.google.com/maps/@35.7040744,139.5577317,3a,75y,289.6h,87.01t,0.72r/data=!3m6!1e1!3m4!1sgT28ssf0BB2LxZ63JNcL1w!2e0!7i13312!8i6656">Open Google Maps</a></p>
+            <p><strong>Location:</strong> <a
+                    href="https://www.google.com/maps/@35.7040744,139.5577317,3a,75y,289.6h,87.01t,0.72r/data=!3m6!1e1!3m4!1sgT28ssf0BB2LxZ63JNcL1w!2e0!7i13312!8i6656">Open
+                Google Maps</a></p>
         </div>
         <div class="image">
             <img src="assets/images/contact.jpeg" alt="Contact Us" width="100%">
         </div>
     </div>
+</main>
 </body>
+<jsp:include page="/includes/footer.jsp"/>
 </html>

@@ -64,7 +64,7 @@
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <p>If you have any questions or need assistance, feel free to get in touch with us.</p>
-        <a href="contact.html" class="btn">Contact Us</a>
+        <a href="contact.jsp" class="btn">Contact Us</a>
     </section>
 </main>
 <jsp:include page="/includes/footer.jsp"/>

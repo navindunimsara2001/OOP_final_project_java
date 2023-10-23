@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="com.util.URLS" %>
 <nav class="menu main-menu <%= request.getSession().getAttribute("user") == null ? "" : "logged-in"%>">
-    <div class="header item no-hover">
+    <a class="header item no-hover" href="./">
         <img class="logo" src="assets/images/winfuel connect.png" alt="Logo" height="32px">
-    </div>
+    </a>
     <div class="item spacer no-hover"></div>
     <div class="item no-hover if-not-login">
         <a class="btn btn-primary" href="${URLS.USER_LOGIN}">Login</a>
