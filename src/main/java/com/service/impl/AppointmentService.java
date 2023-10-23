@@ -19,6 +19,7 @@ public class AppointmentService implements IAppointmentService {
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
     private final static String UPDATE_QUERY = "UPDATE `appointment` SET `status`=?, `assigned`=? WHERE `id`= ?";
     private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
+    private final static String USER_QUERY = "SELECT * FROM `appointment` WHERE `assigned` = ?";
 
     /**
      * add appointment to the database
@@ -167,5 +168,25 @@ public class AppointmentService implements IAppointmentService {
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to delete appointment", e);
         }
+    }
+    
+    @Override
+    public ArrayList<Appointment> getAppointmentBystaffId(int ID){
+    	ArrayList<Appointment> appList = new ArrayList<>();
+    	try (Connection con = DBUtil.connect();
+                PreparedStatement stmt = con.prepareStatement(USER_QUERY)
+           ) {
+    		stmt.setInt(1, ID);
+    		ResultSet rs = stmt.executeQuery();
+    		
+    		while (rs.next()) {
+                appList.add(this.loadAppoinment(rs));
+            }
+    		
+    	} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return appList;
     }
 }
