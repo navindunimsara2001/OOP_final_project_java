@@ -26,7 +26,7 @@ public class AdminManageUsersServlet extends HttpServlet {
         request.setAttribute("customerList", customerList);
 
         // redirect
-        RequestDispatcher dispatcher = request.getRequestDispatcher("adminManageUsers.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("staff/adminManageUsers.jsp");
         dispatcher.forward(request, response);
     }
 

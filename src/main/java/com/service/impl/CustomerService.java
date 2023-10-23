@@ -34,6 +34,7 @@ public class CustomerService implements ICustomerService {
             stmt.setString(5, cus.getDistrict());
             stmt.setString(6, cus.getDOB());
             stmt.setString(7, cus.getGender());
+            //execute query
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to add customer", e);
