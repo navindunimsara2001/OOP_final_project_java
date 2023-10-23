@@ -118,3 +118,11 @@ tr:nth-child(odd) {
     color: black;
 	background-color: rgb(229, 210, 131);
 }
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
