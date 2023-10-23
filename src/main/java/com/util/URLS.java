@@ -6,4 +6,6 @@ public class URLS {
     public static final String USER_LOGIN = "login";
 
     public static final String ADMIN_LOGIN = "admin/login";
+
+    public static final String USER_PROFILE = "profile";
 }
