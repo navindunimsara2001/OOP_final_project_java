@@ -16,7 +16,7 @@
 
     <section class="container">
         <header class="header">Registration Form</header>
-        <form action="./registeruser" method="post" class="form">
+        <form action="./registerUser" method="post" class="form">
             <div class="input-box">
                 <label>Full Name :
                     <input type="text" placeholder="Enter full name" name="name" required>

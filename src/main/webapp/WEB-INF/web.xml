@@ -30,6 +30,11 @@
         <servlet-class>com.servlet.CustomerRegisterServlet</servlet-class>
     </servlet>
 
+    <servlet-mapping>
+        <servlet-name>CustomerRegisterServlet</servlet-name>
+        <url-pattern>/registerUser</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>com.servlet.LoginServlet</servlet-class>

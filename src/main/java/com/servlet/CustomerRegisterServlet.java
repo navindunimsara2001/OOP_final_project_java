@@ -30,7 +30,7 @@ public class CustomerRegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String gender = request.getParameter("gender");
         String district = request.getParameter("district");
-        
+
         //email validation
         final String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
@@ -53,10 +53,6 @@ public class CustomerRegisterServlet extends HttpServlet {
 
             response.sendRedirect(URLS.USER_LOGIN);
         }
-
-        PrintWriter pw = response.getWriter();
-        pw.print(name);
-
 
     }
 
