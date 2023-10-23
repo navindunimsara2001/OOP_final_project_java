@@ -1,26 +1,26 @@
 package com.model;
 
 public class Staff extends Person {
-    private boolean isManager;
+    private int isManager;
 
-    public boolean isManager() {
-        return isManager;
-    }
+//    public boolean isManager() {
+//        return isManager;
+//    }
+//
+//    public void setManager(boolean manager) {
+//        isManager = manager;
+//    }
 
-    public void setManager(boolean manager) {
-        isManager = manager;
-    }
-
-    public void setRole(boolean role) {
-    	if(role = true) {
-    		isManager = true;
+    public void setRole(int role) {
+    	if(role == 1) {
+    		isManager = 1;
     	}
     	else {
-    		isManager = false;
+    		isManager = 0;
     	}
     }
     
-    public boolean getRole() {
+    public int getRole() {
     	return isManager;
     }
 }

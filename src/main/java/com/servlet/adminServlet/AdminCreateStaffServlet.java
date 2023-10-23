@@ -30,7 +30,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
 		int role = Integer.parseInt(request.getParameter("role"));
 
 		if (role == 1) { // for create manager
-			boolean is_manager = true;
+			int is_manager = 1;
 
 			stf.setName(name);
 			stf.setEmail(email);
@@ -41,7 +41,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
 
 			stfS.addStaff(stf);
 		} else {  // for create  Staff member
-			boolean is_manager = false;
+			int is_manager = 0;
 
 			stf.setName(name);
 			stf.setEmail(email);

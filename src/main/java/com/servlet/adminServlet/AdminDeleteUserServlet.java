@@ -1,34 +1,30 @@
 package com.servlet.adminServlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.model.Customer;
 import com.service.impl.CustomerService;
 
+/**
+ * Servlet implementation class AdminDeleteUserServlet
+ */
 
-public class AdminManageUsersServlet extends HttpServlet {
+public class AdminDeleteUserServlet extends HttpServlet {
+	// create service object
 	CustomerService cs = new CustomerService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// create Arraylist
-		ArrayList<Customer> customerList = new ArrayList<>();
-		// assign user details list
-		customerList = cs.getCustomers();
-
-		request.setAttribute("customerList", customerList);
-
+		// get ID from URL
+		int ID = Integer.parseInt(request.getParameter("ID"));
+		// get delete operation from Service class
+		cs.removeCustomer(ID);
 		// redirect
-		RequestDispatcher dispatcher = request.getRequestDispatcher("adminManageUsers.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect("./adminManageUsers");
 	}
 
 }

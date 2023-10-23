@@ -40,6 +40,8 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+	<!-- Admin servlet -->
+	<!-- Admin Login servlet -->
     <servlet>
         <servlet-name>adminLogin</servlet-name>
         <servlet-class>com.servlet.LoginServlet</servlet-class>
@@ -83,7 +85,8 @@
 		<servlet-name>customerDeleteProfile</servlet-name>
 		<url-pattern>/userProfileDelete</url-pattern>
 	</servlet-mapping>
-	
+	<!-- Admin servlet -->
+	<!-- AdminCreateStaffServlet -->
 	<servlet>
 		<servlet-name>adminCreateStaffMember</servlet-name>
 		<servlet-class>com.servlet.adminServlet.AdminCreateStaffServlet</servlet-class>
@@ -93,6 +96,53 @@
 		<servlet-name>adminCreateStaffMember</servlet-name>
 		<url-pattern>/adminCreateStaff</url-pattern>
 	</servlet-mapping>
+	
+	<!-- AdminManageUsersServlet -->
+	<servlet>
+		<servlet-name>adminManageUsers</servlet-name>
+		<servlet-class>com.servlet.adminServlet.AdminManageUsersServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>adminManageUsers</servlet-name>
+		<url-pattern>/adminManageUsers</url-pattern>
+	</servlet-mapping>
+	
+	<!-- AdminEditUserServlet -->
+	<servlet>
+		<servlet-name>adminEditUser</servlet-name>
+		<servlet-class>com.servlet.adminServlet.AdminEditUserServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>adminEditUser</servlet-name>
+		<url-pattern>/adminEditUser</url-pattern>
+	</servlet-mapping>
+	
+	<!-- AdminDeleteUserServlet -->
+	<servlet>
+		<servlet-name>adminDeleteUser</servlet-name>
+		<servlet-class>com.servlet.adminServlet.AdminDeleteUserServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>adminDeleteUser</servlet-name>
+		<url-pattern>/adminDeleteUser</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Manager -->
+	<!-- ManageAppointmentsServlet -->
+	<servlet>
+		<servlet-name>manageAppointment</servlet-name>
+		<servlet-class>com.servlet.managerServlet.ManageAppointmentsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>manageAppointment</servlet-name>
+		<url-pattern>/manageAppointment</url-pattern>
+	</servlet-mapping>
+	
+	
 
     <filter>
         <filter-name>AuthFilter</filter-name>

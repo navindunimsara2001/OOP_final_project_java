@@ -57,6 +57,7 @@ public class UserProfileEditServlet extends HttpServlet {
 
 		// pass values to update database
 		cs.updateCustomer(ID, cus);
+		//redirect
 		response.sendRedirect("./showUserProfile");  
 		
 		
