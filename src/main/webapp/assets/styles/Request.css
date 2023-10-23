@@ -121,8 +121,7 @@ tr:nth-child(odd) {
 
 #container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: start;
     column-gap: 50px;
     flex-wrap: wrap;
 }
