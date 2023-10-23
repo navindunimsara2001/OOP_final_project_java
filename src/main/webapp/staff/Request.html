@@ -1,0 +1,42 @@
+<!-- FILEPATH: /d:/Y1S2/IWT/Assignment/IWT gp/Online Vehicle Service and Fuel Management/Request.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Items</title>
+    <link rel="stylesheet" href="../assets/styles/Request.css">
+    <script src="js/Request.js"></script>
+
+</head>
+<body>
+<div class="contentRequest">
+    <h1>Request Items</h1>
+    <p>Please fill out the form below to request items.</p>
+
+    <input type="text" id="searchInput" placeholder="Search by item name">
+    <button onclick="searchItems()">Search</button>
+</div>
+<div class="requestTable">
+    <table>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Availability</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>001</td>
+            <td>Sample Item</td>
+            <td>In Stock</td>
+            <td>
+                <button class="action-button">Request Item</button>
+                <button class="action-button">Report</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+
