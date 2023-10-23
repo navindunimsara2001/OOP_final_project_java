@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Management</title>
-    
+
     <!--thumbnail icon-->
     <link rel="icon" href="../assets/images/thumbnail.ico" type="image/png">
     <!---->
-    
+
     <link rel="stylesheet" href="../assets/styles/main.css">
     <link rel="stylesheet" href="../assets/styles/dashboard.css">
     <link
@@ -19,8 +19,8 @@
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous">
-            
-     <!-- Bootstrap CDN -->
+
+    <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -96,9 +96,11 @@
                     <td>${Staff.email}</td>
                     <td>${Staff.phone}</td>
                     <td>${Staff.DOB}</td>
-                    <td>"${Staff.isManager}"</td>
+                    <td>${Staff.role == 1 ? 'Manager' : 'Staff'}</td>
                     <td class="text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit User</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit
+                            User
+                        </button>
                         <button class="btn btn-danger delete-btn">Delete</button>
                     </td>
                 </tr>
@@ -106,7 +108,7 @@
             </tbody>
         </table>
     </main>
-    
+
     <!-- Modal -->
     <div class="modal" id="myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -121,7 +123,7 @@
                     <section class="container" id="container">
                         <form action=" " method="post" class="form">
                             <div class="input-box">
-                                <label>Item name :  </label>
+                                <label>Item name : </label>
                                 <input type="text" name="itemName" required>
                             </div>
                             <div class="input-box">
