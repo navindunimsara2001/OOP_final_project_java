@@ -9,5 +9,6 @@ public class URLS {
     public static final String ADMIN_HOME = "staff/";
     public static final String ADMIN_LOGIN = "staff/login";
     public static final String MANAGE_USERS = "staff/manageUsers";
+    public static final String MANAGE_STAFF = "staff/manageStaff";
 
 }

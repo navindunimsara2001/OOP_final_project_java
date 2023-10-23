@@ -99,6 +99,16 @@
         <url-pattern>/staff/manageUsers</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>adminManageStaff</servlet-name>
+        <servlet-class>com.servlet.admin.AdminManageStaff</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminManageStaff</servlet-name>
+        <url-pattern>/staff/manageStaff</url-pattern>
+    </servlet-mapping>
+
     <!-- AdminEditUserServlet -->
     <servlet>
         <servlet-name>adminEditUser</servlet-name>

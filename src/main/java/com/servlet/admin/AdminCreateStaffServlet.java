@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Staff;
 import com.service.impl.StaffService;
+import com.util.URLS;
+
+import java.io.IOException;
 
 /**
  * Servlet implementation class CreateManagerServlet
@@ -17,7 +20,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
     // create Staff object
     final Staff stf = new Staff();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
@@ -25,22 +28,15 @@ public class AdminCreateStaffServlet extends HttpServlet {
         String password = request.getParameter("password");
         int role = Integer.parseInt(request.getParameter("role"));
 
-        int is_manager;
-        if (role == 1) { // for create manager
-            is_manager = 1;
 
-        } else {  // for create  Staff member
-            is_manager = 0;
-
-        }
         stf.setName(name);
         stf.setEmail(email);
         stf.setPhone(phone);
         stf.setDOB(DOB);
         stf.setPassword(password);
-        stf.setRole(is_manager);
+        stf.setRole(role);
         stfS.addStaff(stf);
 
-        // need to add redirection path #########
+        response.sendRedirect("../" + URLS.MANAGE_STAFF);
     }
 }
