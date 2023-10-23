@@ -9,12 +9,15 @@
 }
 
 body {
+    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
+}
+
+main {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
 }
 
 .container {
@@ -62,7 +65,7 @@ table {
     font-size: 22px;
 }
 
-input {
+input:not([type="submit"]) {
     height: 30px;
     border-radius: 6px;
     border: none;
@@ -74,11 +77,8 @@ label {
     margin-right: 10px;
 }
 
-.button {
+.buttons {
     margin-top: 40px;
     margin-left: 200px;
 }
 
-.btn {
-    margin-left: 20px;
-}

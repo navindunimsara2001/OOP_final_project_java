@@ -4,23 +4,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/styles/userProfileView.css">
+    <jsp:include page="/includes/header.jsp"/>
     <title>User Profile</title>
+    <link rel="stylesheet" href="assets/styles/userProfileView.css">
+
 </head>
 
 <body>
+<jsp:include page="/includes/site_menu.jsp"/>
 <main>
     <div class="container">
         <h2>User Profile</h2>
         <div class="propic">
-            <img src="../../assets/images/Icons/user-svgrepo-com.svg" alt="">
+            <img src="../../assets/images/Icons/user.svg" alt="">
         </div>
 
         <div class="row">
@@ -36,7 +32,7 @@
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="name"
+                                    <input type="text" name="name" id="Name"
                                            value="<%=request.getAttribute("name")%>" disabled>
                                 </div>
                             </th>
@@ -44,12 +40,12 @@
                         <tr>
                             <th>
                                 <div class="field">
-                                    <label class="label" for="Email : ">Email : </label>
+                                    <label class="label" for="Email">Email : </label>
                                 </div>
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="email" name="email"
+                                    <input type="email" name="email" id="Email"
                                            value="<%=request.getAttribute("email")%>" disabled>
                                 </div>
                             </th>
@@ -58,12 +54,12 @@
                         <tr>
                             <th>
                                 <div class="field">
-                                    <label class="label" for="Phone Number">Phone : </label>
+                                    <label class="label" for="PhoneNumber">Phone : </label>
                                 </div>
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="phone"
+                                    <input type="text" name="phone" id="PhoneNumber"
                                            value="<%=request.getAttribute("phone")%>" disabled>
                                 </div>
                             </th>
@@ -99,8 +95,8 @@
                             </th>
                         </tr>
                     </table>
-                    <div class="button">
-                        <a class="btn btn-outline-primary" href="?edit=true">Edit</a>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary" href="?edit=true">Edit</a>
                     </div>
                 </form>
             </div>
@@ -108,6 +104,8 @@
         </div>
     </div>
 </main>
+<jsp:include page="/includes/footer.jsp"/>
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="com.util.URLS" %>
-<nav class="menu main-menu">
+<nav class="menu main-menu <%= request.getSession().getAttribute("user") == null ? "" : "logged-in"%>">
     <div class="header item no-hover">
         <img class="logo" src="assets/images/winfuel connect.png" alt="Logo" height="32px">
     </div>

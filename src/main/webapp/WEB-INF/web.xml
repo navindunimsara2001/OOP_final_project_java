@@ -80,7 +80,7 @@
     <!-- AdminCreateStaffServlet -->
     <servlet>
         <servlet-name>adminCreateStaffMember</servlet-name>
-        <servlet-class>com.servlet.adminServlet.AdminCreateStaffServlet</servlet-class>
+        <servlet-class>com.servlet.admin.AdminCreateStaffServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -91,7 +91,7 @@
     <!-- AdminManageUsersServlet -->
     <servlet>
         <servlet-name>adminManageUsers</servlet-name>
-        <servlet-class>com.servlet.adminServlet.AdminManageUsersServlet</servlet-class>
+        <servlet-class>com.servlet.admin.AdminManageUsersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -102,7 +102,7 @@
     <!-- AdminEditUserServlet -->
     <servlet>
         <servlet-name>adminEditUser</servlet-name>
-        <servlet-class>com.servlet.adminServlet.AdminEditUserServlet</servlet-class>
+        <servlet-class>com.servlet.admin.AdminEditUserServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -113,7 +113,7 @@
     <!-- AdminDeleteUserServlet -->
     <servlet>
         <servlet-name>adminDeleteUser</servlet-name>
-        <servlet-class>com.servlet.adminServlet.AdminDeleteUserServlet</servlet-class>
+        <servlet-class>com.servlet.admin.AdminDeleteUserServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -125,7 +125,7 @@
     <!-- ManageAppointmentsServlet -->
     <servlet>
         <servlet-name>manageAppointment</servlet-name>
-        <servlet-class>com.servlet.managerServlet.ManageAppointmentsServlet</servlet-class>
+        <servlet-class>com.servlet.manager.ManageAppointmentsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
