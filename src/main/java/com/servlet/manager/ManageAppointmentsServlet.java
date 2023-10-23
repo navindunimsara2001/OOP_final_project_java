@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,9 @@ import com.model.Appointment;
 import com.model.Staff;
 import com.service.impl.AppointmentService;
 import com.service.impl.StaffService;
+import com.util.Views;
 
+@WebServlet
 public class ManageAppointmentsServlet extends HttpServlet {
     // create Appointment object
     final Appointment app = new Appointment();
@@ -38,7 +41,7 @@ public class ManageAppointmentsServlet extends HttpServlet {
         request.setAttribute("stfList", stfList);
 
         // redirect
-        RequestDispatcher dispatcher = request.getRequestDispatcher("manageAppointments.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(Views.MANAGE_APPOINTMENTS);
         dispatcher.forward(request, response);
 
     }

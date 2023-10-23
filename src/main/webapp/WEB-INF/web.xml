@@ -130,7 +130,7 @@
 
     <servlet-mapping>
         <servlet-name>manageAppointment</servlet-name>
-        <url-pattern>/manageAppointment</url-pattern>
+        <url-pattern>/staff/manageAppointment</url-pattern>
     </servlet-mapping>
 
     <servlet>

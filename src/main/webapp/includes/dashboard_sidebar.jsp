@@ -13,10 +13,10 @@
             <img src="../assets/images/Icons/users-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Staff</div>
         </div>
-        <div class="sidebar-option">
+        <a class="sidebar-option" href="./manageAppointment">
             <img src="../assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Appointments</div>
-        </div>
+        </a>
         <div class="sidebar-option">
             <img src="../assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Items</div>
