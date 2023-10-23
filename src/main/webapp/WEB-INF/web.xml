@@ -72,6 +72,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>createAppointment</servlet-name>
+        <servlet-class>com.servlet.AppointmentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>createAppointment</servlet-name>
+        <url-pattern>/createAppointment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>showUserProfile</servlet-name>
         <servlet-class>com.servlet.UserProfileServlet</servlet-class>
     </servlet>

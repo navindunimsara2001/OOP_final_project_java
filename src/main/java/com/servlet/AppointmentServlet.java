@@ -8,15 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Appointment;
+import com.service.IAppointmentService;
+import com.service.ICustomerService;
 import com.service.impl.AppointmentService;
+import com.service.impl.CustomerService;
 import com.util.SessionUtil;
 import com.util.URLS;
 
 /**
  * Servlet implementation class AppointmentServlet
  */
-@WebServlet("/appointmentservlet")
+@WebServlet
 public class AppointmentServlet extends HttpServlet {
+    private final IAppointmentService appointmentService = new AppointmentService();
+    private final ICustomerService customerService = new CustomerService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
@@ -28,15 +33,14 @@ public class AppointmentServlet extends HttpServlet {
         app.setYear(request.getParameter("year"));
         app.setType(request.getParameter("serviceType"));
         app.setDate(request.getParameter("appointmentDate"));
-        app.setComment(request.getParameter("comment"));
-        app.setCus(SessionUtil.getCustomer(request));
+        app.setComment(request.getParameter("comments"));
+        app.setCus(customerService.getCustomerById(SessionUtil.getUserId(request, 4)));
         app.setStatus("pending");
 
         // set data to services for insert DB
-        AppointmentService appser = new AppointmentService();
-        appser.addAppointment(app);
+        appointmentService.addAppointment(app);
 
-        response.sendRedirect(URLS.USER_LOGIN);
+        response.sendRedirect(URLS.USER_APPOINTMENT);
 
     }
 
