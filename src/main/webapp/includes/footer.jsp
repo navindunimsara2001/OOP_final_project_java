@@ -14,7 +14,7 @@
         </div>
         <div class="quicklinks">
             <div class="fitem">
-                <a href="#">Contact Us</a>
+                <a href="contact.jsp">Contact Us</a>
             </div>
             <div class="fitem">
                 <a href="#">Terms of Service</a>
@@ -41,5 +41,5 @@
         </div>
     </div>
     <div class="copyright">© 2023 WinFuel Connect</div>
-    
+
 </footer>
