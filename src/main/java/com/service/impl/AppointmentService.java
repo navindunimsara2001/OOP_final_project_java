@@ -17,7 +17,7 @@ public class AppointmentService implements IAppointmentService {
     private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`comment`, `assigned`) VALUES (?,?,?,?,?,?,?,?,NULL)";
     private final static String GET_QUERY = "SELECT * FROM `appointment` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
-    private final static String UPDATE_QUERY = "UPDATE `appointment` SET 'status'=?, `assigned`=? WHERE `id`= ?";
+    private final static String UPDATE_QUERY = "UPDATE `appointment` SET `status`=?, `assigned`=? WHERE `id`= ?";
     private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
 
     /**
@@ -55,17 +55,17 @@ public class AppointmentService implements IAppointmentService {
         app.setYear(rs.getString("year"));
         app.setType(rs.getString("type"));
         app.setDate(rs.getString("date"));
-        
-        CustomerService cs=new CustomerService();
-        
+
+        CustomerService cs = new CustomerService();
+
         Customer cus = cs.getCustomerById(rs.getInt("customer_id"));
         app.setCus(cus);
 
         app.setStatus(rs.getString("status"));
-        
+
         Staff stf = new StaffService().getStaffById(rs.getInt("assigned"));
         app.setStaff(stf);
-        
+
         app.setComment(rs.getString("comment"));
 
         return app;
@@ -138,7 +138,7 @@ public class AppointmentService implements IAppointmentService {
             stmt.setString(1, app.getStatus());
             stmt.setInt(2, app.getStaff().getID());
             stmt.setInt(3, ID);
-            
+
             // update
             stmt.executeUpdate();
 
