@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.service.impl.CustomerService;
+import com.util.URLS;
 
 /**
  * Servlet implementation class AdminDeleteUserServlet
@@ -22,7 +23,7 @@ public class AdminDeleteUserServlet extends HttpServlet {
         // get delete operation from Service class
         cs.removeCustomer(ID);
         // redirect
-        response.sendRedirect("./adminManageUsers");
+        response.sendRedirect("../" + URLS.MANAGE_USERS);
     }
 
 }

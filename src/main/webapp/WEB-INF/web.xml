@@ -96,7 +96,7 @@
 
     <servlet-mapping>
         <servlet-name>adminManageUsers</servlet-name>
-        <url-pattern>/adminManageUsers</url-pattern>
+        <url-pattern>/staff/manageUsers</url-pattern>
     </servlet-mapping>
 
     <!-- AdminEditUserServlet -->
@@ -107,7 +107,7 @@
 
     <servlet-mapping>
         <servlet-name>adminEditUser</servlet-name>
-        <url-pattern>/adminEditUser</url-pattern>
+        <url-pattern>/staff/editUser</url-pattern>
     </servlet-mapping>
 
     <!-- AdminDeleteUserServlet -->
@@ -118,7 +118,7 @@
 
     <servlet-mapping>
         <servlet-name>adminDeleteUser</servlet-name>
-        <url-pattern>/adminDeleteUser</url-pattern>
+        <url-pattern>/staff/deleteUser</url-pattern>
     </servlet-mapping>
 
     <!-- Manager -->

@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <aside class="sidebar">
     <div class="sidebar-up">
-        <div class="sidebar-option">
+        <a class="sidebar-option" href="./manageUsers">
             <img src="../assets/images/Icons/user-search-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Users</div>
-        </div>
+        </a>
         <div class="sidebar-option">
             <img src="../assets/images/Icons/user-shield-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Managers</div>
