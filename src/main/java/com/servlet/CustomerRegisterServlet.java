@@ -14,18 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/registeruser")
+@WebServlet
 public class CustomerRegisterServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
-    }
-
-    /**
-     * @throws IOException
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     * response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
@@ -43,7 +35,7 @@ public class CustomerRegisterServlet extends HttpServlet {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
-        // nedd to check email exist or not
+        // need to check email exist or not
 
         if (matcher.matches() && password.length() >= 8) {
             System.out.println("valid");

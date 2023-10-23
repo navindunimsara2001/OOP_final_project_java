@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="com.util.URLS" %>
 <nav class="menu main-menu">
     <div class="header item no-hover">
         <img class="logo" src="assets/images/winfuel connect.png" alt="Logo" height="32px">
     </div>
     <div class="item spacer no-hover"></div>
     <div class="item no-hover if-not-login">
-        <a class="btn btn-primary" href="login">Login</a>
-        <a class="btn btn-outline-secondary" href="registration.html">Sign Up</a>
+        <a class="btn btn-primary" href="${URLS.USER_LOGIN}">Login</a>
+        <a class="btn btn-outline-secondary" href="${URLS.USER_REGISTER}">Sign Up</a>
     </div>
     <a class="item if-login" href="#">My Appointments</a>
     <div class="item dropdown no-hover if-login" id="profile-dropdown" tabindex="1">
