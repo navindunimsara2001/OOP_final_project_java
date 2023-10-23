@@ -133,6 +133,15 @@
         <url-pattern>/manageAppointment</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>requestItem</servlet-name>
+        <servlet-class>com.servlet.staff.RequestItemServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>requestItem</servlet-name>
+        <url-pattern>/requestItem</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>AuthFilter</filter-name>

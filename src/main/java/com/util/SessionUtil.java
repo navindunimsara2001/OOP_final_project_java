@@ -25,14 +25,33 @@ public class SessionUtil {
     public static int getUserId(HttpServletRequest req) {
         Customer cus = getCustomer(req);
         if (Objects.isNull(cus)) {
-            throw new NotLoggedInException(); // TODO: redirect or return null?
+            throw new NotLoggedInException();
         }
         return cus.getID();
     }
 
+
     public static int getUserId(HttpServletRequest req, int defaultV) {
         try {
             return getUserId(req);
+        } catch (NotLoggedInException e) {
+            System.out.println("Falling back to default value " + defaultV);
+            return defaultV;
+        }
+    }
+
+    public static int getStaffId(HttpServletRequest req) {
+        Staff staff = getStaff(req);
+        if (Objects.isNull(staff)) {
+            throw new NotLoggedInException();
+        }
+        return staff.getID();
+    }
+
+
+    public static int getStaffId(HttpServletRequest req, int defaultV) {
+        try {
+            return getStaffId(req);
         } catch (NotLoggedInException e) {
             System.out.println("Falling back to default value " + defaultV);
             return defaultV;
