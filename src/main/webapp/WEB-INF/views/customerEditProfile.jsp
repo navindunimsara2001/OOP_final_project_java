@@ -4,23 +4,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/styles/userProfileView.css">
+    <jsp:include page="/includes/header.jsp"/>
+    <link rel="stylesheet" href="assets/styles/userProfileView.css">
     <title>User Profile</title>
 </head>
 
 <body>
+<jsp:include page="/includes/site_menu.jsp"/>
 <main>
     <div class="container">
         <h2>User Profile</h2>
         <div class="propic">
-            <img src="../../assets/images/Icons/user-svgrepo-com.svg" alt="">
+            <img src="assets/images/Icons/user.svg" alt="">
         </div>
 
         <div class="row">
@@ -36,7 +31,7 @@
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="name"
+                                    <input type="text" name="name" id="Name"
                                            value="<%=request.getAttribute("name")%>">
                                 </div>
                             </th>
@@ -44,12 +39,12 @@
                         <tr>
                             <th>
                                 <div class="field">
-                                    <label class="label" for="Phone Number">Phone : </label>
+                                    <label class="label" for="PhoneNumber">Phone : </label>
                                 </div>
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="text" name="phone"
+                                    <input type="text" name="phone" id="PhoneNumber"
                                            value="<%=request.getAttribute("phone")%>">
                                 </div>
                             </th>
@@ -92,23 +87,23 @@
                             </th>
                             <th>
                                 <div class="field">
-                                    <input type="password" name="password" id="passsword"
+                                    <input type="password" name="password" id="password"
                                            value="<%=request.getAttribute("password")%>">
                                 </div>
                             </th>
                         </tr>
                     </table>
                     <input type="hidden" name="ID" value="<%=request.getAttribute("ID")%>">
-                    <div class="button">
-                        <input class="btn btn-outline-primary" type="submit" value="Update">
-                        <a class="btn btn-outline-danger" href="./userProfileDelete?ID=<%=request.getAttribute("ID")%>">Delete</a>
-                    </div>
+                    <input class="btn btn-primary" type="submit" value="Update">
+                    <a class="btn btn-danger"
+                       href="./userProfileDelete?ID=<%=request.getAttribute("ID")%>">Delete</a>
                 </form>
             </div>
             <div class="col-3"></div>
         </div>
     </div>
 </main>
+<jsp:include page="/includes/footer.jsp"/>
 </body>
 
 </html>
