@@ -18,7 +18,7 @@ public class ShowUserProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         //int ID = SessionUtil.getCustomer(request).getID();
 
-        int ID = 4; // testing
+        int ID = 3; // testing
 
         // create service object
         CustomerService cs = new CustomerService();

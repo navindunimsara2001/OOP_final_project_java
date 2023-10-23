@@ -54,23 +54,14 @@
                     <section class="container" id="container">
                         <form action=" " method="post" class="form">
                             <div class="input-box">
-                                <label>Full Name of the requester: </label>
-                                <input type="text" placeholder="Enter full name" name="name" required>
+                                <label>Item name :  </label>
+                                <input type="text" name="itemName" required>
                             </div>
                             <div class="input-box">
-                                <label>Item Code: </label>
-                                <input type="" placeholder="" name="">
+                                <label>Amount : </label>
+                                <input type="number" placeholder="" name="amount">
                             </div>
-                            <div class="column">
-                                <div class="input-box">
-                                    <label>Item name : </label>
-                                    <input type="text" placeholder="" name="">
-                                </div>
-                                <div class="input-box">
-                                    <label>Amount : </label>
-                                    <input type="number" name="amount" min="1" max="100" required>
-                                </div>
-                            </div>
+                            <input type="hidden" name="itemID" value="">
                             <button type="submit">Submit</button>
                         </form>
                     </section>
