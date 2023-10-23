@@ -1,5 +1,4 @@
 $(".edit-btn").each((_, e) => {
-    console.log("v", e);
     e.addEventListener("click", () => {
         let model = $('#appointmentEdit');
         model.find('form')[0].reset();

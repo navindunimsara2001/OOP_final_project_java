@@ -9,4 +9,5 @@ public class URLS {
     public static final String ADMIN_LOGIN = "admin/login";
 
     public static final String USER_PROFILE = "profile";
+    public static final String ITEM_REQUEST = "requestItem";
 }
