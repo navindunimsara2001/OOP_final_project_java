@@ -11,11 +11,32 @@
 
 </head>
 <body>
-    <h1>Request Items</h1>
-    <p>Please fill out the form below to request items.</p>
+    <div class="contentRequest">
+        <h1>Request Items</h1>
+        <p>Please fill out the form below to request items.</p>
 
-    <input type="text" id="searchInput" placeholder="Search by item name">
-    <button onclick="searchItems()">Search</button>
+        <input type="text" id="searchInput" placeholder="Search by item name">
+        <button onclick="searchItems()">Search</button>
+    </div>
+    <div class="requestTable">
+        <table>
+            <tr>
+                <th>Item Code</th>
+                <th>Item Name</th>
+                <th>Availability</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>Sample Item</td>
+                <td>In Stock</td>
+                <td>
+                    <button class="action-button">Request Item</button>
+                    <button class="action-button">Report</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
 
