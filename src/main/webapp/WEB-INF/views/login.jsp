@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.util.URLS" %>
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +27,7 @@
         <br>
 
         <% if (!(boolean) request.getAttribute("staff")) { %>
-        <div class="a"><a href="registration.html">Don't have an account?</a></div>
+        <div class="a"><a href="${URLS.USER_REGISTER}">Don't have an account?</a></div>
         <% }%>
     </form>
 </section>
