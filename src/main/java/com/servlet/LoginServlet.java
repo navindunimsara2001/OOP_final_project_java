@@ -6,6 +6,7 @@ import com.service.IStaffService;
 import com.service.impl.CustomerService;
 import com.service.impl.StaffService;
 import com.util.URLS;
+import com.util.Views;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -37,8 +38,9 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/login.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher(Views.LOGIN);
         req.setAttribute("staff", this.isStaff);
+        req.setAttribute("incorrect", !Objects.isNull(req.getParameter("incorrect")));
         dispatcher.forward(req, resp);
     }
 
@@ -66,7 +68,7 @@ public class LoginServlet extends HttpServlet {
         // check if the login details are valid.
         if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
             logger.log(Level.INFO, "incorrect password");
-            resp.sendRedirect(isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN);
+            resp.sendRedirect((isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN) + "?incorrect=true");
             return;
         }
 

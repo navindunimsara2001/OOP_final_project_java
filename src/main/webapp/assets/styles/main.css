@@ -253,12 +253,11 @@ footer .copyright {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* TODO: remove these*/
-body:not(.logged-in) .if-login {
+.main-menu:not(.logged-in) .if-login {
     display: none;
 }
 
-body.logged-in .if-not-login {
+.main-menu.logged-in .if-not-login {
     display: none;
 }
 

@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <jsp:include page="/includes/header.jsp"/>
     <title>User Login</title>
     <link rel="stylesheet" href="assets/styles/loginStyle.css">
     <link rel="stylesheet" type="text/css"
@@ -14,6 +14,11 @@
 <body>
 <section class="container">
     <header class="header">${ requestScope.get("staff") ? "Staff": "User"} Login</header>
+
+    <div class="alert alert-danger" role="alert" ${requestScope.get("incorrect")? "": "hidden='true'"}>
+        Incorrect username or password.
+    </div>
+
     <form method="post" action="" class="form">
         <div class="input-box">
             <label for="email">Email : </label>
