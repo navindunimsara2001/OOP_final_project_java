@@ -8,26 +8,20 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Apply a background color and set font styles */
-body {
+
+main {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     text-align: center;
     padding: 20px;
-    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 .contentRequest {
     background: rgba(255, 255, 255, 0.7);
     border-radius: 5px;
     padding: 20px;
-    margin: 0 auto;
     width: 100%;
     max-width: 800px;
-    margin-top: 50px;
+    margin: 50px auto 0;
     text-align: center;
 }
 
@@ -108,7 +102,7 @@ tr:nth-child(odd) {
 
 .action-button {
     color: white;
-	background-color: black;
+    background-color: black;
     border: none;
     padding: 6px 12px;
     cursor: pointer;
@@ -117,7 +111,7 @@ tr:nth-child(odd) {
 
 .action-button:hover {
     color: black;
-	background-color: rgb(229, 210, 131);
+    background-color: rgb(229, 210, 131);
 }
 
 #container {

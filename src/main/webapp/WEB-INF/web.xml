@@ -140,7 +140,7 @@
 
     <servlet-mapping>
         <servlet-name>requestItem</servlet-name>
-        <url-pattern>/requestItem</url-pattern>
+        <url-pattern>/staff/requestItem</url-pattern>
     </servlet-mapping>
 
     <filter>
