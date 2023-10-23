@@ -69,7 +69,7 @@ public class ItemRequestService implements IItemRequestService {
             // execute sql statement
             ResultSet rs = stmt.executeQuery();
 
-            ItemRequest ir = new ItemRequest();
+            ItemRequest ir;
 
             ir = this.loadRequest(rs);
 

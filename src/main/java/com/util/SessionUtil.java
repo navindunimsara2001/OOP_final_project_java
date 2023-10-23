@@ -1,7 +1,6 @@
 package com.util;
 
 import com.model.Customer;
-import com.model.Person;
 import com.model.Staff;
 
 import javax.servlet.http.HttpServletRequest;

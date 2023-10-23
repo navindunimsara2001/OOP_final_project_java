@@ -6,7 +6,6 @@ import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,22 +17,21 @@ import com.service.impl.StaffService;
 
 public class ManageAppointmentsServlet extends HttpServlet {
     // create Appointment object
-    Appointment app = new Appointment();
+    final Appointment app = new Appointment();
     // create AppointmentService object
-    AppointmentService appService = new AppointmentService();
+    final AppointmentService appService = new AppointmentService();
     // create Staff members object
     Staff stf = new Staff();
     // create StaffService object
-    StaffService stfService = new StaffService();
+    final StaffService stfService = new StaffService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Appointment> appList = new ArrayList<>();
-        ArrayList<Staff> stfList = new ArrayList<>();
+        ArrayList<Appointment> appList;
+        ArrayList<Staff> stfList;
         // get appointment list
         appList = appService.getAppointments();
         // get staff List
-        stfList = stfService.getOnlyStaffs();
         stfList = stfService.getOnlyStaffs();
         // set value to pass
         request.setAttribute("appList", appList);
@@ -46,7 +44,7 @@ public class ManageAppointmentsServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         String AID = request.getParameter("AID");
         String sId = request.getParameter("assigned");
 
