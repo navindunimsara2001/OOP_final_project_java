@@ -16,6 +16,8 @@ public class StaffService implements IStaffService {
     private static final String GET_QUERY = "select * from `staff` where id=?";
     private static final String GET_QUERY_EMAIL = "select * from `staff` where email=?";
     private static final String GET_ALL_QUERY = "select * from `staff`";
+    private static final String GET_ALLSTAFF_QUERY = "select * from `staff` where is_manager = 0";
+    private static final String GET_ALLMANAGERS_QUERY = "select * from `staff` where is_manager = 1";
     private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=?, is_manager=? where id=?";
     private static final String REMOVE_QUERY = "delete from `staff` where id=?";
 
@@ -72,9 +74,39 @@ public class StaffService implements IStaffService {
      */
     @Override
     public ArrayList<Staff> getStaffs() {
-        ArrayList<Staff> staff = new ArrayList<>();
+        ArrayList<Staff> allStaff = new ArrayList<>();
 
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)) {
+            ResultSet result = stmt.executeQuery();
+            while (result.next()) {
+            	allStaff.add(loadStaff(result));
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get staffs", e);
+        }
+
+        return allStaff;
+    }
+    
+    public ArrayList<Staff> getOnlyStaffs() {
+        ArrayList<Staff> staff = new ArrayList<>();
+
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALLSTAFF_QUERY)) {
+            ResultSet result = stmt.executeQuery();
+            while (result.next()) {
+                staff.add(loadStaff(result));
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to get staffs", e);
+        }
+
+        return staff;
+    }
+    
+    public ArrayList<Staff> getOnlyManagers() {
+        ArrayList<Staff> staff = new ArrayList<>();
+
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALLMANAGERS_QUERY)) {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 staff.add(loadStaff(result));
@@ -102,7 +134,7 @@ public class StaffService implements IStaffService {
         stf.setPassword(result.getString("password"));
         stf.setPhone(result.getString("phone"));
         stf.setDOB(result.getString("dob"));
-        stf.setManager(result.getBoolean("is_manager"));
+        stf.setRole(result.getInt("is_manager"));
         return stf;
     }
 
@@ -119,7 +151,7 @@ public class StaffService implements IStaffService {
             stmt.setString(3, stf.getPassword());
             stmt.setString(4, stf.getPhone());
             stmt.setString(5, stf.getDOB());
-            stmt.setBoolean(6, stf.isManager());
+            stmt.setInt(6, stf.getRole());
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to add staff", e);
@@ -156,7 +188,7 @@ public class StaffService implements IStaffService {
             stmt.setString(3, stf.getPassword());
             stmt.setString(4, stf.getPhone());
             stmt.setString(5, stf.getDOB());
-            stmt.setBoolean(6, stf.isManager());
+            stmt.setInt(6, stf.getRole());
             stmt.setInt(7, stfId);
             stmt.executeUpdate();
         } catch (SQLException e) {

@@ -17,7 +17,7 @@ public class AppointmentService implements IAppointmentService {
     private final static String ADD_QUERY = "INSERT INTO `appointment`(`brand`,`model`,`year`,`type`,`date`,`customer_id`,`status`,`comment`, `assigned`) VALUES (?,?,?,?,?,?,?,?,NULL)";
     private final static String GET_QUERY = "SELECT * FROM `appointment` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
-    private final static String UPDATE_QUERY = "UPDATE `appointment` SET `brand`=? , `model`=? , `year`=? , `type`=? , `date`=? , `customer_id`=? , 'status'=?, `assigned`=? , `comment`=? WHERE `id`= ?";
+    private final static String UPDATE_QUERY = "UPDATE `appointment` SET 'status'=?, `assigned`=? WHERE `id`= ?";
     private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
 
     /**
@@ -54,9 +54,12 @@ public class AppointmentService implements IAppointmentService {
         app.setModel(rs.getString("model"));
         app.setYear(rs.getString("year"));
         app.setType(rs.getString("type"));
-
-        Customer cs = new CustomerService().getCustomerById(rs.getInt("customer_id"));
-        app.setCus(cs);
+        app.setDate(rs.getString("date"));
+        
+        CustomerService cs=new CustomerService();
+        
+        Customer cus = cs.getCustomerById(rs.getInt("customer_id"));
+        app.setCus(cus);
 
         app.setStatus(rs.getString("status"));
         
@@ -132,15 +135,12 @@ public class AppointmentService implements IAppointmentService {
              PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)
         ) {
             //for query
-            stmt.setString(1, app.getBrand());
-            stmt.setString(2, app.getModel());
-            stmt.setString(3, app.getYear());
-            stmt.setString(4, app.getType());
-            stmt.setString(5, app.getDate());
-            stmt.setInt(6, app.getCus().getID());
-            stmt.setString(7, app.getStatus());
-            stmt.setInt(8, ID);
-
+            stmt.setString(1, app.getStatus());
+            stmt.setInt(2, app.getStaff().getID());
+            stmt.setInt(3, ID);
+            
+            // update
+            stmt.executeUpdate();
 
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update appointment", e);
