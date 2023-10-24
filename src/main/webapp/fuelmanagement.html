@@ -1,0 +1,37 @@
+<!-- <%@ page contentType="text/html;charset=UTF-8" language="java" %> -->
+
+<html>
+<head>
+    <jsp:include page="/includes/dashboard_header.jsp"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/styles/fuelmgt.css">
+</head>
+<body>
+<jsp:include page="/includes/dashboard_menu.jsp"/>
+<div class="sidebar-container">
+    <jsp:include page="/includes/dashboard_sidebar.jsp"/>
+    <main>
+        <section id="features" class="features">
+            <h2>Select Fuel Type</h2>
+            <div class="card">
+                <div class="feature" id="f1">
+                    <img src="assets/images/fuel/petrol92.jpeg" alt="Petrol 92">
+                    <h3>Petrol 92</h3>
+                    <!-- Fuel Remaining -->
+                </div>
+                <div class="feature" id="f2">
+                    <img src="assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
+                    <h3>Petrol 95</h3>
+                    <!-- Fuel Remaining -->
+                </div>
+                <div class="feature" id="f3">
+                    <img src="assets/images/fuel/diesel.jpeg" alt="Diesel">
+                    <h3>Diesel</h3>
+                    <!-- Fuel Remaining -->
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
