@@ -18,9 +18,9 @@ import com.util.SessionUtil;
 public class ShowRequestItemsServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ID = SessionUtil.getStaffId(request);
+		//int ID = SessionUtil.getStaffId(request);
 		
-		ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(ID);
+		ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(12);
 		request.setAttribute("itmReqList", itmReqList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/CreatedItemRequest.jsp");
