@@ -11,7 +11,7 @@
 <link href="../../assets/styles/preappointments.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <jsp:include page="/includes/header.jsp"/>
-<title>Insert title here</title>
+<title>Previous Appointments</title>
 </head>
 <body>
 	<jsp:include page="/includes/site_menu.jsp"/>
