@@ -55,6 +55,7 @@ body {
 /* Features and services section styles */
 .card {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -128,10 +129,3 @@ body {
     margin-bottom: 40px;
 }
 
-/* Footer styles */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
