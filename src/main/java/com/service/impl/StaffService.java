@@ -16,8 +16,8 @@ public class StaffService implements IStaffService {
     private static final String GET_QUERY = "select * from `staff` where id=?";
     private static final String GET_QUERY_EMAIL = "select * from `staff` where email=?";
     private static final String GET_ALL_QUERY = "select * from `staff`";
-    private static final String GET_ALLSTAFF_QUERY = "select * from `staff` where role = 'Staff'";
-    private static final String GET_ALLMANAGERS_QUERY = "select * from `staff` where role = 'Manager'";
+    private static final String GET_ALL_STAFF_QUERY = "select * from `staff` where role = " + Staff.Role.Staff.ordinal();
+    private static final String GET_ALL_MANAGERS_QUERY = "select * from `staff` where role = " + Staff.Role.Manager.ordinal();
     private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=?, role=? where id=?";
     private static final String REMOVE_QUERY = "delete from `staff` where id=?";
 
@@ -91,7 +91,7 @@ public class StaffService implements IStaffService {
     public ArrayList<Staff> getOnlyStaffs() {
         ArrayList<Staff> staff = new ArrayList<>();
 
-        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALLSTAFF_QUERY)) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_STAFF_QUERY)) {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 staff.add(loadStaff(result));
@@ -106,7 +106,7 @@ public class StaffService implements IStaffService {
     public ArrayList<Staff> getOnlyManagers() {
         ArrayList<Staff> staff = new ArrayList<>();
 
-        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALLMANAGERS_QUERY)) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_MANAGERS_QUERY)) {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 staff.add(loadStaff(result));
@@ -134,7 +134,7 @@ public class StaffService implements IStaffService {
         stf.setPassword(result.getString("password"));
         stf.setPhone(result.getString("phone"));
         stf.setDOB(result.getString("dob"));
-        stf.setRole(Staff.Role.valueOf(result.getString("role")));
+        stf.setRole(Staff.Role.values()[result.getInt("role")]);
         return stf;
     }
 
@@ -151,7 +151,7 @@ public class StaffService implements IStaffService {
             stmt.setString(3, stf.getPassword());
             stmt.setString(4, stf.getPhone());
             stmt.setString(5, stf.getDOB());
-            stmt.setString(6, stf.getRole().toString());
+            stmt.setInt(6, stf.getRole().ordinal());
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to add staff", e);
@@ -188,7 +188,7 @@ public class StaffService implements IStaffService {
             stmt.setString(3, stf.getPassword());
             stmt.setString(4, stf.getPhone());
             stmt.setString(5, stf.getDOB());
-            stmt.setString(6, stf.getRole().toString());
+            stmt.setInt(6, stf.getRole().ordinal());
             stmt.setInt(7, stfId);
             stmt.executeUpdate();
         } catch (SQLException e) {
