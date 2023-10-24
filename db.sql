@@ -17,11 +17,10 @@
 CREATE TABLE
     `fuel`
 (
-    `id`      int unsigned NOT NULL AUTO_INCREMENT,
-    `type`    varchar(50)  NOT NULL,
-    `subtype` varchar(50)  NOT NULL,
-    `amount`  float        NOT NULL,
-    `price`   double       NOT NULL,
+    `id`     int unsigned NOT NULL AUTO_INCREMENT,
+    `type`   varchar(50)  NOT NULL,
+    `amount` float        NOT NULL,
+    `price`  double       NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `fuel_amount_check` CHECK ((`amount` >= 0)),
     CONSTRAINT `fuel_price_check` CHECK ((`price` > 0))
