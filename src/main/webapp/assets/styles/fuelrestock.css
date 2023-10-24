@@ -29,7 +29,7 @@ html {
     flex-direction: row;
     justify-content: space-between;
     width: 80%;
-    height: 100px;
+    height: 140px;
     max-height: fit-content;
     margin: 20px;
     padding-left: 30px;
@@ -64,7 +64,8 @@ html {
     font-size: 20px;
     font-weight: 500;
     color: #001435;
-    text-align: center;
+   	
+   	margin-right: 35px;
 }
 
 #pricetag {
@@ -76,9 +77,10 @@ html {
     color: white;
     background-color: black;
     border: none;
-    padding: 6px 12px;
+    padding: 9px 16px;
     cursor: pointer;
     margin-right: 5px;
+    border-radius: 4px;
 }
 
 .action-button:hover {

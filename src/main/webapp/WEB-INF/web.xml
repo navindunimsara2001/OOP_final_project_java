@@ -121,7 +121,7 @@
 
     <servlet-mapping>
         <servlet-name>adminCreateStaffMember</servlet-name>
-        <url-pattern>/adminCreateStaff</url-pattern>
+        <url-pattern>/admin/adminCreateStaff</url-pattern>
     </servlet-mapping>
 
     <!-- AdminManageUsersServlet -->
@@ -132,7 +132,7 @@
 
     <servlet-mapping>
         <servlet-name>adminManageUsers</servlet-name>
-        <url-pattern>/staff/manageUsers</url-pattern>
+        <url-pattern>/admin/manageUsers</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -142,7 +142,7 @@
 
     <servlet-mapping>
         <servlet-name>adminManageStaff</servlet-name>
-        <url-pattern>/staff/manageStaff</url-pattern>
+        <url-pattern>/admin/manageStaff</url-pattern>
     </servlet-mapping>
 
     <!-- AdminEditUserServlet -->
@@ -219,6 +219,17 @@
 		<servlet-name>FuelManageServlet</servlet-name>
 		<url-pattern>/admin/FuelManageServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateFuelServlet</servlet-name>
+		<servlet-class>com.servlet.admin.UpdateFuelServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UpdateFuelServlet</servlet-name>
+		<url-pattern>/UpdateFuelServlet</url-pattern>
+	</servlet-mapping>
+	
 
     <filter>
         <filter-name>AuthFilter</filter-name>

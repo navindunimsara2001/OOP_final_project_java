@@ -37,5 +37,5 @@ public interface IFuelService {
      * @param ID the id of fuel type
      * @param price new price
      */
-    void changeFuelPrice(int ID , double price);
+    void changeFuel(int ID , double price , double amount);
 }

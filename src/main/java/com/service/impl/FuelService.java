@@ -15,7 +15,7 @@ public class FuelService implements IFuelService {
     private final static String GET_QUERY = "select * from `fuel` where id=?";
     private final static String GET_ALL_QUERY = "select * from `fuel`";
     private final static String UPDATE_FUEL_AMOUNT = "update fuel set `amount`= `amount`-? where id=?";
-    private final static String UPDATE_FUEL_PRICE = "update fuel set `price`= ? where id=?";
+    private final static String UPDATE_FUEL = "update fuel set `price`= ? ,`amount`=`amount`+ ? where id=?";
 
     /**
      * Gets the fuel type with the given id.
@@ -104,13 +104,15 @@ public class FuelService implements IFuelService {
      * 
      * @param ID the id of fuel type
      * @param price new price
+     * @param  amount the new amount
      */
     @Override
-	public void changeFuelPrice(int ID , double price) {
+	public void changeFuel(int ID , double price , double amount) {
     	try (Connection con = DBUtil.connect();
-                PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL_PRICE)) {
+                PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL)) {
     		stmt.setDouble(1, price);
-    		stmt.setDouble(2, ID);
+    		stmt.setDouble(2, amount);
+    		stmt.setDouble(3, ID);
     		
     		stmt.executeUpdate();
     	} catch (SQLException e) {

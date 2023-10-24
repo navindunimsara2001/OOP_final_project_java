@@ -18,7 +18,7 @@
             <h2>Fuel Updates</h2>
             <div class="card" id="card">
                 
-                <div class="feature" id="f1">
+                <form class="feature" id="f1">
                     <div class="img">
                         <img src="assets/images/fuel/petrol92.jpeg" alt="Petrol 92">
                     </div>
@@ -29,19 +29,25 @@
                     
                     <div class="pricetag" id="pricetag1">
                         <div class="header">
-                            <h4>Rs. </h4>
+                            <h4>Price LKR : </h4>
                         </div>
                         <div class="price">
                             <input type="number" id="price1" name="price1" value="100.00" step="0.01">
                         </div>
+                        <div class="header">
+                            <h4>Amount Liter :  </h4>
+                        </div>
+                        <div class="price">
+                            <input type="number" id="price1" name="amount" value="">
+                        </div>
                     </div>
-
                     <div class="btn">
+						<input type="hidden" name="ID" value="1">
                         <button type="submit" class="action-button" id="btn1">Update</button>
                     </div>
-                </div>
+                </form>
 
-                <div class="feature" id="f2">
+                <form class="feature" id="f2">
                     <div class="img">
                         <img src="assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
                     </div>
@@ -49,22 +55,28 @@
                         <h3>Petrol 95</h3>
                         <h1 class="remain">100.00L</h1>
                     </div>
-
                     <div class="pricetag" id="pricetag1">
                         <div class="header">
-                            <h4>Rs. </h4>
+                            <h4>Price LKR :  </h4>
                         </div>
                         <div class="price">
                             <input type="number" id="price1" name="price1" value="100.00" step="0.01">
                         </div>
+                        <div class="header">
+                            <h4>Amount Liter :  </h4>
+                        </div>
+                        <div class="price">
+                            <input type="number" id="price1" name="amount" value="">
+                        </div>
                     </div>
 
                     <div class="btn">
+						<input type="hidden" name="ID" value="2">
                         <button type="submit" class="action-button" id="btn1">Update</button>
                     </div>
-                </div>
+                </form>
 
-                <div class="feature" id="f3">
+                <form class="feature" id="f3">
                     <div class="img">
                         <img src="assets/images/fuel/diesel.jpeg" alt="Diesel">
                     </div>
@@ -80,12 +92,19 @@
                         <div class="price">
                             <input type="number" id="price1" name="price1" value="100.00" step="0.01">
                         </div>
+                        <div class="header">
+                            <h4>Rs. </h4>
+                        </div>
+                        <div class="price">
+                            <input type="number" id="price1" name="amount" value="">
+                        </div>
                     </div>
 
                     <div class="btn">
+						 <input type="hidden" name="ID" value="3">
                         <button type="submit" class="action-button" id="btn1">Update</button>
                     </div>
-                </div>
+                </form>
             </div>
         </section>
     </main>
