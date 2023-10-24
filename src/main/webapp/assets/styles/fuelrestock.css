@@ -47,7 +47,7 @@ html {
 .feature input {
     display: inline-block;
     border: none;
-    background-color: transparent;
+    background-color: rgb(128, 128, 128);
     font-size: 20px;
     font-weight: 500;
     color: #001435;
