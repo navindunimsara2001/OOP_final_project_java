@@ -1,10 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!-- <%@ page contentType="text/html;charset=UTF-8" language="java" %> -->
 
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Title</title>
     <link rel="stylesheet" href="assets/styles/fuelmgt.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -16,7 +22,7 @@
             <h2>Select Fuel Type</h2>
             <div class="card" id="card">
                 
-                <div class="feature" id="f1">
+                <div class="feature" id="f1" onclick="openModal('Petrol 92', '1')">
                     <div class="feattop">
                         <img src="assets/images/fuel/petrol92.jpeg" alt="Petrol 92">
                         <h3>Petrol 92</h3>
@@ -33,7 +39,7 @@
                     </div>
                 </div>
 
-                <div class="feature" id="f2">
+                <div class="feature" id="f2" onclick="openModal('Petrol 95', '2')">
                     <div class="feattop">
                         <img src="assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
                         <h3>Petrol 95</h3>
@@ -50,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="feature" id="f3">
+                <div class="feature" id="f3" onclick="openModal('Diesel', '3')">
                     <div class="feattop">
                         <img src="assets/images/fuel/diesel.jpeg" alt="Diesel">
                         <h3>Diesel</h3>
@@ -88,10 +94,10 @@
                                 </div>
                                 <div class="input-box">
                                     <label>Amount :
-                                        <input type="number" placeholder="" name="amount"> </label>
+                                    <input type="number" placeholder="" name="amount" step="0.01"> </label>
                                 </div>
                                 <input type="hidden" name="itemId" id="itemId" value="">
-                                <button type="submit">Submit</button>
+                                <button type="submit" class="action-button">Submit</button>
                             </form>
                         </section>
                     </div>
@@ -99,6 +105,33 @@
             </div>
         </div>
         <!-- Modal End -->
+
+        <script>
+            $(document).ready(function () {
+                // Function to open the modal and set the fuel type
+                function openModal(fuelType, itemId) {
+                    $("#fuelName").val(fuelType);
+                    $("#itemId").val(itemId);
+                    $("#requestModal").modal("show");
+                }
+        
+                // onClick function for the first feature
+                $("#f1").on("click", function () {
+                    openModal("Petrol 92", "1"); // Replace "item1" with the actual item ID
+                });
+        
+                // onClick function for the second feature
+                $("#f2").on("click", function () {
+                    openModal("Petrol 95", "2"); // Replace "item2" with the actual item ID
+                });
+        
+                // onClick function for the third feature
+                $("#f3").on("click", function () {
+                    openModal("Diesel", "3"); // Replace "item3" with the actual item ID
+                });
+            });
+        </script>
+        
 
     </main>
 </div>
