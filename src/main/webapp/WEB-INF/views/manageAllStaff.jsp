@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +36,7 @@
                     <td>${Staff.email}</td>
                     <td>${Staff.phone}</td>
                     <td>${Staff.DOB}</td>
-                    <td>${Staff.role == 1 ? 'Manager' : 'Staff'}</td>
+                    <td>${Staff.role}</td>
                     <td class="text-center">
                         <button type="button" class="btn btn-primary staff-edit-btn" data-id="${Staff.ID}"
                                 data-name="${Staff.name}"
