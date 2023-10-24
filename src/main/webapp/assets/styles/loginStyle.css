@@ -9,12 +9,14 @@
 }
 
 body {
-    min-height: 100vh;
+    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
+}
+
+main {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
 }
 
 .container {
@@ -74,7 +76,7 @@ body {
 .form button:hover {
     color: black;
     background-color: rgb(229, 210, 131);
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .form .a {
@@ -89,7 +91,7 @@ body {
 }
 
 /* ?how to ?*/
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
     .form .column {
         flex-wrap: wrap;
     }

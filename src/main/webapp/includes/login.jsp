@@ -1,17 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.util.URLS" %>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <jsp:include page="/includes/header.jsp"/>
-    <title>User Login</title>
-    <link rel="stylesheet" href="assets/styles/loginStyle.css">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-
-<body>
 <section class="container">
     <header class="header">${ requestScope.get("staff") ? "Staff": "User"} Login</header>
 
@@ -36,7 +23,3 @@
         <% }%>
     </form>
 </section>
-
-</body>
-
-</html>

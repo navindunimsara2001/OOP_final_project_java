@@ -28,17 +28,23 @@ public class LoginServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
     private boolean isStaff;
+    private String loginURL;
+    private String homeURL;
+    private String loginJSP;
 
     @Override
     public void init(ServletConfig config) {
         String admin = config.getInitParameter("admin");
         this.isStaff = !Objects.isNull(admin) && Boolean.parseBoolean(admin);
+        this.loginURL = isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN;
+        this.homeURL = isStaff ? URLS.ADMIN_HOME : URLS.HOME;
+        this.loginJSP = isStaff ? Views.STAFF_LOGIN : Views.USER_LOGIN;
     }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher(Views.LOGIN);
+        RequestDispatcher dispatcher = req.getRequestDispatcher(loginJSP);
         req.setAttribute("staff", this.isStaff);
         req.setAttribute("incorrect", !Objects.isNull(req.getParameter("incorrect")));
         dispatcher.forward(req, resp);
@@ -51,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 
         if (Objects.isNull(email) || Objects.isNull(password)) {
             logger.log(Level.INFO, "username or password not set");
-            resp.sendRedirect(isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN);
+            resp.sendRedirect(loginURL);
             return;
         }
 
@@ -68,7 +74,7 @@ public class LoginServlet extends HttpServlet {
         // check if the login details are valid.
         if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
             logger.log(Level.INFO, "incorrect password");
-            resp.sendRedirect((isStaff ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN) + "?incorrect=true");
+            resp.sendRedirect(loginURL + "?incorrect=true");
             return;
         }
 
@@ -78,7 +84,7 @@ public class LoginServlet extends HttpServlet {
         sess.setAttribute("isStaff", isStaff);
 
         // redirect user
-        String redirect = isStaff ? URLS.ADMIN_HOME : URLS.HOME;
+        String redirect = homeURL;
         String redirectParam = req.getParameter("to");
         if (!Objects.isNull(redirectParam)) {
             try {

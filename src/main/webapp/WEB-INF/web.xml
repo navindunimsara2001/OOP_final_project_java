@@ -68,7 +68,7 @@
 
     <servlet-mapping>
         <servlet-name>adminLogin</servlet-name>
-        <url-pattern>/admin/login</url-pattern>
+        <url-pattern>/staff/login</url-pattern>
     </servlet-mapping>
 
     <servlet>
