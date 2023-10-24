@@ -45,7 +45,7 @@
                     <td>${Appointment.status}</td>
                     <td class="text-center">
                         <button class="btn btn-primary edit-btn" data-apt-id="${Appointment.ID}"
-                                data-apt-approved="${Appointment.status == "approved"}"
+                                data-apt-approved="${Appointment.status == 'approved'}"
                                 data-apt-staff="${Appointment.staff.ID}"> Edit
                         </button>
                     </td>
