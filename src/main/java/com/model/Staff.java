@@ -1,17 +1,19 @@
 package com.model;
 
 public class Staff extends Person {
-    private int isManager;
+    private Role role;
 
-    public void setRole(int role) {
-        if (role == 1) {
-            isManager = 1;
-        } else {
-            isManager = 0;
-        }
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public int getRole() {
-        return isManager;
+    public Role getRole() {
+        return role;
+    }
+
+    public enum Role {
+        Staff,
+        Manager,
+        Admin
     }
 }

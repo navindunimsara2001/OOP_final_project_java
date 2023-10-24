@@ -34,7 +34,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
         stf.setPhone(phone);
         stf.setDOB(DOB);
         stf.setPassword(password);
-        stf.setRole(role);
+        stf.setRole(role == 1 ? Staff.Role.Manager : Staff.Role.Staff);
         stfS.addStaff(stf);
 
         response.sendRedirect("../" + URLS.MANAGE_STAFF);

@@ -26,7 +26,7 @@ public class UserProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int ID = SessionUtil.getUserId(request, 2);
+        int ID = SessionUtil.getUserId(request, 7);
 
         // create customer object
         Customer cus;
