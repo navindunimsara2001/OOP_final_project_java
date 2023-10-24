@@ -8,7 +8,9 @@
 <jsp:include page="/includes/dashboard_menu.jsp"/>
 <div class="sidebar-container">
     <jsp:include page="/includes/dashboard_sidebar.jsp"/>
-    <main></main>
+    <main>
+        
+    </main>
 </div>
 </body>
 </html>
