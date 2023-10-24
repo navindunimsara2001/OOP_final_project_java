@@ -11,4 +11,5 @@ public class URLS {
     public static final String MANAGE_USERS = "staff/manageUsers";
     public static final String MANAGE_STAFF = "staff/manageStaff";
     public static final String USER_APPOINTMENT = "appointments";
+    public static final String LOGOUT = "logout";
 }
