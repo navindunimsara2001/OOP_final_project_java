@@ -41,7 +41,7 @@
                         <button type="button" class="btn btn-primary staff-edit-btn" data-id="${Staff.ID}"
                                 data-name="${Staff.name}"
                                 data-email="${Staff.email}" data-phone="${Staff.phone}" data-dob="${Staff.DOB}"
-                                data-role="${Staff.role}">Edit
+                                data-role="${Staff.role.ordinal()}">Edit
                             User
                         </button>
                         <button class="btn btn-danger delete-btn">Delete</button>
