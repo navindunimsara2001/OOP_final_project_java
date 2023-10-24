@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page import="java.util.Objects" %>
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Title</title>
-    <link rel="stylesheet" href="assets/styles/fuelmgt.css">
+    <link rel="stylesheet" href="../assets/styles/fuelmgt.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  --> 
 
 </head>
 <body>
@@ -20,9 +20,9 @@
                 
                 <div class="feature" id="f1" onclick="openModal('Petrol 92', '1')">
                     <div class="feattop">
-                        <img src="assets/images/fuel/petrol92.jpeg" alt="Petrol 92">
+                        <img src="../assets/images/fuel/petrol92.jpeg" alt="Petrol 92">
                         <h3>Petrol 92</h3>
-                        <h1 class="remain">100.00L</h1>
+                        <h1 class="remain">${fuel1.amount}L</h1>
                     </div>
                     
                     <div class="pricetag" id="pricetag1">
@@ -30,16 +30,16 @@
                             <h4>Price</h4>
                         </div>
                         <div class="price">
-                            <h4>Rs. 100.00</h4>
+                            <h4>${fuel1.price} LKR</h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="feature" id="f2" onclick="openModal('Petrol 95', '2')">
+                <div class="feature" id="f2" data-toggle="modal" data-target="#requestModal" onclick="openModal('Petrol 95', '2')">
                     <div class="feattop">
-                        <img src="assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
+                        <img src="../assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
                         <h3>Petrol 95</h3>
-                        <h1 class="remain">100.00L</h1>
+                        <h1 class="remain">${fuel2.amount}L</h1>
                     </div>
 
                     <div class="pricetag" id="pricetag2">
@@ -47,16 +47,16 @@
                             <h4>Price</h4>
                         </div>
                         <div class="price">
-                            <h4>Rs. 100.00</h4>
+                            <h4>${fuel2.price} LKR</h4>
                         </div>
                     </div>
                 </div>
 
                 <div class="feature" id="f3" onclick="openModal('Diesel', '3')">
                     <div class="feattop">
-                        <img src="assets/images/fuel/diesel.jpeg" alt="Diesel">
+                        <img src="../assets/images/fuel/diesel.jpeg" alt="Diesel">
                         <h3>Diesel</h3>
-                        <h1 class="remain">100.00L</h1>
+                        <h1 class="remain">${fuel3.amount}L</h1>
                     </div>
                     
                     <div class="pricetag" id="pricetag3">
@@ -64,7 +64,7 @@
                             <h4>Price</h4>
                         </div>
                         <div class="price">
-                            <h4>Rs. 100.00</h4>
+                            <h4>${fuel3.price} LKR</h4>
                         </div>
                     </div>
                 </div>
@@ -83,10 +83,10 @@
                     </div>
                     <div class="modal-body">
                         <section class="container" id="container">
-                            <form action=" " method="post" class="form">
+                            <form action="./FuelManageServlet" method="post" class="form">
                                 <div class="input-box">
                                     <label>Fuel Type :
-                                        <input type="select" name="fuelName" required readonly id="fuelName"></label>
+                                        <input type="text" name="fuelName" required readonly id="fuelName"></label>
                                 </div>
                                 <div class="input-box">
                                     <label>Amount :

@@ -13,4 +13,5 @@ public class URLS {
     public static final String USER_APPOINTMENT = "appointments";
     public static final String LOGOUT = "logout";
     public static final String VIEW_ITEM_LIST = "./viewItemList";
+    public static final String FUEL_MANAGEMENT = "./FuelManageServlet";
 }

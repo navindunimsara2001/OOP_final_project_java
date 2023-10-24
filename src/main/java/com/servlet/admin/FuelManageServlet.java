@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Fuel;
 import com.service.impl.FuelService;
+import com.util.URLS;
+import com.util.Views;
  
 @WebServlet("/FuelManageServlet")
 public class FuelManageServlet extends HttpServlet {
@@ -25,18 +27,18 @@ public class FuelManageServlet extends HttpServlet {
 		request.setAttribute("fuel2",fuel2);
 		request.setAttribute("fuel3",fuel3);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Views.FUEL_MANAGEMENT);
 		dispatcher.forward(request, response);	
 	}
 	
 	// for staff member decrease fuel amount
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ID = Integer.parseInt(request.getParameter("fuelID"));
-		double price = Float.parseFloat(request.getParameter("price"));
+		int ID = Integer.parseInt(request.getParameter("itemId"));
+		double amount = Float.parseFloat(request.getParameter("amount"));
 		
-		new FuelService().updateFuelAmount(ID, price);
+		new FuelService().updateFuelAmount(ID, amount);
 		
-		response.sendRedirect("");
+		response.sendRedirect(URLS.FUEL_MANAGEMENT);
 	}
 
 }
