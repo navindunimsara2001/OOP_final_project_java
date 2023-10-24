@@ -17,7 +17,7 @@ import com.service.impl.ItemService;
  * Servlet implementation class ViewItemListServlet
  */
 @WebServlet
-public class ViewItemRequestsServlet extends HttpServlet {
+public class ViewItemListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
