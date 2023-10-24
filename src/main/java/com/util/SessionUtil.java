@@ -15,6 +15,17 @@ public class SessionUtil {
         }
     }
 
+    public enum UserType {
+        User, Staff
+    }
+
+    public static int getId(HttpServletRequest req, UserType type) {
+        return type == UserType.User ? getUserId(req) : getStaffId(req);
+    }
+
+    public static int getId(HttpServletRequest req, UserType type, int def) {
+        return type == UserType.User ? getUserId(req, def) : getStaffId(req, def);
+    }
 
     public static int getUserId(HttpServletRequest req) {
         Customer cus = getCustomer(req);
