@@ -36,7 +36,7 @@ public class ViewItemListServlet extends HttpServlet {
 		System.out.println(ID +"," +qty);
 		new ItemService().updateItemByID(ID, qty);
 		
-		response.sendRedirect("/viewItemList");
+		response.sendRedirect("./viewItemList");
 		
 	}
 

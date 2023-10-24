@@ -32,7 +32,7 @@
 								<input type="number" name="qty">
 								<input type="hidden" name="itmID" value="${Item.ID}">
 									<button type="submit" class="btn btn-primary">
-										<a class="text-decoration-none text-white" href="">Edit</a>
+										Edit
 									</button>
 								</form>
 							</td>
