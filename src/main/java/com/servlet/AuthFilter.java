@@ -34,17 +34,17 @@ public class AuthFilter extends HttpFilter {
             return;
         }
 
-        Person u;
-        if (this.isAdmin) {
-            u = SessionUtil.getStaff(request);
-        } else {
-            u = SessionUtil.getCustomer(request);
-        }
-
-        if (Objects.isNull(u)) {
+        try {
+            if (this.isAdmin) {
+                SessionUtil.getStaffId(request);
+            } else {
+                SessionUtil.getUserId(request);
+            }
+        } catch (SessionUtil.NotLoggedInException e) {
             this.redirect(request, (HttpServletResponse) res);
             return;
         }
+
 
         chain.doFilter(req, res);
     }
