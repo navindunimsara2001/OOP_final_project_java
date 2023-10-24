@@ -19,6 +19,7 @@ public class AppointmentService implements IAppointmentService {
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
     private final static String UPDATE_QUERY = "UPDATE `appointment` SET `status`=?, `assigned`=? WHERE `id`= ?";
     private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
+    private final static String STAFF_QUERY = "SELECT * FROM `appointment` WHERE `assigned` = ?";
     private final static String USER_QUERY = "SELECT * FROM `appointment` WHERE `assigned` = ?";
 
     /**
@@ -189,4 +190,23 @@ public class AppointmentService implements IAppointmentService {
     	
     	return appList;
     }
+
+	@Override
+	public ArrayList<Appointment> getAppointmentByCustomerId(int ID) {
+		ArrayList<Appointment> appList = new ArrayList<>();
+		try (Connection con = DBUtil.connect();
+                PreparedStatement stmt = con.prepareStatement(STAFF_QUERY)
+           ) {
+			stmt.setInt(1, ID);
+    		ResultSet rs = stmt.executeQuery();
+    		
+    		while (rs.next()) {
+                appList.add(this.loadAppoinment(rs));
+            }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return appList;
+	}
 }
