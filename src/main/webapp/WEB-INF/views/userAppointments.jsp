@@ -10,9 +10,11 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link href="../../assets/styles/preappointments.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
+<jsp:include page="/includes/header.jsp"/>
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/includes/site_menu.jsp"/>
 	<main>
 		<div class="header">
 			<h3>Previous Appointments</h3>
@@ -43,5 +45,6 @@
 			</tbody>
 		</table>
 	</main>
+	<jsp:include page="/includes/footer.jsp"/>
 </body>
 </html>
