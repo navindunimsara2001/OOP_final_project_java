@@ -15,7 +15,7 @@ public class ItemService implements IItemService {
     private final static String GET_QUERY = "SELECT * FROM `item` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `item`";
     private final static String SEARCH_QUERY = "SELECT * FROM `item` where `name` LIKE ?";
-    private final static String UPDATE_QUERY = "UPDATE `item` SET `in_stock` = ? where `id` = ?";
+    private final static String UPDATE_QUERY = "UPDATE `item` SET `in_stock` = `in_stock`+ ? where `id` = ?";
 
     @Override
     public Item getItemById(int ID) {
@@ -81,6 +81,8 @@ public class ItemService implements IItemService {
     	 try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
     		 stmt.setInt(1,	qty);
     		 stmt.setInt(2, ID);
+    		 
+    		 stmt.executeUpdate();
     		 
     	 } catch (SQLException e) {
 			e.printStackTrace();

@@ -188,6 +188,17 @@
         <servlet-name>requestItem</servlet-name>
         <url-pattern>/staff/requestItem</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+		<servlet-name>ViewItemListServlet</servlet-name>
+		<servlet-class>com.servlet.admin.ViewItemListServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ViewItemListServlet</servlet-name>
+		<url-pattern>/viewItemList</url-pattern>
+	</servlet-mapping>
+	
 
     <filter>
         <filter-name>AuthFilter</filter-name>

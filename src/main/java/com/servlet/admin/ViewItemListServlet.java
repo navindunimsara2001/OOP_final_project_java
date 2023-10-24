@@ -16,7 +16,7 @@ import com.service.impl.ItemService;
 /**
  * Servlet implementation class ViewItemListServlet
  */
-@WebServlet("/ViewItemListServlet")
+@WebServlet
 public class ViewItemListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -31,7 +31,12 @@ public class ViewItemListServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int ID = Integer.parseInt(request.getParameter("itmID"));
+		int qty = Integer.parseInt(request.getParameter("qty"));
+		System.out.println(ID +"," +qty);
+		new ItemService().updateItemByID(ID, qty);
 		
+		response.sendRedirect("/viewItemList");
 		
 	}
 

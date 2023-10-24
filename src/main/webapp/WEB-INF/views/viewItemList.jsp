@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <jsp:include page="/includes/dashboard_header.jsp" />
@@ -28,10 +28,13 @@
 							<td>${Item.name}</td>
 							<td>${Item.inStock}</td>
 							<td class="text-center">
-								<button class="btn btn-primary">
-									<a class="text-decoration-none text-white"
-										href="">Edit</a>
-								</button>
+								<form action="./viewItemList" method="post">
+								<input type="number" name="qty">
+								<input type="hidden" name="itmID" value="${Item.ID}">
+									<button type="submit" class="btn btn-primary">
+										<a class="text-decoration-none text-white" href="">Edit</a>
+									</button>
+								</form>
 							</td>
 						</tr>
 					</c:forEach>
