@@ -14,21 +14,24 @@ import com.model.ItemRequest;
 import com.service.impl.ItemRequestService;
 import com.util.SessionUtil;
 
-@WebServlet("/ShowRequestItemsServlet")
+@WebServlet
 public class ShowRequestItemsServlet extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ID = SessionUtil.getStaffId(request);
-		
-		ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(ID);
-		request.setAttribute("itmReqList", itmReqList);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/CreatedItemRequest.jsp");
-		dispatcher.forward(request, response);
-	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int ID = SessionUtil.getStaffId(request, 7);
+
+        ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(ID);
+        for (ItemRequest itemRequest : itmReqList) {
+            System.out.println(itemRequest);
+        }
+
+        request.setAttribute("requestedItems", itmReqList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/CreatedItemRequest.jsp");
+        dispatcher.forward(request, response);
+    }
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
 
 }

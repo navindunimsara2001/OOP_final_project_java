@@ -18,26 +18,26 @@ import com.service.impl.ItemService;
  */
 @WebServlet
 public class ViewItemListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Item> itmList = new ItemService().getAllItemList();
-		
-		request.setAttribute("itmList", itmList);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/viewItemList.jsp");
-		dispatcher.forward(request, response);
-	}
+    private static final long serialVersionUID = 1L;
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ID = Integer.parseInt(request.getParameter("itmID"));
-		int qty = Integer.parseInt(request.getParameter("qty"));
-		System.out.println(ID +"," +qty);
-		new ItemService().updateItemByID(ID, qty);
-		
-		response.sendRedirect("./viewItemList");
-		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Item> itmList = new ItemService().getAllItemList();
+
+        request.setAttribute("itmList", itmList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/viewItemList.jsp");
+        dispatcher.forward(request, response);
+    }
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int ID = Integer.parseInt(request.getParameter("itmID"));
+        int qty = Integer.parseInt(request.getParameter("qty"));
+        System.out.println(ID + "," + qty);
+        new ItemService().updateItemByID(ID, qty);
+
+        response.sendRedirect("./viewItemList");
+
+    }
 
 }

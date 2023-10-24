@@ -19,12 +19,8 @@ import com.util.Views;
 
 @WebServlet
 public class ManageAppointmentsServlet extends HttpServlet {
-    // create Appointment object
-    final Appointment app = new Appointment();
     // create AppointmentService object
     final AppointmentService appService = new AppointmentService();
-    // create Staff members object
-    Staff stf = new Staff();
     // create StaffService object
     final StaffService stfService = new StaffService();
 
@@ -55,9 +51,13 @@ public class ManageAppointmentsServlet extends HttpServlet {
             // get ID values
             int appID = Integer.parseInt(AID);
             int staffID = Integer.parseInt(sId);
+
+            // create Appointment object
+            final Appointment app = new Appointment();
             // set values
             app.setStatus(request.getParameter("status"));
-            stf = stfService.getStaffById(staffID);
+            // create Staff members object
+            Staff stf = stfService.getStaffById(staffID);
             app.setStaff(stf);
             // pass value to update
             appService.updateAppointment(appID, app);
