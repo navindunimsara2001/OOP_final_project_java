@@ -8,19 +8,13 @@ import java.util.Objects;
 
 public class SessionUtil {
 
-    public static Customer getCustomer(HttpServletRequest req) {
-        try {
-            return (Customer) req.getSession(false).getAttribute("user");
-        } catch (NullPointerException | ClassCastException ignored) {
-            return null;
-        }
-    }
 
-    static class NotLoggedInException extends RuntimeException {
+    public static class NotLoggedInException extends RuntimeException {
         public NotLoggedInException() {
             super("User is not logged in");
         }
     }
+
 
     public static int getUserId(HttpServletRequest req) {
         Customer cus = getCustomer(req);
@@ -58,7 +52,16 @@ public class SessionUtil {
         }
     }
 
-    public static Staff getStaff(HttpServletRequest req) {
+    private static Customer getCustomer(HttpServletRequest req) {
+        try {
+            return (Customer) req.getSession(false).getAttribute("user");
+        } catch (NullPointerException | ClassCastException ignored) {
+            return null;
+        }
+    }
+
+
+    private static Staff getStaff(HttpServletRequest req) {
         try {
             return (Staff) req.getSession(false).getAttribute("user");
         } catch (NullPointerException | ClassCastException ignored) {

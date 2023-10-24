@@ -45,18 +45,17 @@ public interface IAppointmentService {
      * @param ID the id of the Appointment
      */
     void removeAppointment(int ID);
-    
-    /**  
-     * 
+
+    /**
      * @param ID the id of staff
      * @return a list of all appointments that assign to specific staff member
      */
     ArrayList<Appointment> getAppointmentBystaffId(int ID);
-    
+
     /**
-     * 
+     *
      * @param ID the id of customer
      * @return a list of all appointments that made by specific customer
      */
-    ArrayList<Appointment> getAppointmentByCustomerId(int ID);
+//    ArrayList<Appointment> getAppointmentByCustomerId(int ID);
 }
