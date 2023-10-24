@@ -11,4 +11,5 @@ public class Views {
     public static final String MANAGE_APPOINTMENTS = "/WEB-INF/views/manageAppointments.jsp";
     public static final String MANAGE_STAFF = "/WEB-INF/views/manageAllStaff.jsp";
     public static final String SHOW_APPOINTMENTS = "/WEB-INF/views/showAssignedAppointments.jsp";
+    public static final String USER_APPOINTMENTS = "/WEB-INF/views/userAppointments.jsp";
 }

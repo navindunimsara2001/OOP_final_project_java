@@ -91,6 +91,16 @@
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>showUserAppointments</servlet-name>
+        <servlet-class>com.servlet.ShowUserAppointments</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showUserAppointments</servlet-name>
+        <url-pattern>/appointments</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>customerDeleteProfile</servlet-name>

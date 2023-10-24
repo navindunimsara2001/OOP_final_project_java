@@ -53,9 +53,8 @@ public interface IAppointmentService {
     ArrayList<Appointment> getAppointmentBystaffId(int ID);
 
     /**
-     *
      * @param ID the id of customer
      * @return a list of all appointments that made by specific customer
      */
-//    ArrayList<Appointment> getAppointmentByCustomerId(int ID);
+    ArrayList<Appointment> getAppointmentByCustomerId(int ID);
 }
