@@ -44,4 +44,11 @@ public interface IItemRequestService {
      * @param ID the id of Item Request
      */
     void removeItemRequest(int ID);
+    
+    /**
+     * 
+     * @param ID the id of staff member
+     * @return List of item requests that staff member requested
+     */
+    ArrayList<ItemRequest> getItemRequestByStaffId(int ID);
 }

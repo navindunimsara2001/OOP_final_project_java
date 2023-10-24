@@ -4,10 +4,10 @@ public class Item {
 	//Attributes
 	private int ID;
 	private String name;
-	private boolean inStock;
+	private int inStock;
 	
 	// getters & setters
-	public boolean isInStock() {
+	public int getInStock() {
 		return inStock;
 	}
 	public int getID() {
@@ -22,7 +22,7 @@ public class Item {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setInStock(boolean inStock) {
+	public void setInStock(int inStock) {
 		this.inStock = inStock;
 	}
 }

@@ -38,7 +38,7 @@
                     <tr>
                         <td>${item.ID}</td>
                         <td>${item.name}</td>
-                        <td>${item.inStock? "In":"Out of"} Stock</td>
+                        <td>${item.inStock>0 ? "In":"Out of"} Stock</td>
                         <td>
                             <button type="button" class="btn btn-primary item-req-btn" data-id="${item.ID}"
                                     data-name="<c:out value="${item.name}" />">Request

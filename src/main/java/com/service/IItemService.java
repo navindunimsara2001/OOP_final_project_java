@@ -14,4 +14,6 @@ public interface IItemService {
     public ArrayList<Item> getAllItemList();
 
     ArrayList<Item> getAllItemListBySearch(String str);
+    
+    void updateItemByID(int Id , int qty);
 }
