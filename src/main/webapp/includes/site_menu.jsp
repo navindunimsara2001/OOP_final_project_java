@@ -9,14 +9,13 @@
         <a class="btn btn-primary" href="${URLS.USER_LOGIN}">Login</a>
         <a class="btn btn-outline-secondary" href="${URLS.USER_REGISTER}">Sign Up</a>
     </div>
-    <a class="item if-login" href="#">My Appointments</a>
+    <a class="item if-login" href="appointments">My Appointments</a>
     <div class="item dropdown no-hover if-login" id="profile-dropdown" tabindex="1">
         <img src="assets/images/profile.svg" width="28px">
         <div class="dropdown-content">
-            <a href="#" class="item">Action 1</a>
-            <a href="#" class="item">Action 2</a>
-            <a href="#" class="item">Action 3</a>
-            <a href="#" class="item">Action 4</a>
+            <a href="profile" class="item">Profile</a>
+            <a href="appointments" class="item">Appointments</a>
+            <a href="logout" class="item">Logout</a>
         </div>
 
     </div>

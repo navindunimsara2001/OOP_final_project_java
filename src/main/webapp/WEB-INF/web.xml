@@ -91,16 +91,27 @@
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
-        <servlet-name>customerDeleteProfile</servlet-name>
-        <servlet-class>com.servlet.CustomerDeleteServlet</servlet-class>
+        <servlet-name>showStaffProfile</servlet-name>
+        <servlet-class>com.servlet.staff.StaffProfileServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>customerDeleteProfile</servlet-name>
-        <url-pattern>/userProfileDelete</url-pattern>
+        <servlet-name>showStaffProfile</servlet-name>
+        <url-pattern>/staff/profile</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showUserAppointments</servlet-name>
+        <servlet-class>com.servlet.ShowUserAppointments</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showUserAppointments</servlet-name>
+        <url-pattern>/appointments</url-pattern>
+    </servlet-mapping>
+
+
     <!-- Admin servlet -->
     <!-- AdminCreateStaffServlet -->
     <servlet>
