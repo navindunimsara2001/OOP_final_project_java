@@ -5,10 +5,6 @@
             <img src="../assets/images/Icons/user-search-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Users</div>
         </a>
-        <div class="sidebar-option">
-            <img src="../assets/images/Icons/user-shield-svgrepo-com.svg" width="40px">
-            <div class="sidebar-option-text">Managers</div>
-        </div>
         <a class="sidebar-option" href="./manageStaff">
             <img src="../assets/images/Icons/users-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Staff</div>
@@ -20,6 +16,14 @@
         <a class="sidebar-option" href="./requestItem">
             <img src="../assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Items</div>
+        </a>
+        <a class="sidebar-option" href="./requestedItem">
+            <img src="../assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">Requested Items</div>
+        </a>
+        <a class="sidebar-option" href="./allItemRequest">
+            <img src="../assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">Requested Items</div>
         </a>
     </div>
 </aside>

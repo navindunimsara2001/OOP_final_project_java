@@ -200,6 +200,16 @@
 	</servlet-mapping>
 	
 
+    <servlet>
+        <servlet-name>staffViewRequests</servlet-name>
+        <servlet-class>com.servlet.staff.ShowRequestItemsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>staffViewRequests</servlet-name>
+        <url-pattern>/staff/requestedItem</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>com.servlet.AuthFilter</filter-class>
