@@ -17,8 +17,9 @@ import com.util.SessionUtil;
 @WebServlet
 public class ShowRequestItemsServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int ID = SessionUtil.getStaffId(request, 7);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int ID = SessionUtil.getStaffId(request, 12);
 
         ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(ID);
         for (ItemRequest itemRequest : itmReqList) {
@@ -30,8 +31,8 @@ public class ShowRequestItemsServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
     }
 
 }

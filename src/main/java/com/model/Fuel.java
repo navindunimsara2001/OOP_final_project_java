@@ -3,7 +3,6 @@ package com.model;
 public class Fuel {
     private int ID;
     private String type;
-    private String subtype;
     private float amount;
     private double price;
 
@@ -27,16 +26,8 @@ public class Fuel {
         return ID;
     }
 
-    public String getSubtype() {
-        return subtype;
-    }
-
     public void setID(int iD) {
         ID = iD;
-    }
-
-    public void setSubtype(String subtype) {
-        this.subtype = subtype;
     }
 
     public void setPrice(double price) {
@@ -46,5 +37,4 @@ public class Fuel {
     public double getPrice() {
         return price;
     }
-
 }

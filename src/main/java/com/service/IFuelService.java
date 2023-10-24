@@ -27,8 +27,15 @@ public interface IFuelService {
     /**
      * Updates the data of the fuel type with the given id.
      *
-     * @param ID   id of fuel type
-     * @param fuel the new data of the fuel object
+     * @param ID the id of fuel type
+     * @param amount the amount of fuel decreased
      */
-    void updateFuel(int ID, Fuel fuel);
+    void updateFuelAmount(int ID , double amount);
+    
+    /**
+     * 
+     * @param ID the id of fuel type
+     * @param price new price
+     */
+    void changeFuelPrice(int ID , double price);
 }

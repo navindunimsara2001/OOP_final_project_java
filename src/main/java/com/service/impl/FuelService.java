@@ -14,7 +14,8 @@ import java.util.logging.Level;
 public class FuelService implements IFuelService {
     private final static String GET_QUERY = "select * from `fuel` where id=?";
     private final static String GET_ALL_QUERY = "select * from `fuel`";
-    private final static String UPDATE_FUEL = "update fuel set type=?, subtype=?, amount=?, price=? where id=?";
+    private final static String UPDATE_FUEL_AMOUNT = "update fuel set `amount`= `amount`-? where id=?";
+    private final static String UPDATE_FUEL_PRICE = "update fuel set `price`= ? where id=?";
 
     /**
      * Gets the fuel type with the given id.
@@ -37,8 +38,8 @@ public class FuelService implements IFuelService {
             return this.loadFuel(result);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to get fuel", e);
+            return null;
         }
-        return null;
     }
 
     /**
@@ -75,7 +76,6 @@ public class FuelService implements IFuelService {
         Fuel f = new Fuel();
         f.setID(result.getInt("id"));
         f.setType(result.getString("type"));
-        f.setSubtype(result.getString("subtype"));
         f.setAmount(result.getFloat("amount"));
         f.setPrice(result.getDouble("price"));
         return f;
@@ -88,16 +88,33 @@ public class FuelService implements IFuelService {
      * @param fuel the new data of the fuel object
      */
     @Override
-    public void updateFuel(int ID, Fuel fuel) {
+    public void updateFuelAmount(int ID , double amount) {
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL)) {
-            stmt.setString(1, fuel.getType());
-            stmt.setString(2, fuel.getSubtype());
-            stmt.setFloat(3, fuel.getAmount());
-            stmt.setDouble(4, fuel.getPrice());
-            stmt.setInt(5, ID);
+             PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL_AMOUNT)) {
+            stmt.setDouble(1,amount);
+            stmt.setInt(2, ID);
+            
+            stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update fuel", e);
         }
+    }
+    
+    /**
+     * 
+     * @param ID the id of fuel type
+     * @param price new price
+     */
+    @Override
+	public void changeFuelPrice(int ID , double price) {
+    	try (Connection con = DBUtil.connect();
+                PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL_PRICE)) {
+    		stmt.setDouble(1, price);
+    		stmt.setDouble(2, ID);
+    		
+    		stmt.executeUpdate();
+    	} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
 }

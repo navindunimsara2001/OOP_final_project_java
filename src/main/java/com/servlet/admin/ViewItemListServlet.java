@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Item;
 import com.service.impl.ItemService;
+import com.util.URLS;
+import com.util.Views;
 
 /**
  * Servlet implementation class ViewItemListServlet
@@ -36,8 +38,6 @@ public class ViewItemListServlet extends HttpServlet {
         System.out.println(ID + "," + qty);
         new ItemService().updateItemByID(ID, qty);
 
-        response.sendRedirect("./viewItemList");
-
+        response.sendRedirect(URLS.VIEW_ITEM_LIST);
     }
-
 }
