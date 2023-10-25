@@ -55,26 +55,23 @@ CREATE TABLE
   COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE
-    `item_request`
-(
-    `id`       int unsigned NOT NULL AUTO_INCREMENT,
-    `item_id`  int unsigned DEFAULT NULL,
+  `item_request` (
+    `id` int unsigned NOT NULL AUTO_INCREMENT,
+    `item_id` int unsigned DEFAULT NULL,
     `staff_id` int unsigned DEFAULT NULL,
-    `qty`      int          NOT NULL,
+    `qty` int NOT NULL,
+    `status` varchar(15) NOT NULL DEFAULT 'Pending',
     PRIMARY KEY (`id`),
     KEY `req_staff_fk` (`staff_id`),
     KEY `req_item_fk` (`item_id`),
     CONSTRAINT `req_item_fk` FOREIGN KEY (`item_id`) REFERENCES `item` (`id`) ON DELETE
-        SET
-        NULL,
-    CONSTRAINT `req_staff_fk` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE
-        SET
-        NULL,
-    CONSTRAINT `req_amount_check` CHECK ((`qty` > 0))
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
-
+    SET
+      NULL,
+      CONSTRAINT `req_staff_fk` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE
+    SET
+      NULL,
+      CONSTRAINT `req_amount_check` CHECK ((`qty` > 0))
+  ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE
     `appointment`
 (
