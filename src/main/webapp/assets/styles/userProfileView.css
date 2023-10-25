@@ -8,9 +8,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
-}
 
 main {
     min-height: 100vh;
@@ -20,7 +17,7 @@ main {
     padding: 20px;
 }
 
-.container {
+.profile-container {
     position: relative;
     max-width: 600px;
     width: 100%;
@@ -30,52 +27,46 @@ main {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+.profile-container .profile-header {
     text-align: center;
-    margin-top: 40px;
 }
 
-.propic {
+.profile-container .profile-pic {
     display: flex;
     justify-content: center;
 }
 
-.propic img {
-    margin-top: 10px;
-    height: 80px;
+.profile-container table tr {
 }
 
-#col {
-    border: none;
-    border-radius: 8px;
+.profile-container table tr td:first-child {
+    width: 7ch;
+    display: inline-block;
+    margin-right: 20px;
 }
 
-table {
+.profile-container table {
     margin-top: 20px;
     padding-top: 20px;
     margin-bottom: 20px;
 }
 
-.field {
+.profile-container .field {
     margin-top: 20px;
     font-size: 22px;
 }
 
-input:not([type="submit"]) {
-    height: 30px;
+.profile-container input:not([type="submit"]) {
+    height: 50px;
     border-radius: 6px;
-    border: none;
-    background-color: rgba(207, 197, 162, 0.889);
+    border: #0000003d solid 1px;
+    background-color: white;
     color: black;
-    padding-left: 20px;
+    padding: 10px 20px;
 }
 
-label {
+.profile-container label {
     margin-right: 10px;
 }
 
-.buttons {
-    margin-top: 40px;
-    margin-left: 200px;
-}
 
