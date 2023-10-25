@@ -58,6 +58,7 @@ main {
 
 .profile-container input:not([type="submit"]) {
     height: 50px;
+    margin-bottom: 5px;
     border-radius: 6px;
     border: #0000003d solid 1px;
     background-color: white;
@@ -67,6 +68,8 @@ main {
 
 .profile-container label {
     margin-right: 10px;
+    display: inline-block;
+    width: 12ch;
 }
 
 
