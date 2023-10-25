@@ -56,7 +56,7 @@ public class AdminEditUserServlet extends HttpServlet {
         cs.updateCustomer(ID, cus);
 
         //redirect
-        response.sendRedirect("../" + URLS.MANAGE_USERS);
+        response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_USERS));
 
     }
 

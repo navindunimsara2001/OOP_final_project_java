@@ -63,7 +63,7 @@ public class RequestItemServlet extends HttpServlet {
 
         this.requestService.addItemRequest(iReq);
 
-        response.sendRedirect(URLS.ITEM_REQUEST);
+        response.sendRedirect(URLS.urlFor(request, URLS.ITEM_REQUEST));
     }
 
 }

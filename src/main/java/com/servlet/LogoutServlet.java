@@ -20,6 +20,6 @@ public class LogoutServlet extends HttpServlet {
         if (!Objects.isNull(session)) {
             session.invalidate();
         }
-        resp.sendRedirect(URLS.HOME);
+        resp.sendRedirect(URLS.urlFor(req, URLS.HOME));
     }
 }

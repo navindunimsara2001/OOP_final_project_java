@@ -35,7 +35,7 @@ public class UserProfileServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         if (Objects.equals("delete", action)) {
-            this.deleteProfile(ID, response);
+            this.deleteProfile(ID, request, response);
         } else {
             this.showProfile(ID, request, response);
         }
@@ -60,15 +60,15 @@ public class UserProfileServlet extends HttpServlet {
 
         boolean isEditing = Objects.equals(request.getParameter("edit"), "true");
         request.setAttribute("edit", isEditing);
-        
+
         //redirect
         RequestDispatcher dispatcher = request.getRequestDispatcher(Views.USER_PROFILE_VIEW);
         dispatcher.forward(request, response);
     }
 
-    private void deleteProfile(int ID, HttpServletResponse response) throws IOException {
+    private void deleteProfile(int ID, HttpServletRequest request, HttpServletResponse response) throws IOException {
         this.customerService.removeCustomer(ID);
-        response.sendRedirect(URLS.LOGOUT);
+        response.sendRedirect(URLS.urlFor(request, URLS.LOGOUT));
     }
 
 
@@ -96,7 +96,7 @@ public class UserProfileServlet extends HttpServlet {
         customerService.updateCustomer(ID, cus);
 
         //redirect
-        response.sendRedirect(URLS.USER_PROFILE);
+        response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
     }
 
 

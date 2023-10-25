@@ -15,6 +15,7 @@ import com.model.Appointment;
 import com.model.Staff;
 import com.service.impl.AppointmentService;
 import com.service.impl.StaffService;
+import com.util.URLS;
 import com.util.Views;
 
 @WebServlet
@@ -63,7 +64,7 @@ public class ManageAppointmentsServlet extends HttpServlet {
             appService.updateAppointment(appID, app);
         }
         // redirect
-        response.sendRedirect("./manageAppointment");
+        response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_APPOINTMENT));
 
     }
 

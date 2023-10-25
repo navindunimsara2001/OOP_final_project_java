@@ -37,6 +37,6 @@ public class AdminCreateStaffServlet extends HttpServlet {
         stf.setRole(role == 1 ? Staff.Role.Manager : Staff.Role.Staff);
         stfS.addStaff(stf);
 
-        response.sendRedirect("../" + URLS.MANAGE_STAFF);
+        response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
     }
 }

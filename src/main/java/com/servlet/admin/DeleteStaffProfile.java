@@ -21,15 +21,16 @@ import com.util.Views;
 @WebServlet("/DeleteStaffProfile")
 public class DeleteStaffProfile extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ID = Integer.parseInt(request.getParameter("ID"));
-		
-		new StaffService().removeStaff(ID);
-		
-		response.sendRedirect(URLS.MANAGE_STAFF);
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int ID = Integer.parseInt(request.getParameter("ID"));
+
+        new StaffService().removeStaff(ID);
+
+        response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
 
 }

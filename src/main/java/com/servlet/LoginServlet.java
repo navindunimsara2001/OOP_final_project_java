@@ -1,6 +1,7 @@
 package com.servlet;
 
 import com.model.Person;
+import com.model.Staff;
 import com.service.ICustomerService;
 import com.service.IStaffService;
 import com.service.impl.CustomerService;
@@ -23,7 +24,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet
 public class LoginServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
@@ -57,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 
         if (Objects.isNull(email) || Objects.isNull(password)) {
             logger.log(Level.INFO, "username or password not set");
-            resp.sendRedirect(loginURL);
+            resp.sendRedirect(URLS.urlFor(req, loginURL));
             return;
         }
 
@@ -74,27 +75,41 @@ public class LoginServlet extends HttpServlet {
         // check if the login details are valid.
         if (Objects.isNull(user) || !Objects.equals(user.getPassword(), password)) {
             logger.log(Level.INFO, "incorrect password");
-            resp.sendRedirect(loginURL + "?incorrect=true");
+            String redirect = loginURL + "?incorrect=true";
+            String targetPath = getRedirectPath(req, null);
+            if (!Objects.isNull(targetPath)) {
+                redirect += "&to=" + targetPath;
+            }
+
+            resp.sendRedirect(URLS.urlFor(req, redirect));
             return;
         }
 
         // create session
+
         HttpSession sess = req.getSession(true);
-        sess.setAttribute("user", user);
+        sess.setAttribute("id", user.getID());
         sess.setAttribute("isStaff", isStaff);
+        if (isStaff) {
+            assert user instanceof Staff;
+            sess.setAttribute("role", ((Staff) user).getRole());
+        }
 
         // redirect user
-        String redirect = homeURL;
+        String redirect = this.getRedirectPath(req, homeURL);
+        resp.sendRedirect(URLS.urlFor(req, redirect));
+    }
+
+    private String getRedirectPath(HttpServletRequest req, String defaultUrl) {
         String redirectParam = req.getParameter("to");
         if (!Objects.isNull(redirectParam)) {
             try {
                 URI uri = new URI(redirectParam);
-                redirect = uri.getPath();
+                return uri.getPath();
             } catch (URISyntaxException ignored) {
             }
         }
-
-        resp.sendRedirect(redirect);
+        return defaultUrl;
     }
 
 }

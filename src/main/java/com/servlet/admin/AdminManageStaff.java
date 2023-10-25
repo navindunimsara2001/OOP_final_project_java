@@ -21,37 +21,37 @@ import com.util.Views;
  */
 @WebServlet
 public class AdminManageStaff extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		StaffService stfService = new StaffService();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        StaffService stfService = new StaffService();
 
-		ArrayList<Staff> stfList = stfService.getStaffs();
+        ArrayList<Staff> stfList = stfService.getStaffs();
 
-		request.setAttribute("stfList", stfList);
+        request.setAttribute("stfList", stfList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Views.MANAGE_STAFF);
-		dispatcher.forward(request, response);
-	}
+        RequestDispatcher dispatcher = request.getRequestDispatcher(Views.MANAGE_STAFF);
+        dispatcher.forward(request, response);
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		Staff stf = new Staff();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Staff stf = new Staff();
 
-		int ID = Integer.parseInt(request.getParameter("ID"));
-		stf.setName(request.getParameter("name"));
-		stf.setEmail(request.getParameter("email"));
-		stf.setPhone(request.getParameter("phone"));
-		stf.setDOB(request.getParameter("DOB"));
-		stf.setPassword(request.getParameter("password"));
+        int ID = Integer.parseInt(request.getParameter("ID"));
+        stf.setName(request.getParameter("name"));
+        stf.setEmail(request.getParameter("email"));
+        stf.setPhone(request.getParameter("phone"));
+        stf.setDOB(request.getParameter("DOB"));
+        stf.setPassword(request.getParameter("password"));
 
-		int roleID = Integer.parseInt(request.getParameter("role"));
-		stf.setRole(Role.values()[roleID]);
+        int roleID = Integer.parseInt(request.getParameter("role"));
+        stf.setRole(Role.values()[roleID]);
 
-		new StaffService().updateStaff(ID, stf);
-		
-		response.sendRedirect(URLS.MANAGE_STAFF);
-	}
+        new StaffService().updateStaff(ID, stf);
+
+        response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
+    }
 
 }

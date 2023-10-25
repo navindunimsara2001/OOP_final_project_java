@@ -23,7 +23,7 @@ public class AdminDeleteUserServlet extends HttpServlet {
         // get delete operation from Service class
         cs.removeCustomer(ID);
         // redirect
-        response.sendRedirect("../" + URLS.MANAGE_USERS);
+        response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_USERS));
     }
 
 }

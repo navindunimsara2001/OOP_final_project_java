@@ -29,7 +29,7 @@ public class StaffProfileServlet extends HttpServlet {
         int ID = SessionUtil.getStaffId(request, 7);
         String action = request.getParameter("action");
         if (Objects.equals("delete", action)) {
-            this.deleteProfile(ID, response);
+            this.deleteProfile(ID, request, response);
         } else {
             this.showProfile(ID, request, response);
         }
@@ -50,6 +50,7 @@ public class StaffProfileServlet extends HttpServlet {
         request.setAttribute("email", staff.getEmail());
         request.setAttribute("phone", staff.getPhone());
         request.setAttribute("DOB", staff.getDOB());
+        request.setAttribute("staff", true);
 
 
         boolean isEditing = Objects.equals(request.getParameter("edit"), "true");
@@ -60,9 +61,9 @@ public class StaffProfileServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void deleteProfile(int ID, HttpServletResponse response) throws IOException {
+    private void deleteProfile(int ID, HttpServletRequest request, HttpServletResponse response) throws IOException {
         this.staffService.removeStaff(ID);
-        response.sendRedirect(URLS.LOGOUT);
+        response.sendRedirect(URLS.urlFor(request, URLS.LOGOUT));
     }
 
 
@@ -88,7 +89,7 @@ public class StaffProfileServlet extends HttpServlet {
         staffService.updateStaff(ID, staff);
 
         //redirect
-        response.sendRedirect(URLS.USER_PROFILE);
+        response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
     }
 
 

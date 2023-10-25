@@ -51,7 +51,7 @@ public class CustomerRegisterServlet extends HttpServlet {
             CustomerService cs = new CustomerService();
             cs.addCustomer(cus);
 
-            response.sendRedirect(URLS.USER_LOGIN);
+            response.sendRedirect(URLS.urlFor(request, URLS.USER_LOGIN));
         }
 
     }
