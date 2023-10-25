@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet
 public class CustomerRegisterServlet extends HttpServlet {
 
+    private final static Pattern pattern = Pattern.compile("^(.+)@(.+)$");
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
@@ -32,8 +33,6 @@ public class CustomerRegisterServlet extends HttpServlet {
         String district = request.getParameter("district");
 
         //email validation
-        final String regex = "^(.+)@(.+)$";
-        Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
 
         // need to check email exist or not

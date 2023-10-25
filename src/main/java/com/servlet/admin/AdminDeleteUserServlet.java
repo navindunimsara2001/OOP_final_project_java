@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.service.impl.CustomerService;
+import com.util.NotifyUtil;
 import com.util.URLS;
 
 /**
@@ -22,6 +23,7 @@ public class AdminDeleteUserServlet extends HttpServlet {
         int ID = Integer.parseInt(request.getParameter("ID"));
         // get delete operation from Service class
         cs.removeCustomer(ID);
+        NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Deleted User Successfully.");
         // redirect
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_USERS));
     }

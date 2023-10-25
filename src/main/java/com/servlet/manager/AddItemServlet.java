@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.service.impl.ItemService;
+import com.util.URLS;
+
 /**
  * Servlet implementation class AddItemServlet
  */
@@ -23,7 +26,9 @@ public class AddItemServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		int qty = Integer.parseInt("qty");
 		
+		new ItemService().addItem(name, qty);
 		
+		response.sendRedirect(URLS.urlFor(request, URLS.VIEW_ITEM_LIST));
 	}
 
 }

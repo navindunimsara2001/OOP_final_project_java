@@ -11,6 +11,7 @@ public class NotifyUtil {
 
     private static final Logger logger = Logger.getLogger(NotifyUtil.class.getName());
 
+
     public enum Type {
         Info, Success, Error
     }
@@ -52,7 +53,6 @@ public class NotifyUtil {
         }
 
         Object pendingNotifyObj = session.getAttribute("notify");
-        ArrayList<Message> msgList;
         if (Objects.isNull(pendingNotifyObj)) {
             return null;
         } else {
@@ -63,5 +63,14 @@ public class NotifyUtil {
                 return null;
             }
         }
+    }
+
+    public static ArrayList<Message> fetchNotifications(HttpServletRequest request) {
+        ArrayList<Message> msgs = getNotifications(request);
+        if (!Objects.isNull(msgs) && !msgs.isEmpty()) {
+            request.getSession().removeAttribute("notify");
+        }
+
+        return msgs;
     }
 }
