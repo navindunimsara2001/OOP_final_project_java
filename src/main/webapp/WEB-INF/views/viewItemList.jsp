@@ -4,14 +4,14 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Manager Items</title>
+    <title>Manage Items</title>
 </head>
 <body>
 <jsp:include page="/includes/dashboard_menu.jsp"/>
 <div class="sidebar-container">
     <jsp:include page="/includes/dashboard_sidebar.jsp"/>
     <main>
-        <h3>Manager Items</h3>
+        <h3>Manage Items</h3>
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addItem">+ Add Item</button>
         <table
                 class="table table-striped table-hover table-bordered table-responsive">
@@ -48,7 +48,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Add item</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="close btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
