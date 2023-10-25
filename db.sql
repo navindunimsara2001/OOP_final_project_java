@@ -10,9 +10,7 @@
     `gender`   varchar(10)  NOT NULL,
     `district` varchar(20)  NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 CREATE TABLE
     `fuel`
@@ -24,9 +22,7 @@ CREATE TABLE
     PRIMARY KEY (`id`),
     CONSTRAINT `fuel_amount_check` CHECK ((`amount` >= 0)),
     CONSTRAINT `fuel_price_check` CHECK ((`price` > 0))
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 CREATE TABLE
     `item`
@@ -35,9 +31,7 @@ CREATE TABLE
     `name`     varchar(255) NOT NULL,
     `in_stock` tinyint(1) DEFAULT '1',
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 CREATE TABLE
     `staff`
@@ -50,9 +44,7 @@ CREATE TABLE
     `password` varchar(64)  NOT NULL,
     `role`     int          NOT NULL DEFAULT '0',
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+);
 
 CREATE TABLE
   `item_request` (
@@ -71,7 +63,8 @@ CREATE TABLE
     SET
       NULL,
       CONSTRAINT `req_amount_check` CHECK ((`qty` > 0))
-  ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+  );
+  
 CREATE TABLE
     `appointment`
 (
@@ -89,6 +82,4 @@ CREATE TABLE
     KEY `appt_staff_FK` (`assigned`),
     CONSTRAINT `appt_cus_FK` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
     CONSTRAINT `appt_staff_FK` FOREIGN KEY (`assigned`) REFERENCES `staff` (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci
+);
