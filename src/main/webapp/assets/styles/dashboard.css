@@ -2,14 +2,18 @@
     --menu-bg-color: #213555;
     --menu-color: white;
 
-    --sidebar-width: 200px;
-    --menu-height: 60px;
+    --sidebar-width: 280px;
+    --mini-menu-height: 80px;
 }
 
 body, html {
     max-height: 100vh;
     overflow: hidden;
     background-color: whitesmoke;
+}
+
+.sidebar {
+    scrollbar-width: none;
 }
 
 .sidebar-container {
