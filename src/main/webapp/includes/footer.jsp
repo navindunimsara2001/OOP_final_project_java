@@ -20,7 +20,7 @@
                 <a href="#">Terms of Service</a>
             </div>
             <div class="fitem">
-                <a href="#">Privacy Policy</a>
+                <a href="privacy.jsp">Privacy Policy</a>
             </div>
             <div class="fitem">
                 <a href="staff/login">Employee portal</a>

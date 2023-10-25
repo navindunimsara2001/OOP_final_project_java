@@ -3,7 +3,8 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Title</title>
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="/css/staffindex.css">
 </head>
 <body>
 <jsp:include page="/includes/dashboard_menu.jsp"/>
