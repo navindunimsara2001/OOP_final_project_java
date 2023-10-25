@@ -20,7 +20,7 @@ VALUES ('V001', 'Car Battery (Exide)', 100.00),
        ('V018', 'Radiator Coolant (Zerex)', 11.00),
        ('V019', 'Windshield Wipers (Rain-X)', 13.00),
        ('V020', 'Alternator (ACDelco)', 125.00);
---fuel
+-- fuel
 insert into `fuel` (`amount`, `id`, `price`, `type`) values (1110, 1, 180, 'Petrol 92');
 insert into `fuel` (`amount`, `id`, `price`, `type`) values (1230, 2, 210, 'Petrol 95');
 insert into `fuel` (`amount`, `id`, `price`, `type`) values (999.89, 3, 200, 'Diesel');
