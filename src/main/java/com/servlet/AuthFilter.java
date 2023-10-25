@@ -13,11 +13,16 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AuthFilter extends HttpFilter {
 
+    Logger logger = Logger.getLogger(AuthFilter.class.getName());
+
     private SessionUtil.UserType type;
     private String loginURL;
+    private String homeURL;
 
     @Override
     public void init(FilterConfig config) {
@@ -26,6 +31,7 @@ public class AuthFilter extends HttpFilter {
 
         this.type = isAdmin ? SessionUtil.UserType.Staff : SessionUtil.UserType.User;
         this.loginURL = isAdmin ? URLS.ADMIN_LOGIN : URLS.USER_LOGIN;
+        this.homeURL = isAdmin ? URLS.STAFF_HOME : URLS.HOME;
     }
 
     @Override
@@ -33,18 +39,27 @@ public class AuthFilter extends HttpFilter {
         HttpServletRequest request = (HttpServletRequest) req;
 
         if (isLoginPage(request)) {
+            logger.log(Level.INFO, "Trying to access login page ");
             chain.doFilter(req, res);
             return;
         }
 
         HttpSession sess = request.getSession(false);
         if (Objects.isNull(sess)) {
+            logger.log(Level.INFO, "No session set for user");
             this.redirect(request, (HttpServletResponse) res);
             return;
         }
 
-        if (!SessionUtil.isLoggedIn(request, this.type) || !checkAccess(req, res)) {
+        if (!SessionUtil.isLoggedIn(request, this.type)) {
+            logger.log(Level.INFO, "Not logged in or wrong session type");
             this.redirect(request, (HttpServletResponse) res);
+            return;
+        }
+
+        if (!checkAccess(req, res)) {
+            System.out.println("Tried to access blocked url");
+            ((HttpServletResponse) res).sendRedirect(URLS.urlFor(request, this.homeURL));
             return;
         }
 
@@ -56,7 +71,10 @@ public class AuthFilter extends HttpFilter {
     }
 
     private boolean isLoginPage(ServletRequest request) {
-        return (!((HttpServletRequest) request).getRequestURI().equals(this.loginURL));
+        String requestURI = ((HttpServletRequest) request).getRequestURI();
+        String loginURI = URLS.urlFor((HttpServletRequest) request, this.loginURL);
+
+        return (requestURI.equals(loginURI));
     }
 
     private void redirect(HttpServletRequest request, HttpServletResponse res) throws IOException {

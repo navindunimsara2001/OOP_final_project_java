@@ -34,7 +34,7 @@ public class AppointmentServlet extends HttpServlet {
         app.setType(request.getParameter("serviceType"));
         app.setDate(request.getParameter("appointmentDate"));
         app.setComment(request.getParameter("comments"));
-        app.setCus(customerService.getCustomerById(SessionUtil.getUserId(request, 4)));
+        app.setCus(customerService.getCustomerById(SessionUtil.getUserId(request)));
         app.setStatus("pending");
 
         // set data to services for insert DB

@@ -31,7 +31,7 @@ public class UserProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int ID = SessionUtil.getUserId(request, 7);
+        int ID = SessionUtil.getUserId(request);
 
         String action = request.getParameter("action");
         if (Objects.equals("delete", action)) {
@@ -77,7 +77,7 @@ public class UserProfileServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
-        int ID = SessionUtil.getUserId(request, 7);
+        int ID = SessionUtil.getUserId(request);
 
         // get values from edit page
         String name = request.getParameter("name");

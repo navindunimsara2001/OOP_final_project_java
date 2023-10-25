@@ -9,6 +9,9 @@ import java.util.logging.Logger;
 public class SessionUtil {
     private static final Logger logger = Logger.getLogger(SessionUtil.class.getName());
 
+    private static final boolean NO_SESSIONS = false;
+    private static final int DEFAULT_ID = 7;
+
     public static class NotLoggedInException extends RuntimeException {
         public NotLoggedInException() {
             super("User is not logged in");
@@ -24,10 +27,6 @@ public class SessionUtil {
     }
 
 
-    public static int getId(HttpServletRequest req, UserType type, int def) {
-        return type == UserType.User ? getUserId(req, def) : getStaffId(req, def);
-    }
-
     public static boolean isLoggedIn(HttpServletRequest req, UserType type) {
         try {
             getId(req, type);
@@ -39,26 +38,20 @@ public class SessionUtil {
     }
 
 
-    public static int getUserId(HttpServletRequest req, int defaultV) {
-        try {
-            return getId(req, UserType.User);
-        } catch (NotLoggedInException e) {
-            System.out.println("Falling back to default value " + defaultV);
-            return defaultV;
-        }
+    public static int getUserId(HttpServletRequest req) {
+        return getId(req, UserType.User);
     }
 
 
-    public static int getStaffId(HttpServletRequest req, int defaultV) {
-        try {
-            return getId(req, UserType.Staff);
-        } catch (NotLoggedInException e) {
-            System.out.println("Falling back to default value " + defaultV);
-            return defaultV;
-        }
+    public static int getStaffId(HttpServletRequest req) {
+        return getId(req, UserType.Staff);
     }
 
     private static int getId(HttpServletRequest req, UserType type) {
+        if (NO_SESSIONS) {
+            return DEFAULT_ID;
+        }
+
         HttpSession session = req.getSession(false);
         if (Objects.isNull(session)) {
             throw new NotLoggedInException();
