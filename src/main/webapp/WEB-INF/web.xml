@@ -265,7 +265,7 @@
     <!-- staff member update sold fuel count -->
     <servlet>
         <servlet-name>FuelSalesServlet</servlet-name>
-        <servlet-class>com.servlet.admin.FuelSalesServlet</servlet-class>
+        <servlet-class>com.servlet.staff.FuelSalesServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

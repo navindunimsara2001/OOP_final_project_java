@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.Staff;
 import com.model.Staff.Role;
 import com.service.impl.StaffService;
+import com.util.NotifyUtil;
+import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
 
@@ -20,12 +22,18 @@ import com.util.Views;
  */
 @WebServlet
 public class DeleteStaffProfile extends HttpServlet {
+    private final StaffService staffService = new StaffService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int ID = Integer.parseInt(request.getParameter("id"));
+        try {
+            int ID = Parse.Number(request.getParameter("id"));
 
-        new StaffService().removeStaff(ID);
+            staffService.removeStaff(ID);
 
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Deleted Staff Account Successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
     }
 

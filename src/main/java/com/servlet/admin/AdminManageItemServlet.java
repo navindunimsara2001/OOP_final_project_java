@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Item;
 import com.service.impl.ItemService;
+import com.util.NotifyUtil;
+import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
 
@@ -21,9 +23,10 @@ import com.util.Views;
 @WebServlet
 public class AdminManageItemServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private final ItemService itemService = new ItemService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Item> itmList = new ItemService().getAllItemList();
+        ArrayList<Item> itmList = itemService.getAllItemList();
 
         request.setAttribute("itmList", itmList);
 
@@ -33,11 +36,17 @@ public class AdminManageItemServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int ID = Integer.parseInt(request.getParameter("itmID"));
-        int qty = Integer.parseInt(request.getParameter("qty"));
-        System.out.println(ID + "," + qty);
-        new ItemService().updateItemByID(ID, qty);
 
+        try {
+            int ID = Parse.Number(request.getParameter("itmID"), "Item ID");
+            int qty = Parse.Number(request.getParameter("qty"), "Item Amount");
+
+            itemService.updateItemByID(ID, qty);
+
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Item Amount Updated Successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
         response.sendRedirect(URLS.urlFor(request, URLS.VIEW_ITEM_LIST));
     }
 }

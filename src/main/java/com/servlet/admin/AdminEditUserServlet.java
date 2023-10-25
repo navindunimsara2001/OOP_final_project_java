@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Customer;
 import com.service.impl.CustomerService;
+import com.util.NotifyUtil;
 import com.util.URLS;
+import com.util.Parse;
 import com.util.Views;
 
 /**
@@ -43,24 +45,32 @@ public class AdminEditUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        // get edited data from form
-        int ID = Integer.parseInt(request.getParameter("ID"));
+        try {
+            // get edited data from form
+            int ID = Parse.Number(request.getParameter("ID"), "User Id");
 
-        // create customer object
-        Customer cus = cs.getCustomerById(ID);
-        System.out.println(cus);
-        System.out.println(request.getParameterMap().keySet());
-        cus.setName(request.getParameter("name"));
-        cus.setPhone(request.getParameter("phone"));
-        cus.setDOB(request.getParameter("DOB"));
-        cus.setDistrict(request.getParameter("district"));
+            Customer cus = cs.getCustomerById(ID);
+            String name = Parse.Name(request.getParameter("name"));
+            String phone = Parse.Phone(request.getParameter("phone"));
+            String DOB = Parse.Date(request.getParameter("DOB"));
+            String district = request.getParameter("district");
 
-        // pass values to update database
-        cs.updateCustomer(ID, cus);
+
+            cus.setName(name);
+            cus.setPhone(phone);
+            cus.setDOB(DOB);
+            cus.setDistrict(district);
+
+            // pass values to update database
+            cs.updateCustomer(ID, cus);
+
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Customer Data Updated Successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
 
         //redirect
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_USERS));
-
     }
 
 }

@@ -4,6 +4,7 @@ import com.model.Staff;
 import com.service.impl.StaffService;
 import com.util.NotifyUtil;
 import com.util.URLS;
+import com.util.Parse;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,24 +20,31 @@ public class AdminCreateStaffServlet extends HttpServlet {
     final StaffService stfS = new StaffService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String DOB = request.getParameter("DOB");
-        String password = request.getParameter("password");
-        int role = Integer.parseInt(request.getParameter("role"));
+        try {
+            String name = Parse.Name(request.getParameter("name"));
+            String email = Parse.Email(request.getParameter("email"));
+            String phone = Parse.Phone(request.getParameter("phone"));
+            String DOB = Parse.Date(request.getParameter("DOB"));
+            String password = Parse.Password(request.getParameter("password"));
+            Staff.Role role = Parse.Role(request.getParameter("role"));
 
-        // create Staff object
-        final Staff stf = new Staff();
-        stf.setName(name);
-        stf.setEmail(email);
-        stf.setPhone(phone);
-        stf.setDOB(DOB);
-        stf.setPassword(password);
-        stf.setRole(role == 1 ? Staff.Role.Manager : Staff.Role.Staff);
-        stfS.addStaff(stf);
+            // create Staff object
+            final Staff stf = new Staff();
+            stf.setName(name);
+            stf.setEmail(email);
+            stf.setPhone(phone);
+            stf.setDOB(DOB);
+            stf.setPassword(password);
+            stf.setRole(role);
+            stfS.addStaff(stf);
 
-        NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Created User Successfully.");
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Created User Successfully.");
+
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
+
+
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
     }
 }

@@ -2,6 +2,7 @@ package com.servlet.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.Staff;
 import com.model.Staff.Role;
 import com.service.impl.StaffService;
+import com.util.NotifyUtil;
 import com.util.URLS;
+import com.util.Parse;
 import com.util.Views;
 
 /**
@@ -21,6 +24,7 @@ import com.util.Views;
  */
 @WebServlet
 public class AdminManageStaff extends HttpServlet {
+    private final StaffService staffService = new StaffService();
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,20 +41,35 @@ public class AdminManageStaff extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Staff stf = new Staff();
 
-        int ID = Integer.parseInt(request.getParameter("ID"));
-        stf.setName(request.getParameter("name"));
-        stf.setEmail(request.getParameter("email"));
-        stf.setPhone(request.getParameter("phone"));
-        stf.setDOB(request.getParameter("DOB"));
-        stf.setPassword(request.getParameter("password"));
+        try {
+            int ID = Parse.Number(request.getParameter("ID"), "Staff ID");
+            String name = Parse.Name(request.getParameter("name"));
+            String email = Parse.Email(request.getParameter("email"));
+            String phone = Parse.Phone(request.getParameter("phone"));
+            String password = Parse.Password(request.getParameter("password"));
+            String DOB = Parse.Date(request.getParameter("DOB"));
 
-        int roleID = Integer.parseInt(request.getParameter("role"));
-        stf.setRole(Role.values()[roleID]);
+            Staff stf = staffService.getStaffById(ID);
+            if (Objects.isNull(stf)) {
+                throw new Parse.ValidationError("Invalid Staff ID");
+            }
 
-        new StaffService().updateStaff(ID, stf);
+            stf.setName(name);
+            stf.setEmail(email);
+            stf.setPhone(phone);
+            stf.setDOB(DOB);
+            stf.setPassword(password);
 
+            Role role = Parse.Role(request.getParameter("role"));
+            stf.setRole(role);
+
+            staffService.updateStaff(ID, stf);
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Staff Member Updated Successfully.");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
+        
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
     }
 
