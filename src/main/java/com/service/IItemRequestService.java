@@ -51,4 +51,11 @@ public interface IItemRequestService {
      * @return List of item requests that staff member requested
      */
     ArrayList<ItemRequest> getItemRequestByStaffId(int ID);
+    
+    /**
+     * 
+     * @param ID the id of request
+     * @param status the status of request
+     */
+    void updateStatus(int ID , String status);
 }
