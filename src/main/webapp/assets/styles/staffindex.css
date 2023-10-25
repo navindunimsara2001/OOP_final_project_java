@@ -1,3 +1,18 @@
-main {
+.main {
     background-image: url(../images/appointment/staffindex.png);
+    display: flex;
+    align-items: center;
+}
+
+.main-header {
+    background-color: #001435;
+    color: aliceblue;
+    padding: 10px 20px;
+    text-align: center;
+    width:fit-content;
+    border-radius: 20px;
+}
+
+.main-content-header {
+    margin-top: 20px;
 }
