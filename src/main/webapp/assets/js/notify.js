@@ -15,13 +15,14 @@ $(() => {
         toast: true,
         position: 'top-right',
         showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true
+        timer: 1500 * 4,
+        iconColor: 'white',
+        timerProgressBar: false
     });
 
     notify.forEach((e) => {
         Toast.fire({
-            icon: e.type,
+            icon: e.type.toLowerCase(),
             title: e.msg,
         })
     });
