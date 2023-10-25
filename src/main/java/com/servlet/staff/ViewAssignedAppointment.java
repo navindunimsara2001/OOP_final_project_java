@@ -22,7 +22,7 @@ import com.util.Views;
 public class ViewAssignedAppointment extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int ID = SessionUtil.getStaffId(request, 7);
+        int ID = SessionUtil.getStaffId(request);
 
         ArrayList<Appointment> appList = new AppointmentService().getAppointmentBystaffId(ID);
 

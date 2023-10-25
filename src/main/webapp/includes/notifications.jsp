@@ -1,0 +1,37 @@
+<%@ page import="com.util.NotifyUtil" %>
+<%@ page import="java.util.Objects" %>
+<%@ page import="java.util.ArrayList" %>
+<script>
+    <% ArrayList<NotifyUtil.Message> messages= NotifyUtil.fetchNotifications(request);%>
+    var notify = [
+        <% if (!Objects.isNull(messages)){ %>
+        <% for (NotifyUtil.Message msg: messages){%>
+        {
+            'type': '<%=msg.getType().toString()%>',
+            'msg': '<%=msg.getMsg()%>',
+        },
+        <%}%>
+        <%}%>
+    ]
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/notify.js"></script>
+
+<style>
+
+    .swal2-icon-success {
+        background-color: #a5dc86 !important;
+    }
+
+    .swal2-icon-error {
+        background-color: #f27474 !important;
+    }
+
+    .swal2-icon-warning {
+        background-color: #f8bb86 !important;
+    }
+
+    .swal2-icon-info {
+        background-color: #3fc3ee !important;
+    }
+</style>

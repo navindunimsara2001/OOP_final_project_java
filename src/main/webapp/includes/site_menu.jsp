@@ -5,12 +5,13 @@
         <img class="logo" src="assets/images/winfuel connect.png" alt="Logo" height="32px">
     </a>
     <div class="item spacer no-hover"></div>
+    <a class="item" href="privacy.jsp">Privacy Policy</a>
+    <a class="item" href="contact.jsp">Contact Us</a>
     <div class="item no-hover if-not-login">
         <a class="btn btn-primary" href="${URLS.USER_LOGIN}">Login</a>
         <a class="btn btn-outline-secondary" href="${URLS.USER_REGISTER}">Sign Up</a>
     </div>
-    <a class="item if-login" href="privacy.jsp">Privacy Policy</a>
-    <a class="item if-login" href="contct.jsp">Contact Us</a>
+
     <a class="item if-login" href="user/appointments">My Appointments</a>
     <div class="item dropdown no-hover if-login" id="profile-dropdown" tabindex="1">
         <img src="assets/images/profile.svg" width="28px">

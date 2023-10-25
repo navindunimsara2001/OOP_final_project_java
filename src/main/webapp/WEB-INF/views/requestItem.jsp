@@ -72,7 +72,7 @@
                         </div>
                         <div class="input-box">
                             <label>Amount :
-                                <input type="number" placeholder="" name="amount"> </label>
+                                <input type="number" placeholder="" name="amount" min=0> </label>
                         </div>
                         <input type="hidden" name="itemId" id="itemId" value="">
                         <button type="submit">Submit</button>

@@ -18,7 +18,7 @@ import com.util.Views;
 /**
  * Servlet implementation class EditStaffProfile
  */
-@WebServlet("/DeleteStaffProfile")
+@WebServlet
 public class DeleteStaffProfile extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

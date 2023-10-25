@@ -26,7 +26,7 @@ public class StaffProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int ID = SessionUtil.getStaffId(request, 7);
+        int ID = SessionUtil.getStaffId(request);
         String action = request.getParameter("action");
         if (Objects.equals("delete", action)) {
             this.deleteProfile(ID, request, response);
@@ -70,7 +70,7 @@ public class StaffProfileServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
-        int ID = SessionUtil.getStaffId(request, 7);
+        int ID = SessionUtil.getStaffId(request);
 
         // get values from edit page
         String name = request.getParameter("name");

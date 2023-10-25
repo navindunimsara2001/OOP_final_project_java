@@ -47,7 +47,7 @@ public class RequestItemServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int staffId = SessionUtil.getStaffId(request, 7);
+        int staffId = SessionUtil.getStaffId(request);
 
         int itemId = Integer.parseInt(request.getParameter("itemId"));
         int qty = Integer.parseInt(request.getParameter("amount"));
