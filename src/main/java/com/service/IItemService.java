@@ -8,6 +8,13 @@ import com.model.Item;
 public interface IItemService {
     // initialize logger
     Logger logger = Logger.getLogger(IItemService.class.getName());
+    
+    /**
+     * 
+     * @param name the name of item
+     * @param qty the quantity of items
+     */
+    public void addItem(String name , int qty);
 
     Item getItemById(int ID);
 
