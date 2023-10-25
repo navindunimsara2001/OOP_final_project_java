@@ -15,7 +15,7 @@
         </a>
         <a class="sidebar-option" href="staff/requestItem">
             <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
-            <div class="sidebar-option-text">Items</div>
+            <div class="sidebar-option-text">Request Items</div>
         </a>
         <a class="sidebar-option" href="staff/requestedItem">
             <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">

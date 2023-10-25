@@ -89,7 +89,64 @@
                                 </div>
                                 <div class="input-box">
                                     <label>Amount :
-                                        <input type="number" placeholder="" name="amount" step="0.01"> </label>
+                                        <input type="number" placeholder="" name="amount" step="0.01" min="0.1" max="${fuel1.amount}" id="fuelAmountInput"> </label>
+                                        <div class="modal" id="requestModal" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Fuel Supply</h5>
+                                                        <button type="button" class="close btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <section class="container" id="container">
+                                                            <form action="staff/fuelSales" method="post" class="form">
+                                                                <div class="input-box">
+                                                                    <label>Fuel Type :
+                                                                        <input type="text" name="fuelName" required readonly id="fuelName">
+                                                                    </label>
+                                                                </div>
+                                                                <div class="input-box">
+                                                                    <label>Amount :
+                                                                        <input type="number" placeholder="" name="amount" step="0.01" min="0.1" max="" id="fuelAmountInput">
+                                                                    </label>
+                                                                </div>
+                                                                <input type="hidden" name="itemId" id="itemId" value="">
+                                                                <button type="submit" class="action-button">Submit</button>
+                                                            </form>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <script>
+                                            $(document).ready(function () {
+                                                // Function to open the modal and set the fuel type and max amount
+                                                function openModal(fuelType, itemId, maxAmount) {
+                                                    $("#fuelName").val(fuelType);
+                                                    $("#itemId").val(itemId);
+                                                    $("#fuelAmountInput").attr("max", maxAmount);
+                                                    $("#requestModal").modal("show");
+                                                }
+
+                                                // onClick function for the first feature
+                                                $("#f1").on("click", function () {
+                                                    openModal("Petrol 92", "1", "${fuel1.amount}");
+                                                });
+
+                                                // onClick function for the second feature
+                                                $("#f2").on("click", function () {
+                                                    openModal("Petrol 95", "2", "${fuel2.amount}");
+                                                });
+
+                                                // onClick function for the third feature
+                                                $("#f3").on("click", function () {
+                                                    openModal("Diesel", "3", "${fuel3.amount}");
+                                                });
+                                            });
+                                        </script>
                                 </div>
                                 <input type="hidden" name="itemId" id="itemId" value="">
                                 <button type="submit" class="action-button">Submit</button>
@@ -126,8 +183,6 @@
                 });
             });
         </script>
-
-
     </main>
 </div>
 </body>
