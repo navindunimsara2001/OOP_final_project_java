@@ -1,13 +1,13 @@
 package com.servlet.admin;
 
+import com.model.Staff;
+import com.service.impl.StaffService;
+import com.util.NotifyUtil;
+import com.util.URLS;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.model.Staff;
-import com.service.impl.StaffService;
-import com.util.URLS;
-
 import java.io.IOException;
 
 /**
@@ -17,8 +17,6 @@ import java.io.IOException;
 public class AdminCreateStaffServlet extends HttpServlet {
     // create service object
     final StaffService stfS = new StaffService();
-    // create Staff object
-    final Staff stf = new Staff();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
@@ -28,7 +26,8 @@ public class AdminCreateStaffServlet extends HttpServlet {
         String password = request.getParameter("password");
         int role = Integer.parseInt(request.getParameter("role"));
 
-
+        // create Staff object
+        final Staff stf = new Staff();
         stf.setName(name);
         stf.setEmail(email);
         stf.setPhone(phone);
@@ -37,6 +36,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
         stf.setRole(role == 1 ? Staff.Role.Manager : Staff.Role.Staff);
         stfS.addStaff(stf);
 
+        NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Created User Successfully.");
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
     }
 }
