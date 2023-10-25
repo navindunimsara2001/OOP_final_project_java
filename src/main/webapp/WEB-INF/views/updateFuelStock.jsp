@@ -37,8 +37,8 @@
                         <div class="header">
                             <h4>Amount Liter :</h4>
                         </div>
-                        <div class="price">
-                            <input type="number" id="price1" name="amount" value="0.00">
+                        <div class="amount">
+                            <input type="number" id="amount1" name="amount" value="0.00">
                         </div>
                     </div>
                     <div class="btn">
@@ -55,19 +55,19 @@
                         <h3>Petrol 95</h3>
                         <h1 class="remain">${fuel2.amount}L</h1>
                     </div>
-                    <div class="pricetag" id="pricetag1">
+                    <div class="pricetag" id="pricetag2">
                         <div class="header">
                             <h4>Price LKR :</h4>
                         </div>
                         <div class="price">
-                            <input type="number" id="price1" name="price" value="${fuel2.price}"
+                            <input type="number" id="price2" name="price" value="${fuel2.price}"
                                    step="0.01">
                         </div>
                         <div class="header">
                             <h4>Amount Liter :</h4>
                         </div>
                         <div class="price">
-                            <input type="number" id="price1" name="amount" value="0.00">
+                            <input type="number" id="amount2" name="amount" value="0.00">
                         </div>
                     </div>
 
@@ -86,19 +86,19 @@
                         <h1 class="remain">${fuel3.amount}L</h1>
                     </div>
 
-                    <div class="pricetag" id="pricetag1">
+                    <div class="pricetag" id="pricetag3">
                         <div class="header">
                             <h4>Rs.</h4>
                         </div>
                         <div class="price">
-                            <input type="number" id="price1" name="price" value="${fuel3.price}"
+                            <input type="number" id="price3" name="price" value="${fuel3.price}"
                                    step="0.01">
                         </div>
                         <div class="header">
-                            <h4>Rs.</h4>
+                            <h4>Amount Liter :</h4>
                         </div>
                         <div class="price">
-                            <input type="number" id="price1" name="amount" value="0.00">
+                            <input type="number" id="amount3" name="amount" value="0.00">
                         </div>
                     </div>
 
