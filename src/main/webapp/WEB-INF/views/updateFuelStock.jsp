@@ -47,7 +47,7 @@
                     </div>
                 </form>
 
-                <form class="feature" id="f2" method="post" action="UpdateFuelServlet">
+                <form class="feature" id="f2" method="post" action="staff/UpdateFuelServlet">
                     <div class="img">
                         <img src="assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
                     </div>
@@ -77,7 +77,7 @@
                     </div>
                 </form>
 
-                <form class="feature" id="f3" method="post" action="UpdateFuelServlet">
+                <form class="feature" id="f3" method="post" action="staff/UpdateFuelServlet">
                     <div class="img">
                         <img src="assets/images/fuel/diesel.jpeg" alt="Diesel">
                     </div>

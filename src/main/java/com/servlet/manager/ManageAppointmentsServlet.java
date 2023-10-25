@@ -15,6 +15,8 @@ import com.model.Appointment;
 import com.model.Staff;
 import com.service.impl.AppointmentService;
 import com.service.impl.StaffService;
+import com.util.NotifyUtil;
+import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
 
@@ -45,23 +47,37 @@ public class ManageAppointmentsServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String AID = request.getParameter("AID");
-        String sId = request.getParameter("assigned");
 
-        if (!Objects.isNull(sId) && !sId.isEmpty() && !Objects.isNull(AID)) {
+        try {
             // get ID values
-            int appID = Integer.parseInt(AID);
-            int staffID = Integer.parseInt(sId);
+            int appID = Parse.Number(request.getParameter("AID"), "Appointment ID");
 
-            // create Appointment object
-            final Appointment app = new Appointment();
-            // set values
+
+            // get Appointment object
+            Appointment app = appService.getAppointmentById(appID);
+            if (Objects.isNull(app)) {
+                throw new Parse.ValidationError("Appointment does not exist");
+            }
             app.setStatus(request.getParameter("status"));
-            // create Staff members object
-            Staff stf = stfService.getStaffById(staffID);
-            app.setStaff(stf);
+
+            if (!Objects.isNull(request.getParameter("assigned"))) {
+                int staffID = Parse.Number(request.getParameter("assigned"), "Assigned Staff Member");
+                Staff stf = stfService.getStaffById(staffID);
+                if (Objects.isNull(stf)) {
+                    throw new Parse.ValidationError("Staff member does not exist");
+                }
+                app.setStaff(stf);
+            } else {
+                app.setStatus(null);
+            }
+
+
             // pass value to update
             appService.updateAppointment(appID, app);
+
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Appointment updated successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
         }
         // redirect
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_APPOINTMENT));

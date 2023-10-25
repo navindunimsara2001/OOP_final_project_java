@@ -27,6 +27,7 @@
                 <th>Date</th>
                 <th>Comment</th>
                 <th>Customer ID</th>
+                <th>Staff ID</th>
                 <th>Status</th>
                 <th>Assigned</th>
             </tr>
@@ -42,6 +43,7 @@
                     <td>${Appointment.date}</td>
                     <td>${Appointment.comment}</td>
                     <td>${Appointment.cus.ID}</td>
+                    <td>${Appointment.staff.ID}</td>
                     <td>${Appointment.status}</td>
                     <td class="text-center">
                         <button class="btn btn-primary edit-btn" data-apt-id="${Appointment.ID}"

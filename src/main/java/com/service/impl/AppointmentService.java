@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.logging.Level;
 
 import com.model.Appointment;
@@ -87,6 +88,9 @@ public class AppointmentService implements IAppointmentService {
             stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
+            if (!rs.next()) {
+                return null;
+            }
 
             return this.loadAppoinment(rs);
 
@@ -138,7 +142,13 @@ public class AppointmentService implements IAppointmentService {
         ) {
             //for query
             stmt.setString(1, app.getStatus());
-            stmt.setInt(2, app.getStaff().getID());
+
+            if (Objects.isNull(app.getStaff())) {
+                stmt.setObject(2, null);
+            } else {
+                stmt.setInt(2, app.getStaff().getID());
+            }
+
             stmt.setInt(3, ID);
 
             // update
@@ -170,43 +180,43 @@ public class AppointmentService implements IAppointmentService {
             logger.log(Level.SEVERE, "Failed to delete appointment", e);
         }
     }
-    
+
     @Override
-    public ArrayList<Appointment> getAppointmentBystaffId(int ID){
-    	ArrayList<Appointment> appList = new ArrayList<>();
-    	try (Connection con = DBUtil.connect();
-                PreparedStatement stmt = con.prepareStatement(USER_QUERY)
-           ) {
-    		stmt.setInt(1, ID);
-    		ResultSet rs = stmt.executeQuery();
-    		
-    		while (rs.next()) {
+    public ArrayList<Appointment> getAppointmentBystaffId(int ID) {
+        ArrayList<Appointment> appList = new ArrayList<>();
+        try (Connection con = DBUtil.connect();
+             PreparedStatement stmt = con.prepareStatement(USER_QUERY)
+        ) {
+            stmt.setInt(1, ID);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
                 appList.add(this.loadAppoinment(rs));
             }
-    		
-    	} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	return appList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return appList;
     }
 
-	@Override
-	public ArrayList<Appointment> getAppointmentByCustomerId(int ID) {
-		ArrayList<Appointment> appList = new ArrayList<>();
-		try (Connection con = DBUtil.connect();
-                PreparedStatement stmt = con.prepareStatement(USER_QUERY)
-           ) {
-			stmt.setInt(1, ID);
-    		ResultSet rs = stmt.executeQuery();
-    		
-    		while (rs.next()) {
+    @Override
+    public ArrayList<Appointment> getAppointmentByCustomerId(int ID) {
+        ArrayList<Appointment> appList = new ArrayList<>();
+        try (Connection con = DBUtil.connect();
+             PreparedStatement stmt = con.prepareStatement(USER_QUERY)
+        ) {
+            stmt.setInt(1, ID);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
                 appList.add(this.loadAppoinment(rs));
             }
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return appList;
-	}
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return appList;
+    }
 }

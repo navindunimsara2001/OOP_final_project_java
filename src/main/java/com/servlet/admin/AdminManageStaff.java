@@ -47,7 +47,6 @@ public class AdminManageStaff extends HttpServlet {
             String name = Parse.Name(request.getParameter("name"));
             String email = Parse.Email(request.getParameter("email"));
             String phone = Parse.Phone(request.getParameter("phone"));
-            String password = Parse.Password(request.getParameter("password"));
             String DOB = Parse.Date(request.getParameter("DOB"));
 
             Staff stf = staffService.getStaffById(ID);
@@ -59,7 +58,6 @@ public class AdminManageStaff extends HttpServlet {
             stf.setEmail(email);
             stf.setPhone(phone);
             stf.setDOB(DOB);
-            stf.setPassword(password);
 
             Role role = Parse.Role(request.getParameter("role"));
             stf.setRole(role);
@@ -69,7 +67,7 @@ public class AdminManageStaff extends HttpServlet {
         } catch (Parse.ValidationError e) {
             NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
         }
-        
+
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));
     }
 

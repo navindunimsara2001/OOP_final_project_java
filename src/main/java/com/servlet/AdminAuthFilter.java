@@ -19,7 +19,6 @@ public class AdminAuthFilter extends AuthFilter {
     static {
         String[] staffUrls = new String[]{
                 "/staff/profile",
-                "/staff/DeleteStaffProfile",
                 "/staff/requestItem",
                 "/staff/assignedAppointments",
                 "/staff/requestedItem",
@@ -33,6 +32,7 @@ public class AdminAuthFilter extends AuthFilter {
                 "/staff/manageAppointment",
                 "/staff/ManageItemRequest",
                 "/staff/UpdateFuelServlet",
+                "/staff/DeleteStaffProfile",
                 "/staff/manageUsers",
                 "/staff/editUser",
                 "/staff/deleteUser",

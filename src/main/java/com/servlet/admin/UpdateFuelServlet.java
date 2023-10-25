@@ -39,9 +39,17 @@ public class UpdateFuelServlet extends HttpServlet {
 
         try {
 
-            int ID = Integer.parseInt(request.getParameter("ID"));
-            double price = Double.parseDouble(request.getParameter("price"));
-            double amount = Double.parseDouble(request.getParameter("amount"));
+            int ID = Parse.Number(request.getParameter("ID"), "Fuel ID");
+            double price = Parse.Float(request.getParameter("price"), "Fuel price");
+            double amount = Parse.Float(request.getParameter("amount"), "Fuel amount");
+
+            if (price <= 0) {
+                throw new Parse.ValidationError("Invalid fuel price");
+            }
+
+            if (amount < 0) {
+                throw new Parse.ValidationError("Invalid amount");
+            }
 
             fuelService.changeFuel(ID, price, amount);
 
