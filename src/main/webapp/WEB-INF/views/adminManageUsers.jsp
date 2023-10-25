@@ -45,7 +45,7 @@
                         </button>
                         <button class="btn btn-danger">
                             <a class="text-decoration-none text-white"
-                               href="./deleteUser?ID=${Customer.ID}">Delete</a>
+                               href="admin/deleteUser?ID=${Customer.ID}">Delete</a>
                         </button>
                     </td>
                 </tr>

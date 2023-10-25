@@ -5,7 +5,7 @@
 
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <link rel="stylesheet" href="../assets/styles/userProfileView.css">
+    <link rel="stylesheet" href="assets/styles/userProfileView.css">
     <title>User Profile</title>
     <style>
         body {
@@ -23,13 +23,13 @@
         <div class="container">
             <h2>User Profile</h2>
             <div class="profile-pic">
-                <img src="../assets/images/Icons/user.svg" alt="">
+                <img src="assets/images/Icons/user.svg" alt="">
             </div>
 
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col d-flex justify-content-center" id="col">
-                    <form action="./editUser" method="post">
+                    <form action="staff/editUser" method="post">
                         <table>
                             <tr>
                                 <th>
@@ -106,7 +106,7 @@
                         <div>
                             <input class="btn btn-primary" type="submit" value="Update">
                             <a class="btn btn-danger"
-                               href="./deleteUser?ID=<%=request.getAttribute("ID")%>">Delete</a>
+                               href="staff/deleteUser?ID=<%=request.getAttribute("ID")%>">Delete</a>
                         </div>
                     </form>
                 </div>

@@ -44,7 +44,7 @@
                                 data-role="${Staff.role.ordinal()}">Edit
                             User
                         </button>
-                        <a class="btn btn-danger delete-btn" href="./DeleteStaffProfile?id=${Staff.ID}">Delete</a>
+                        <a class="btn btn-danger delete-btn" href="staff/DeleteStaffProfile?id=${Staff.ID}">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
