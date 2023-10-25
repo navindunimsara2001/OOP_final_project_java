@@ -8,8 +8,8 @@
     <title>Request Items</title>
 
     <!--stylesheet-->
-    <link rel="stylesheet" href="../assets/styles/Request.css">
-    <link rel="stylesheet" href="../assets/styles/form.css">
+    <link rel="stylesheet" href="assets/styles/Request.css">
+    <link rel="stylesheet" href="assets/styles/form.css">
     <script src="../assets/js/Request.js"></script>
 
 </head>
@@ -64,7 +64,7 @@
             </div>
             <div class="modal-body">
                 <section class="container" id="container">
-                    <form action=" " method="post" class="form">
+                    <form action="staff/requestItem" method="post" class="form">
                         <div class="input-box">
                             <label>Item name :
                                 <input type="text" name="itemName" required readonly id="itemName"></label>

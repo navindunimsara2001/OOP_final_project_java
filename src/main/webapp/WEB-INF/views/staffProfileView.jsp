@@ -3,7 +3,7 @@
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Title</title>
-    <link rel="stylesheet" href="../assets/styles/userProfileView.css">
+    <link rel="stylesheet" href="assets/styles/userProfileView.css">
     <style>
         body {
             background-image: none;
