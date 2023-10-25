@@ -4,7 +4,7 @@
 <head>
     <jsp:include page="/includes/header.jsp"/>
     <title>Create Appointment</title>
-    <link rel="stylesheet" href="../assets/styles/appointmentStyle.css">
+    <link rel="stylesheet" href="assets/styles/appointmentStyle.css">
 
 </head>
 
@@ -14,7 +14,7 @@
     <div class="container">
         <div class="column">
             <h3>Appointment</h3>
-            <form method="post" action="./createAppointment">
+            <form method="post" action="user/createAppointment">
                 <div class="input">
                     <label for="">Vehicle Brand :
                         <input type="text" name="brand" id="" required>

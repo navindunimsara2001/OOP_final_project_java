@@ -50,6 +50,7 @@ public class StaffProfileServlet extends HttpServlet {
         request.setAttribute("email", staff.getEmail());
         request.setAttribute("phone", staff.getPhone());
         request.setAttribute("DOB", staff.getDOB());
+        request.setAttribute("staff", true);
 
 
         boolean isEditing = Objects.equals(request.getParameter("edit"), "true");
