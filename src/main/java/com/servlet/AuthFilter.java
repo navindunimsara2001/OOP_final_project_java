@@ -36,13 +36,16 @@ public class AuthFilter extends HttpFilter {
             return;
         }
 
-        System.out.println("filter called");
-//        if (!SessionUtil.isLoggedIn(request, this.type)) {
-//            this.redirect(request, (HttpServletResponse) res);
-//            return;
-//        }
+        if (!SessionUtil.isLoggedIn(request, this.type) || !checkAccess(req, res)) {
+            this.redirect(request, (HttpServletResponse) res);
+            return;
+        }
 
         chain.doFilter(req, res);
+    }
+
+    protected boolean checkAccess(ServletRequest request, ServletResponse response) {
+        return true;
     }
 
     private void redirect(HttpServletRequest request, HttpServletResponse res) throws IOException {
