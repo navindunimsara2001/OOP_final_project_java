@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.service.impl.ItemService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
 
@@ -31,9 +31,9 @@ public class AddItemServlet extends HttpServlet {
             int qty = Parse.Number("qty", "Item amount");
 
             new ItemService().addItem(name, qty);
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Added Item Successfully");
+            Notify.add(request, Notify.Type.Success, "Added Item Successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
         response.sendRedirect(URLS.urlFor(request, URLS.VIEW_ITEM_LIST));

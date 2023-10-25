@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Fuel;
 import com.service.impl.FuelService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
@@ -44,9 +44,9 @@ public class FuelSalesServlet extends HttpServlet {
 
             fuelService.updateFuelAmount(ID, amount);
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Added Fuel Sale Successfully");
+            Notify.add(request, Notify.Type.Success, "Added Fuel Sale Successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
         response.sendRedirect(URLS.urlFor(request, URLS.FUEL_SALES));

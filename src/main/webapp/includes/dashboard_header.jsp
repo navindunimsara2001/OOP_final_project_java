@@ -1,4 +1,4 @@
-<%@ page import="com.util.NotifyUtil" %>
+<%@ page import="com.util.Notify" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

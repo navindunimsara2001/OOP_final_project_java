@@ -15,7 +15,7 @@ import com.model.Appointment;
 import com.model.Staff;
 import com.service.impl.AppointmentService;
 import com.service.impl.StaffService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
@@ -75,9 +75,9 @@ public class ManageAppointmentsServlet extends HttpServlet {
             // pass value to update
             appService.updateAppointment(appID, app);
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Appointment updated successfully");
+            Notify.add(request, Notify.Type.Success, "Appointment updated successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         // redirect
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_APPOINTMENT));

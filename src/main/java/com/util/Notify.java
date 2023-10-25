@@ -7,9 +7,9 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NotifyUtil {
+public class Notify {
 
-    private static final Logger logger = Logger.getLogger(NotifyUtil.class.getName());
+    private static final Logger logger = Logger.getLogger(Notify.class.getName());
 
 
     public enum Type {
@@ -34,7 +34,7 @@ public class NotifyUtil {
         }
     }
 
-    public static void addNotify(HttpServletRequest request, Type level, String msg) {
+    public static void add(HttpServletRequest request, Type level, String msg) {
         ArrayList<Message> msgList = getNotifications(request);
         if (Objects.isNull(msgList)) {
             msgList = new ArrayList<>();
@@ -45,8 +45,16 @@ public class NotifyUtil {
         session.setAttribute("notify", msgList);
     }
 
+    public static ArrayList<Message> fetch(HttpServletRequest request) {
+        ArrayList<Message> msgs = getNotifications(request);
+        if (!Objects.isNull(msgs) && !msgs.isEmpty()) {
+            request.getSession().removeAttribute("notify");
+        }
 
-    public static ArrayList<Message> getNotifications(HttpServletRequest request) {
+        return msgs;
+    }
+
+    private static ArrayList<Message> getNotifications(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if (Objects.isNull(session)) {
             return null;
@@ -65,12 +73,5 @@ public class NotifyUtil {
         }
     }
 
-    public static ArrayList<Message> fetchNotifications(HttpServletRequest request) {
-        ArrayList<Message> msgs = getNotifications(request);
-        if (!Objects.isNull(msgs) && !msgs.isEmpty()) {
-            request.getSession().removeAttribute("notify");
-        }
 
-        return msgs;
-    }
 }

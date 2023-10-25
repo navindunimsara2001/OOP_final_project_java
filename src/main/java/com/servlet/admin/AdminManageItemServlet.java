@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Item;
 import com.service.impl.ItemService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
@@ -43,9 +43,9 @@ public class AdminManageItemServlet extends HttpServlet {
 
             itemService.updateItemByID(ID, qty);
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Item Amount Updated Successfully");
+            Notify.add(request, Notify.Type.Success, "Item Amount Updated Successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         response.sendRedirect(URLS.urlFor(request, URLS.VIEW_ITEM_LIST));
     }

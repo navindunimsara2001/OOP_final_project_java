@@ -2,7 +2,7 @@ package com.servlet.admin;
 
 import com.model.Staff;
 import com.service.impl.StaffService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.URLS;
 import com.util.Parse;
 
@@ -38,10 +38,10 @@ public class AdminCreateStaffServlet extends HttpServlet {
             stf.setRole(role);
             stfS.addStaff(stf);
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Created User Successfully.");
+            Notify.add(request, Notify.Type.Success, "Created User Successfully.");
 
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
 

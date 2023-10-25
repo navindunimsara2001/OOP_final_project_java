@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.Staff;
 import com.model.Staff.Role;
 import com.service.impl.StaffService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.URLS;
 import com.util.Parse;
 import com.util.Views;
@@ -63,9 +63,9 @@ public class AdminManageStaff extends HttpServlet {
             stf.setRole(role);
 
             staffService.updateStaff(ID, stf);
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Staff Member Updated Successfully.");
+            Notify.add(request, Notify.Type.Success, "Staff Member Updated Successfully.");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));

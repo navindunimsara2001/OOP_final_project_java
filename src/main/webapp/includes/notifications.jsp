@@ -1,11 +1,11 @@
-<%@ page import="com.util.NotifyUtil" %>
+<%@ page import="com.util.Notify" %>
 <%@ page import="java.util.Objects" %>
 <%@ page import="java.util.ArrayList" %>
 <script>
-    <% ArrayList<NotifyUtil.Message> messages= NotifyUtil.fetchNotifications(request);%>
+    <% ArrayList<Notify.Message> messages= Notify.fetch(request);%>
     var notify = [
         <% if (!Objects.isNull(messages)){ %>
-        <% for (NotifyUtil.Message msg: messages){%>
+        <% for (Notify.Message msg: messages){%>
         {
             'type': '<%=msg.getType().toString()%>',
             'msg': '<%=msg.getMsg()%>',

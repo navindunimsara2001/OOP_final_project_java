@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.ItemRequest;
 import com.service.impl.ItemRequestService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
 import com.util.Views;
@@ -33,9 +33,9 @@ public class ManageItemRequest extends HttpServlet {
                 itemRequestService.updateStatus(ID, status);
                 response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_REQUEST));
 
-                NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Request Updated Successfully");
+                Notify.add(request, Notify.Type.Success, "Request Updated Successfully");
             } catch (Parse.ValidationError e) {
-                NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+                Notify.add(request, Notify.Type.Error, e.getMessage());
             }
 
             return;

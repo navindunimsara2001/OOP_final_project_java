@@ -61,10 +61,10 @@ public class RequestItemServlet extends HttpServlet {
             iReq.setQty(qty);
 
             this.requestService.addItemRequest(iReq);
-            
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, "Request Added successfully");
+
+            Notify.add(request, Notify.Type.Error, "Request Added successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         response.sendRedirect(URLS.urlFor(request, URLS.ITEM_REQUEST));
     }

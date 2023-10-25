@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.service.impl.CustomerService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
 
@@ -27,9 +27,9 @@ public class AdminDeleteUserServlet extends HttpServlet {
             // get delete operation from Service class
             cs.removeCustomer(ID);
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Deleted User Successfully.");
+            Notify.add(request, Notify.Type.Success, "Deleted User Successfully.");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
         // redirect

@@ -1,7 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,7 @@ import com.service.IAppointmentService;
 import com.service.ICustomerService;
 import com.service.impl.AppointmentService;
 import com.service.impl.CustomerService;
-import com.util.NotifyUtil;
+import com.util.Notify;
 import com.util.Parse;
 import com.util.SessionUtil;
 import com.util.URLS;
@@ -52,9 +51,9 @@ public class AppointmentServlet extends HttpServlet {
             // set data to services for insert DB
             appointmentService.addAppointment(app);
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Appointment created successfully");
+            Notify.add(request, Notify.Type.Success, "Appointment created successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
         response.sendRedirect(URLS.urlFor(request, URLS.USER_APPOINTMENT));

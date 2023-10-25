@@ -91,9 +91,9 @@ public class StaffProfileServlet extends HttpServlet {
             staffService.updateStaff(ID, staff);
 
 
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Profile updated successfully");
+            Notify.add(request, Notify.Type.Success, "Profile updated successfully");
         } catch (Parse.ValidationError e) {
-            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+            Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
         //redirect
