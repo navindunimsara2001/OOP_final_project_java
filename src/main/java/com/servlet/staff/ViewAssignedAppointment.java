@@ -18,23 +18,23 @@ import com.util.Views;
 /**
  * Servlet implementation class ViewAssignedAppointment
  */
-@WebServlet("/ViewAssignedAppointment")
+@WebServlet
 public class ViewAssignedAppointment extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//int ID = SessionUtil.getStaffId(request, 0);
-		
-		ArrayList<Appointment> appList = new AppointmentService().getAppointmentBystaffId(1);
-		
-		request.setAttribute("appList", appList);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Views.SHOW_APPOINTMENTS);
-		dispatcher.forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int ID = SessionUtil.getStaffId(request, 7);
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        ArrayList<Appointment> appList = new AppointmentService().getAppointmentBystaffId(ID);
+
+        request.setAttribute("appList", appList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(Views.SHOW_APPOINTMENTS);
+        dispatcher.forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

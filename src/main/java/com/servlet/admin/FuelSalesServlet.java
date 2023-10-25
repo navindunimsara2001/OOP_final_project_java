@@ -14,8 +14,8 @@ import com.service.impl.FuelService;
 import com.util.URLS;
 import com.util.Views;
 
-@WebServlet("/FuelManageServlet")
-public class FuelManageServlet extends HttpServlet {
+@WebServlet
+public class FuelSalesServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class FuelManageServlet extends HttpServlet {
 
         new FuelService().updateFuelAmount(ID, amount);
 
-        response.sendRedirect(URLS.urlFor(request, URLS.FUEL_MANAGEMENT));
+        response.sendRedirect(URLS.urlFor(request, URLS.FUEL_SALES));
     }
 
 }

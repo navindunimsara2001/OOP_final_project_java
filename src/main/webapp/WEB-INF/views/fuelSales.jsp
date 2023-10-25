@@ -4,9 +4,7 @@
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Title</title>
-    <link rel="stylesheet" href="../assets/styles/fuelmgt.css">
-
-   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  --> 
+    <link rel="stylesheet" href="assets/styles/fuelmgt.css">
 
 </head>
 <body>
@@ -17,14 +15,14 @@
         <section id="features" class="features">
             <h2>Select Fuel Type</h2>
             <div class="card" id="card">
-                
+
                 <div class="feature" id="f1" onclick="openModal('Petrol 92', '1')">
                     <div class="feattop">
                         <img src="assets/images/fuel/petrol92.jpeg" alt="Petrol 92">
                         <h3>Petrol 92</h3>
                         <h1 class="remain">${fuel1.amount}L</h1>
                     </div>
-                    
+
                     <div class="pricetag" id="pricetag1">
                         <div class="header">
                             <h4>Price</h4>
@@ -35,7 +33,8 @@
                     </div>
                 </div>
 
-                <div class="feature" id="f2" data-toggle="modal" data-target="#requestModal" onclick="openModal('Petrol 95', '2')">
+                <div class="feature" id="f2" data-toggle="modal" data-target="#requestModal"
+                     onclick="openModal('Petrol 95', '2')">
                     <div class="feattop">
                         <img src="assets/images/fuel/petrol95.jpeg" alt="Petrol 95">
                         <h3>Petrol 95</h3>
@@ -58,7 +57,7 @@
                         <h3>Diesel</h3>
                         <h1 class="remain">${fuel3.amount}L</h1>
                     </div>
-                    
+
                     <div class="pricetag" id="pricetag3">
                         <div class="header">
                             <h4>Price</h4>
@@ -83,14 +82,14 @@
                     </div>
                     <div class="modal-body">
                         <section class="container" id="container">
-                            <form action="staff/FuelManageServlet" method="post" class="form">
+                            <form action="staff/fuelSales" method="post" class="form">
                                 <div class="input-box">
                                     <label>Fuel Type :
                                         <input type="text" name="fuelName" required readonly id="fuelName"></label>
                                 </div>
                                 <div class="input-box">
                                     <label>Amount :
-                                    <input type="number" placeholder="" name="amount" step="0.01"> </label>
+                                        <input type="number" placeholder="" name="amount" step="0.01"> </label>
                                 </div>
                                 <input type="hidden" name="itemId" id="itemId" value="">
                                 <button type="submit" class="action-button">Submit</button>
@@ -110,24 +109,24 @@
                     $("#itemId").val(itemId);
                     $("#requestModal").modal("show");
                 }
-        
+
                 // onClick function for the first feature
                 $("#f1").on("click", function () {
                     openModal("Petrol 92", "1"); // Replace "item1" with the actual item ID
                 });
-        
+
                 // onClick function for the second feature
                 $("#f2").on("click", function () {
                     openModal("Petrol 95", "2"); // Replace "item2" with the actual item ID
                 });
-        
+
                 // onClick function for the third feature
                 $("#f3").on("click", function () {
                     openModal("Diesel", "3"); // Replace "item3" with the actual item ID
                 });
             });
         </script>
-        
+
 
     </main>
 </div>

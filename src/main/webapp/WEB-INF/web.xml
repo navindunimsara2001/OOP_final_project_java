@@ -204,10 +204,21 @@
         <url-pattern>/staff/requestItem</url-pattern>
     </servlet-mapping>
 
+    <!-- Staff member request Item -->
+    <servlet>
+        <servlet-name>showAppointedTasks</servlet-name>
+        <servlet-class>com.servlet.staff.ViewAssignedAppointment</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showAppointedTasks</servlet-name>
+        <url-pattern>/staff/assignedAppointments</url-pattern>
+    </servlet-mapping>
+
     <!-- Staff member view Item list -->
     <servlet>
         <servlet-name>ViewItemListServlet</servlet-name>
-        <servlet-class>com.servlet.admin.ViewItemListServlet</servlet-class>
+        <servlet-class>com.servlet.admin.AdminManageItemServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -218,7 +229,7 @@
     <!-- Staff view previous Item requests -->
     <servlet>
         <servlet-name>staffViewRequests</servlet-name>
-        <servlet-class>com.servlet.staff.ShowRequestItemsServlet</servlet-class>
+        <servlet-class>com.servlet.staff.ShowRequestedItemsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -228,13 +239,13 @@
 
     <!-- staff member update sold fuel count -->
     <servlet>
-        <servlet-name>FuelManageServlet</servlet-name>
-        <servlet-class>com.servlet.admin.FuelManageServlet</servlet-class>
+        <servlet-name>FuelSalesServlet</servlet-name>
+        <servlet-class>com.servlet.admin.FuelSalesServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>FuelManageServlet</servlet-name>
-        <url-pattern>/staff/FuelManageServlet</url-pattern>
+        <servlet-name>FuelSalesServlet</servlet-name>
+        <url-pattern>/staff/fuelSales</url-pattern>
     </servlet-mapping>
 
     <!-- Manager & Admin update fuel stock -->
