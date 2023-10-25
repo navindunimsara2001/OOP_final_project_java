@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 body {
-    background: linear-gradient(180deg, rgb(33, 53, 85), rgb(79, 112, 156));
+    background-image: url(../images/appointment/signup.png);
 }
 
 * {
@@ -24,7 +24,7 @@ main {
     position: relative;
     max-width: 600px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.9);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
