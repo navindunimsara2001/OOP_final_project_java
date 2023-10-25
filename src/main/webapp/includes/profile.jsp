@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col d-flex justify-content-center" id="col">
-            <form action="" method="post">
+            <form action="${requestScope.get("url")}" method="post">
                 <table>
                     <tr class="field">
                         <td>
@@ -71,10 +71,10 @@
                 <% if (Objects.equals(request.getAttribute("edit"), true)) {%>
                 <input class="btn btn-primary" type="submit" value="Update">
                 <a class="btn btn-danger"
-                   href="?ID=<%=request.getAttribute("ID")%>&action=delete">Delete</a>
+                   href="${requestScope.get("url")}?ID=<%=request.getAttribute("ID")%>&action=delete">Delete</a>
                 <%} else {%>
                 <div class="btn-group" role="group">
-                    <a class="btn btn-primary" href="?edit=true">Edit</a>
+                    <a class="btn btn-primary" href="${requestScope.get("url")}?edit=true">Edit</a>
                 </div>
                 <%}%>
 

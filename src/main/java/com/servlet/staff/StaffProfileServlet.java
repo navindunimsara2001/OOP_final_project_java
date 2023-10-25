@@ -50,6 +50,7 @@ public class StaffProfileServlet extends HttpServlet {
         request.setAttribute("email", staff.getEmail());
         request.setAttribute("phone", staff.getPhone());
         request.setAttribute("DOB", staff.getDOB());
+        request.setAttribute("url", request.getRequestURI());
         request.setAttribute("staff", true);
 
 
@@ -89,7 +90,7 @@ public class StaffProfileServlet extends HttpServlet {
         staffService.updateStaff(ID, staff);
 
         //redirect
-        response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
+        response.sendRedirect(URLS.urlFor(request, URLS.STAFF_PROFILE));
     }
 
 

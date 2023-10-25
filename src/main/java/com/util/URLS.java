@@ -20,12 +20,10 @@ public class URLS {
     public static final String FUEL_MANAGEMENT = "staff/FuelManageServlet";
     public static final String UPDATE_FUEL = "staff/UpdateFuelServlet";
     public static final String MANAGE_APPOINTMENT = "staff/manageAppointment";
+    public static final String STAFF_PROFILE = "staff/profile";
 
     public static String urlFor(HttpServletRequest req, String s) {
         return req.getContextPath() + "/" + s;
     }
 
-    public static void redirect(HttpServletRequest req, HttpServletResponse res, String s) throws IOException {
-        res.sendRedirect(urlFor(req, s));
-    }
 }

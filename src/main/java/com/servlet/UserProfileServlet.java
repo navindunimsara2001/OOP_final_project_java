@@ -57,6 +57,7 @@ public class UserProfileServlet extends HttpServlet {
         request.setAttribute("phone", cus.getPhone());
         request.setAttribute("DOB", cus.getDOB());
         request.setAttribute("district", cus.getDistrict());
+        request.setAttribute("url", request.getRequestURI());
 
         boolean isEditing = Objects.equals(request.getParameter("edit"), "true");
         request.setAttribute("edit", isEditing);
