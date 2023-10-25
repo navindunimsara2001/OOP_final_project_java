@@ -55,6 +55,15 @@
         .map-container {
             text-align: center;
         }
+
+        @media screen and (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .imgcontainer {
+                display: none;
+            }  
+        }
     </style>
     <script>
         window.onload = function() {
