@@ -17,7 +17,7 @@
                 <a href="contact.jsp">Contact Us</a>
             </div>
             <div class="fitem">
-                <a href="#">Terms of Service</a>
+                <a href="terms.jsp">Terms of Service</a>
             </div>
             <div class="fitem">
                 <a href="privacy.jsp">Privacy Policy</a>
