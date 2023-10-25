@@ -99,7 +99,7 @@
         </div>
     </div>
 </div>
-<script src="../../assets/js/appointment.js"></script>
+<script src="assets/js/appointment.js"></script>
 </body>
 
 </html>

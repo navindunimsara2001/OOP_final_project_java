@@ -108,7 +108,7 @@
     </div>
 
 
-    <script src="../assets/js/staff.js"></script>
+    <script src="assets/js/staff.js"></script>
 
 </body>
 </html>

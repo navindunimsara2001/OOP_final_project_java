@@ -7,7 +7,7 @@
 
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Dashboard</title>
+    <title>Manage Users</title>
 </head>
 
 <body>
@@ -41,11 +41,11 @@
                     <td>${Customer.district}</td>
                     <td class="text-center">
                         <button class="btn btn-primary">
-                            <a class="text-decoration-none text-white" href="./editUser?ID=${Customer.ID}">Edit</a>
+                            <a class="text-decoration-none text-white" href="staff/editUser?ID=${Customer.ID}">Edit</a>
                         </button>
                         <button class="btn btn-danger">
                             <a class="text-decoration-none text-white"
-                               href="admin/deleteUser?ID=${Customer.ID}">Delete</a>
+                               href="staff/deleteUser?ID=${Customer.ID}">Delete</a>
                         </button>
                     </td>
                 </tr>
