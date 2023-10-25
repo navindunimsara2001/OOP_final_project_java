@@ -29,7 +29,7 @@
                     <td>${Item.name}</td>
                     <td>${Item.inStock}</td>
                     <td class="text-center">
-                        <form action="./viewItemList" method="post">
+                        <form action="staff/viewItemList" method="post">
                             <input type="number" name="qty">
                             <input type="hidden" name="itmID" value="${Item.ID}">
                             <button type="submit" class="btn btn-primary">
@@ -52,8 +52,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form action="staff/viewItemList"></form>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Save changes</button>

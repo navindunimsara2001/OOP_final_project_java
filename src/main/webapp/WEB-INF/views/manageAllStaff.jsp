@@ -6,8 +6,7 @@
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Staff Management</title>
-    <link rel="stylesheet" href="../assets/styles/form.css">
-
+    <link rel="stylesheet" href="assets/styles/form.css">
 </head>
 <body>
 <jsp:include page="/includes/dashboard_menu.jsp"/>
@@ -62,7 +61,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="./manageStaff" method="post" class="form">
+                <form action="staff/manageStaff" method="post" class="form">
                     <div class="modal-body">
                         <div class="input-box">
                             <label>Full Name :

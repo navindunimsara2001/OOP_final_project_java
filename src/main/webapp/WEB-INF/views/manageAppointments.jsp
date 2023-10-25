@@ -64,7 +64,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="manageAppointment" method="post">
+                <form action="staff/manageAppointment" method="post">
                     <div class="modal-body">
                         <div>
                             <label for="assigned">Assigned Staff Member</label>
