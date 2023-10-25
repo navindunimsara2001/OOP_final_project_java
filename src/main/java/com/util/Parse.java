@@ -29,6 +29,13 @@ public class Parse {
         return s;
     }
 
+    public static String String(String s, String name) {
+        if (Objects.isNull(s) || s.isEmpty()) {
+            throw new ValidationError("Invalid " + name);
+        }
+        return s;
+    }
+
     public static String Password(String s) {
         if (Objects.isNull(s) || s.length() < 8) {
             throw new ValidationError("Invalid Password length");

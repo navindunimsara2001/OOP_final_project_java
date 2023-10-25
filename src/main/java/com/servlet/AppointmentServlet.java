@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Appointment;
+import com.model.Customer;
 import com.service.IAppointmentService;
 import com.service.ICustomerService;
 import com.service.impl.AppointmentService;
 import com.service.impl.CustomerService;
+import com.util.NotifyUtil;
+import com.util.Parse;
 import com.util.SessionUtil;
 import com.util.URLS;
 
@@ -26,19 +29,33 @@ public class AppointmentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        Appointment app = new Appointment();
+        try {
+            Customer cus = customerService.getCustomerById(SessionUtil.getUserId(request));
 
-        app.setBrand(request.getParameter("brand"));
-        app.setModel(request.getParameter("model"));
-        app.setYear(request.getParameter("year"));
-        app.setType(request.getParameter("serviceType"));
-        app.setDate(request.getParameter("appointmentDate"));
-        app.setComment(request.getParameter("comments"));
-        app.setCus(customerService.getCustomerById(SessionUtil.getUserId(request)));
-        app.setStatus("pending");
+            String brand = Parse.String(request.getParameter("brand"), "Brand");
+            String model = Parse.String(request.getParameter("model"), "Model");
+            String year = Parse.String(request.getParameter("year"), "Year");
+            String serviceType = Parse.String(request.getParameter("serviceType"), "Service Type");
+            String comments = request.getParameter("comments");
+            String appointmentDate = Parse.Date(request.getParameter("appointmentDate"));
 
-        // set data to services for insert DB
-        appointmentService.addAppointment(app);
+            Appointment app = new Appointment();
+            app.setBrand(brand);
+            app.setModel(model);
+            app.setYear(year);
+            app.setType(serviceType);
+            app.setDate(appointmentDate);
+            app.setComment(comments);
+            app.setCus(cus);
+            app.setStatus("pending");
+
+            // set data to services for insert DB
+            appointmentService.addAppointment(app);
+
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Appointment created successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
 
         response.sendRedirect(URLS.urlFor(request, URLS.USER_APPOINTMENT));
 

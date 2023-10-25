@@ -13,10 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Customer;
 import com.service.impl.CustomerService;
-import com.util.SessionUtil;
+import com.util.*;
 import com.util.SessionUtil.UserType;
-import com.util.URLS;
-import com.util.Views;
 
 
 public class UserProfileServlet extends HttpServlet {
@@ -79,24 +77,28 @@ public class UserProfileServlet extends HttpServlet {
         // get user id
         int ID = SessionUtil.getUserId(request);
 
-        // get values from edit page
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String DOB = request.getParameter("DOB");
-        String district = request.getParameter("district");
-        String password = request.getParameter("password");
+        try {
+            // get values from edit page
+            String name = Parse.Name(request.getParameter("name"));
+            String phone = Parse.Phone(request.getParameter("phone"));
+            String DOB = Parse.Date(request.getParameter("DOB"));
+            String district = request.getParameter("district");
+            String password = Parse.Password(request.getParameter("password"));
 
-        // assign values to customer object
-        Customer cus = customerService.getCustomerById(ID);
+            // assign values to customer object
+            Customer cus = customerService.getCustomerById(ID);
 
-        cus.setName(name);
-        cus.setPhone(phone);
-        cus.setDOB(DOB);
-        cus.setDistrict(district);
-        cus.setPassword(password);
-        System.out.println(cus);
-        // pass values to update database
-        customerService.updateCustomer(ID, cus);
+            cus.setName(name);
+            cus.setPhone(phone);
+            cus.setDOB(DOB);
+            cus.setDistrict(district);
+            cus.setPassword(password);
+            // pass values to update database
+            customerService.updateCustomer(ID, cus);
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Profile updated successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
 
         //redirect
         response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
