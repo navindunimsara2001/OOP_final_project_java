@@ -63,7 +63,13 @@ public class AdminAuthFilter extends AuthFilter {
         role = role == Staff.Role.Admin ? Staff.Role.Manager : role;
 
         String requestURI = ((HttpServletRequest) request).getRequestURI();
+        String ctxPath = ((HttpServletRequest) request).getContextPath();
+        if (ctxPath.length() < requestURI.length()) {
+            requestURI = requestURI.substring(ctxPath.length());
+        }
+
         Staff.Role requiredRole = URL_AUTH.get(requestURI);
+
         if (Objects.isNull(requiredRole)) {
             logger.log(Level.SEVERE, "No role set for url " + requestURI);
             return false;
