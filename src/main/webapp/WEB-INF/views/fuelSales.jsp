@@ -148,8 +148,6 @@
                                             });
                                         </script>
                                 </div>
-                                <input type="hidden" name="itemId" id="itemId" value="">
-                                <button type="submit" class="action-button">Submit</button>
                             </form>
                         </section>
                     </div>
