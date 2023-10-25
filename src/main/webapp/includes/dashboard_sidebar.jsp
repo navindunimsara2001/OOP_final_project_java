@@ -23,7 +23,32 @@
         </a>
         <a class="sidebar-option" href="staff/allItemRequest">
             <img src="../assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
-            <div class="sidebar-option-text">Requested Items</div>
+            <div class="sidebar-option-text">All Requested Items</div>
         </a>
+        <a class="sidebar-option" href="staff/viewItemList">
+            <img src="../assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">All Items</div>
+        </a>
+        <a class="sidebar-option" href="staff/manageAppointment">
+            <img src="../assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">Appointments</div>
+        </a>
+
+        <a class="sidebar-option" href="staff/fuelSales">
+            <img src="../assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">Fuel Sales</div>
+        </a>
+
+        <a class="sidebar-option" href="staff/UpdateFuelServlet">
+            <img src="../assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">Fuel Management</div>
+        </a>
+
+        <a class="sidebar-option" href="staff/assignedAppointments">
+            <img src="../assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
+            <div class="sidebar-option-text">Assigned Appointments</div>
+        </a>
+
+
     </div>
 </aside>

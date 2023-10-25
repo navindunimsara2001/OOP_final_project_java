@@ -16,7 +16,7 @@ import com.util.SessionUtil;
 import com.util.Views;
 
 @WebServlet
-public class ShowRequestItemsServlet extends HttpServlet {
+public class ShowRequestedItemsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
