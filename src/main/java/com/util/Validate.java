@@ -26,11 +26,11 @@ public class Validate {
             throw new ValidationError("Invalid Password length");
         }
 
-        if (!s.matches(".*[A-Z].*")) {
-            throw new ValidationError("Password must contain at least one uppercase letter.");
-        } else if (!s.matches(".*\\d.*")) {
-            throw new ValidationError("Password must contain at least one digit.");
-        }
+//        if (!s.matches(".*[A-Z].*")) {
+//            throw new ValidationError("Password must contain at least one uppercase letter.");
+//        } else if (!s.matches(".*\\d.*")) {
+//            throw new ValidationError("Password must contain at least one digit.");
+//        }
     }
 
     public static void Email(String s) {
