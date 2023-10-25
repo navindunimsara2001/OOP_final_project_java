@@ -9,37 +9,42 @@
             <img src="assets/images/Icons/users-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Staff</div>
         </a>
-        <a class="sidebar-option" href="staff/manageAppointment">
+        <a class="sidebar-option"
+           href="staff/manageAppointment" ${sessionScope.get("role").ordinal() == 0? "hidden":""}>
             <img src="assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Appointments</div>
         </a>
-        <a class="sidebar-option" href="staff/requestItem">
-            <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
+        <a class="sidebar-option" href="staff/requestItem" ${sessionScope.get("role").ordinal() == 0?"": "hidden"}>
+            <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg"
+                 width="40px">
             <div class="sidebar-option-text">Request Items</div>
         </a>
-        <a class="sidebar-option" href="staff/requestedItem">
+        <a class="sidebar-option" href="staff/requestedItem" ${sessionScope.get("role").ordinal() == 0?"": "hidden"}>
             <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Requested Items</div>
         </a>
-        <a class="sidebar-option" href="staff/ManageItemRequest">
+        <a class="sidebar-option"
+           href="staff/ManageItemRequest" ${sessionScope.get("role").ordinal() == 0? "hidden":""}>
             <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">All Requested Items</div>
         </a>
-        <a class="sidebar-option" href="staff/viewItemList">
+        <a class="sidebar-option" href="staff/viewItemList" ${sessionScope.get("role").ordinal() == 0? "hidden":""}>
             <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">All Items</div>
         </a>
-        <a class="sidebar-option" href="staff/fuelSales">
+        <a class="sidebar-option" href="staff/fuelSales" ${sessionScope.get("role").ordinal() == 0?"": "hidden"}>
             <img src="assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Fuel Sales</div>
         </a>
 
-        <a class="sidebar-option" href="staff/UpdateFuelServlet">
+        <a class="sidebar-option"
+           href="staff/UpdateFuelServlet" ${sessionScope.get("role").ordinal() == 0? "hidden":""}>
             <img src="assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Fuel Management</div>
         </a>
 
-        <a class="sidebar-option" href="staff/assignedAppointments">
+        <a class="sidebar-option"
+           href="staff/assignedAppointments" ${sessionScope.get("role").ordinal() == 0?"": "hidden"}>
             <img src="assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Assigned Appointments</div>
         </a>
