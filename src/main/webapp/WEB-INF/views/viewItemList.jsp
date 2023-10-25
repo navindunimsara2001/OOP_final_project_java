@@ -5,6 +5,7 @@
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Manage Items</title>
+    <link rel="stylesheet" href="../../assets/styles/newitems.css">
 </head>
 <body>
 <jsp:include page="/includes/dashboard_menu.jsp"/>
@@ -54,11 +55,20 @@
             </div>
             <form action="staff/viewItemList"></form>
             <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <section class="container" id="container">
+                    <form action="" method="post" class="form">
+                        <div class="input-box">
+                            <label>Item name :
+                                <input type="text" name="itemName" required id="itemName"></label>
+                        </div>
+                        <div class="input-box">
+                            <label>Amount :
+                                <input type="number" placeholder="" name="amount"> </label>
+                        </div>
+                        <input type="hidden" name="itemId" id="itemId" value="">
+                        <button type="submit">Submit</button>
+                    </form>
+                </section>
             </div>
         </div>
     </div>

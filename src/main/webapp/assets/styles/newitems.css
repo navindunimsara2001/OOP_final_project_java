@@ -1,0 +1,33 @@
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+} 
+
+input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+} 
+
+#container button {
+    height: 55px;
+    width: 100%;
+    color: white;
+    background-color: black;
+    font-size: 1rem;
+    border-radius: 7px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#container button:hover {
+    color: black;
+    background-color: rgb(229, 210, 131);
+}
