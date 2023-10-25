@@ -1,16 +1,13 @@
 package com.util;
 
-import com.model.Customer;
-import com.model.Staff;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Type;
-import java.util.Enumeration;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SessionUtil {
-
+    private static final Logger logger = Logger.getLogger(SessionUtil.class.getName());
 
     public static class NotLoggedInException extends RuntimeException {
         public NotLoggedInException() {
@@ -26,7 +23,7 @@ public class SessionUtil {
         User, Staff
     }
 
-   
+
     public static int getId(HttpServletRequest req, UserType type, int def) {
         return type == UserType.User ? getUserId(req, def) : getStaffId(req, def);
     }
@@ -36,6 +33,7 @@ public class SessionUtil {
             getId(req, type);
             return true;
         } catch (NotLoggedInException e) {
+            logger.log(Level.INFO, "Not logged in", e);
             return false;
         }
     }
@@ -78,7 +76,7 @@ public class SessionUtil {
         }
 
         boolean shouldBeStaff = type == UserType.Staff;
-        if (isStaffObj.equals(shouldBeStaff)) {
+        if (!isStaffObj.equals(shouldBeStaff)) {
             throw new NotLoggedInException("wrong session type");
         }
 

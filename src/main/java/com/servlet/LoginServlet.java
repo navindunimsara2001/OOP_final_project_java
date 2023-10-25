@@ -96,8 +96,8 @@ public class LoginServlet extends HttpServlet {
         }
 
         // redirect user
-        String redirect = this.getRedirectPath(req, homeURL);
-        resp.sendRedirect(URLS.urlFor(req, redirect));
+        String redirect = this.getRedirectPath(req, URLS.urlFor(req, homeURL));
+        resp.sendRedirect(redirect);
     }
 
     private String getRedirectPath(HttpServletRequest req, String defaultUrl) {
