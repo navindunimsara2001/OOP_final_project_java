@@ -22,7 +22,7 @@
 
         <div class="container">
             <h2>User Profile</h2>
-            <div class="propic">
+            <div class="profile-pic">
                 <img src="../assets/images/Icons/user.svg" alt="">
             </div>
 
