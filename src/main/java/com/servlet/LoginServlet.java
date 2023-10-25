@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 
         if (Objects.isNull(email) || Objects.isNull(password)) {
             logger.log(Level.INFO, "username or password not set");
-            resp.sendRedirect(loginURL);
+            resp.sendRedirect(URLS.urlFor(req, loginURL));
             return;
         }
 
@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
                 redirect += "&to=" + targetPath;
             }
 
-            resp.sendRedirect(redirect);
+            resp.sendRedirect(URLS.urlFor(req, redirect));
             return;
         }
 
@@ -97,7 +97,7 @@ public class LoginServlet extends HttpServlet {
 
         // redirect user
         String redirect = this.getRedirectPath(req, homeURL);
-        resp.sendRedirect(redirect);
+        resp.sendRedirect(URLS.urlFor(req, redirect));
     }
 
     private String getRedirectPath(HttpServletRequest req, String defaultUrl) {

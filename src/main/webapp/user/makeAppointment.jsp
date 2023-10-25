@@ -4,7 +4,7 @@
 <head>
     <jsp:include page="/includes/header.jsp"/>
     <title>Create Appointment</title>
-    <link rel="stylesheet" href="assets/styles/appointmentStyle.css">
+    <link rel="stylesheet" href="../assets/styles/appointmentStyle.css">
 
 </head>
 

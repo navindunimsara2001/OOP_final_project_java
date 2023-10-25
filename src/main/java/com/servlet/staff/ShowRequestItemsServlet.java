@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.ItemRequest;
 import com.service.impl.ItemRequestService;
 import com.util.SessionUtil;
+import com.util.Views;
 
 @WebServlet
 public class ShowRequestItemsServlet extends HttpServlet {
@@ -27,7 +28,7 @@ public class ShowRequestItemsServlet extends HttpServlet {
         }
 
         request.setAttribute("requestedItems", itmReqList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/CreatedItemRequest.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(Views.SHOW_REQUEST_ITEMS);
         dispatcher.forward(request, response);
     }
 

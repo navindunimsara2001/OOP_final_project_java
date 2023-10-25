@@ -40,7 +40,7 @@ public class AppointmentServlet extends HttpServlet {
         // set data to services for insert DB
         appointmentService.addAppointment(app);
 
-        response.sendRedirect(URLS.USER_APPOINTMENT);
+        response.sendRedirect(URLS.urlFor(request, URLS.USER_APPOINTMENT));
 
     }
 

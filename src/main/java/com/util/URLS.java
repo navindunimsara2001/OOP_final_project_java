@@ -1,5 +1,9 @@
 package com.util;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 public class URLS {
     public static final String HOME = "index.jsp";
     public static final String USER_LOGIN = "login";
@@ -14,4 +18,14 @@ public class URLS {
     public static final String LOGOUT = "logout";
     public static final String VIEW_ITEM_LIST = "./viewItemList";
     public static final String FUEL_MANAGEMENT = "./FuelManageServlet";
+    public static final String UPDATE_FUEL = "./UpdateFuelServlet";
+    public static final String MANAGE_APPOINTMENT = "./manageAppointment";
+
+    public static String urlFor(HttpServletRequest req, String s) {
+        return req.getContextPath() + "/" + s;
+    }
+
+    public static void redirect(HttpServletRequest req, HttpServletResponse res, String s) throws IOException {
+        res.sendRedirect(urlFor(req, s));
+    }
 }

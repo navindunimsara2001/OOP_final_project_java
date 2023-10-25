@@ -15,4 +15,5 @@ public class Views {
     public static final String VIEW_ITEM_LIST = "/WEB-INF/views/viewItemList.jsp";
     public static final String FUEL_MANAGEMENT = "/WEB-INF/views/fuelmanagement.jsp";
     public static final String UPDATE_FUEL_STOCK = "/WEB-INF/views/updateFuelStock.jsp";
+    public static final String SHOW_REQUEST_ITEMS = "/WEB-INF/views/CreatedItemRequest.jsp";
 }

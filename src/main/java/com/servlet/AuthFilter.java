@@ -51,6 +51,6 @@ public class AuthFilter extends HttpFilter {
             redirect += "?to=" + new URI(request.getRequestURI()).getPath();
         } catch (URISyntaxException ignored) {
         }
-        res.sendRedirect(redirect);
+        res.sendRedirect(URLS.urlFor(request, redirect));
     }
 }

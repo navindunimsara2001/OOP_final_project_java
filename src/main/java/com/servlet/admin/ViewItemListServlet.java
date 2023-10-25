@@ -27,7 +27,7 @@ public class ViewItemListServlet extends HttpServlet {
 
         request.setAttribute("itmList", itmList);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/viewItemList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(Views.VIEW_ITEM_LIST);
         dispatcher.forward(request, response);
     }
 
@@ -38,6 +38,6 @@ public class ViewItemListServlet extends HttpServlet {
         System.out.println(ID + "," + qty);
         new ItemService().updateItemByID(ID, qty);
 
-        response.sendRedirect(URLS.VIEW_ITEM_LIST);
+        response.sendRedirect(URLS.urlFor(request, URLS.VIEW_ITEM_LIST));
     }
 }
