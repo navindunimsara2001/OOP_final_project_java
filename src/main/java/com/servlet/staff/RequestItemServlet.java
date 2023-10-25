@@ -19,9 +19,7 @@ import com.service.IStaffService;
 import com.service.impl.ItemRequestService;
 import com.service.impl.ItemService;
 import com.service.impl.StaffService;
-import com.util.SessionUtil;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
 
 
 @WebServlet
@@ -49,20 +47,25 @@ public class RequestItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int staffId = SessionUtil.getStaffId(request);
 
-        int itemId = Integer.parseInt(request.getParameter("itemId"));
-        int qty = Integer.parseInt(request.getParameter("amount"));
+        try {
+            int itemId = Parse.Number(request.getParameter("itemId"), "Item ID");
+            int qty = Parse.Number(request.getParameter("amount"), "Item amount");
 
-        Item item = this.itemService.getItemById(itemId);
-        Staff stf = this.staffService.getStaffById(staffId);
+            Item item = this.itemService.getItemById(itemId);
+            Staff stf = this.staffService.getStaffById(staffId);
 
-        ItemRequest iReq = new ItemRequest();
+            ItemRequest iReq = new ItemRequest();
 
-        iReq.setItem(item);
-        iReq.setStaff(stf);
-        iReq.setQty(qty);
+            iReq.setItem(item);
+            iReq.setStaff(stf);
+            iReq.setQty(qty);
 
-        this.requestService.addItemRequest(iReq);
-
+            this.requestService.addItemRequest(iReq);
+            
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, "Request Added successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
         response.sendRedirect(URLS.urlFor(request, URLS.ITEM_REQUEST));
     }
 

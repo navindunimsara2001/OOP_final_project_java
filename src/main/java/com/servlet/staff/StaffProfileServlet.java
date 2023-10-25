@@ -2,9 +2,7 @@ package com.servlet.staff;
 
 import com.model.Staff;
 import com.service.impl.StaffService;
-import com.util.SessionUtil;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -71,23 +69,32 @@ public class StaffProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
         int ID = SessionUtil.getStaffId(request);
+        try {
+            // get values from edit page
+            String name = Parse.Name(request.getParameter("name"));
+            String phone = Parse.Phone(request.getParameter("phone"));
+            String DOB = Parse.Date(request.getParameter("DOB"));
+            String password = Parse.Password(request.getParameter("password"));
 
-        // get values from edit page
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String DOB = request.getParameter("DOB");
-        String password = request.getParameter("password");
+            // assign values to customer object
+            Staff staff = staffService.getStaffById(ID);
+            if (Objects.isNull(staff)) {
+                throw new Parse.ValidationError("Staff member does not exist");
+            }
 
-        // assign values to customer object
-        Staff staff = staffService.getStaffById(ID);
+            staff.setName(name);
+            staff.setPhone(phone);
+            staff.setDOB(DOB);
+            staff.setPassword(password);
 
-        staff.setName(name);
-        staff.setPhone(phone);
-        staff.setDOB(DOB);
-        staff.setPassword(password);
+            // pass values to update database
+            staffService.updateStaff(ID, staff);
 
-        // pass values to update database
-        staffService.updateStaff(ID, staff);
+
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Success, "Profile updated successfully");
+        } catch (Parse.ValidationError e) {
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, e.getMessage());
+        }
 
         //redirect
         response.sendRedirect(URLS.urlFor(request, URLS.STAFF_PROFILE));

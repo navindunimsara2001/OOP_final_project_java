@@ -31,9 +31,4 @@ public class ShowRequestedItemsServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher(Views.SHOW_REQUEST_ITEMS);
         dispatcher.forward(request, response);
     }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
 }
