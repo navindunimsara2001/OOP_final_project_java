@@ -7,12 +7,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.logging.Level;
 
 public class AdminAuthFilter extends AuthFilter {
 
     private final static HashMap<String, Staff.Role> URL_AUTH = new HashMap<>();
+    private final static HashSet<String> COMMON_URLS = new HashSet<>();
 
     static {
         String[] staffUrls = new String[]{
@@ -22,7 +24,6 @@ public class AdminAuthFilter extends AuthFilter {
                 "/staff/assignedAppointments",
                 "/staff/requestedItem",
                 "/staff/fuelSales",
-                "/staff/index.jsp"
         };
 
         String[] managerUrls = new String[]{
@@ -46,6 +47,11 @@ public class AdminAuthFilter extends AuthFilter {
             URL_AUTH.put(url, Staff.Role.Manager);
         }
 
+
+        COMMON_URLS.add("/staff/index.jsp");
+        COMMON_URLS.add("/staff/");
+        COMMON_URLS.add("/staff");
+
     }
 
 
@@ -63,6 +69,15 @@ public class AdminAuthFilter extends AuthFilter {
         role = role == Staff.Role.Admin ? Staff.Role.Manager : role;
 
         String requestURI = ((HttpServletRequest) request).getRequestURI();
+        String ctxPath = ((HttpServletRequest) request).getContextPath();
+        if (ctxPath.length() < requestURI.length()) {
+            requestURI = requestURI.substring(ctxPath.length());
+        }
+
+        if (COMMON_URLS.contains(requestURI)) {
+            return true;
+        }
+
         Staff.Role requiredRole = URL_AUTH.get(requestURI);
         if (Objects.isNull(requiredRole)) {
             logger.log(Level.SEVERE, "No role set for url " + requestURI);
