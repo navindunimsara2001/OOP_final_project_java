@@ -22,6 +22,9 @@
             <div class="fitem">
                 <a href="#">Privacy Policy</a>
             </div>
+            <div class="fitem">
+                <a href="staff/login">Employee portal</a>
+            </div>
             <div class="social">
                 <ul class="social">
                     <li><a href="https://facebook.com" class="facebook">

@@ -20,6 +20,8 @@ public class ItemRequestService implements IItemRequestService {
     private static final String GET_STAFF_QUERY = "SELECT * FROM `item_request` WHERE `staff_id`=?";
     private static final String UPDATE_QUERY = "UPDATE `item_request` SET `item_id`=? , `staff_id`=? , `qty`=? where id=?";
     private static final String DELETE_QUERY = "DELETE FROM `item_request` WHERE `id`=?";
+    private static final String STATUS_QUERY = "UPDATE `item_request` SET `status` = ? WHERE `id`=?";
+    
 
     /**
      * add Item request to database
@@ -50,6 +52,9 @@ public class ItemRequestService implements IItemRequestService {
 
         Staff stf = new StaffService().getStaffById(rs.getInt("staff_id"));
         ir.setStaff(stf);
+        
+        String status = rs.getString("status");
+        ir.setStatus(status);
 
         ir.setQty(rs.getInt("qty"));
 
@@ -150,7 +155,7 @@ public class ItemRequestService implements IItemRequestService {
             logger.log(Level.SEVERE, "Failed to delete Item request by Id", e);
         }
     }
-
+    
     public ArrayList<ItemRequest> getItemRequestByStaffId(int ID) {
         ArrayList<ItemRequest> itmList = new ArrayList<>();
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_STAFF_QUERY)) {
@@ -165,4 +170,25 @@ public class ItemRequestService implements IItemRequestService {
         }
         return itmList;
     }
+    
+    /**
+     * 
+     * @param ID the id of request
+     * @param status the status of request
+     */
+	@Override
+	public void updateStatus(int ID, String status) {
+		try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(STATUS_QUERY)) {
+			stmt.setString(1, status);
+			stmt.setInt(2, ID);
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.log(Level.SEVERE, "Failed to update Item request by Id", e);
+		}
+	}
+    
+    
 }

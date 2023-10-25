@@ -5,8 +5,7 @@ public class ItemRequest {
     // attributes
     private int ID;
     private Item item;
-
-
+    private String status;
     private int qty;
     private Staff staff;
 
@@ -52,4 +51,12 @@ public class ItemRequest {
                 ", staff=" + staff +
                 '}';
     }
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
