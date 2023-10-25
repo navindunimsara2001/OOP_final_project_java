@@ -44,7 +44,7 @@
                                 data-role="${Staff.role.ordinal()}">Edit
                             User
                         </button>
-                        <button class="btn btn-danger delete-btn">Delete</button>
+                        <a class="btn btn-danger delete-btn" href="./DeleteStaffProfile?id=${Staff.ID}">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -62,7 +62,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="/adminCreateStaff" method="post" class="form">
+                <form action="./manageStaff" method="post" class="form">
                     <div class="modal-body">
                         <div class="input-box">
                             <label>Full Name :
@@ -88,16 +88,6 @@
                             </div>
                         </div>
                         <div class="input-box">
-                            <label>Password :
-                                <input type="password" name="password" id="password" required>
-                            </label>
-                        </div>
-                        <div class="input-box">
-                            <label>Confirm Password :
-                                <input type="password" id="repassword" required>
-                            </label>
-                        </div>
-                        <div class="input-box">
                             <label>
                                 Type:
                                 <select name="role">
@@ -107,7 +97,7 @@
                             </label>
                         </div>
                     </div>
-                    <input type="hidden" id="ID">
+                    <input type="hidden" name="ID" id="ID">
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="modalAction">Add Staff</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

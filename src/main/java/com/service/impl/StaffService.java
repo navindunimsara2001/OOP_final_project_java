@@ -18,7 +18,7 @@ public class StaffService implements IStaffService {
     private static final String GET_ALL_QUERY = "select * from `staff`";
     private static final String GET_ALL_STAFF_QUERY = "select * from `staff` where role = " + Staff.Role.Staff.ordinal();
     private static final String GET_ALL_MANAGERS_QUERY = "select * from `staff` where role = " + Staff.Role.Manager.ordinal();
-    private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `password`=?, `phone`=?, `dob`=?, role=? where id=?";
+    private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `phone`=?, `dob`=?, role=? where id=?";
     private static final String REMOVE_QUERY = "delete from `staff` where id=?";
 
     /**
@@ -185,11 +185,10 @@ public class StaffService implements IStaffService {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
             stmt.setString(1, stf.getName());
             stmt.setString(2, stf.getEmail());
-            stmt.setString(3, stf.getPassword());
-            stmt.setString(4, stf.getPhone());
-            stmt.setString(5, stf.getDOB());
-            stmt.setInt(6, stf.getRole().ordinal());
-            stmt.setInt(7, stfId);
+            stmt.setString(3, stf.getPhone());
+            stmt.setString(4, stf.getDOB());
+            stmt.setInt(5, stf.getRole().ordinal());
+            stmt.setInt(6, stfId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update staff", e);

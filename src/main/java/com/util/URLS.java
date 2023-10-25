@@ -9,7 +9,7 @@ public class URLS {
     public static final String ADMIN_HOME = "staff/";
     public static final String ADMIN_LOGIN = "staff/login";
     public static final String MANAGE_USERS = "staff/manageUsers";
-    public static final String MANAGE_STAFF = "staff/manageStaff";
+    public static final String MANAGE_STAFF = "./manageStaff";
     public static final String USER_APPOINTMENT = "appointments";
     public static final String LOGOUT = "logout";
     public static final String VIEW_ITEM_LIST = "./viewItemList";
