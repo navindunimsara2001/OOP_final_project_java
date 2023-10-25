@@ -37,4 +37,14 @@ public class Fuel {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Fuel{" +
+                "ID=" + ID +
+                ", type='" + type + '\'' +
+                ", amount=" + amount +
+                ", price=" + price +
+                '}';
+    }
 }

@@ -61,38 +61,51 @@ public class Appointment {
         this.date = date;
     }
 
-	public Customer getCus() {
-		return cus;
-	}
+    public Customer getCus() {
+        return cus;
+    }
 
-	public void setCus(Customer cus) {
-		this.cus = cus;
-	}
+    public void setCus(Customer cus) {
+        this.cus = cus;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public Staff getStaff() {
-		return staff;
-	}
+    public Staff getStaff() {
+        return staff;
+    }
 
-	public void setStaff(Staff staff) {
-		this.staff = staff;
-	}
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 
-	public String getComment() {
-		return comment;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	
-	
- 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "ID=" + ID +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", type='" + type + '\'' +
+                ", date='" + date + '\'' +
+                ", comment='" + comment + '\'' +
+                ", cus=" + cus +
+                ", status='" + status + '\'' +
+                ", staff=" + staff +
+                '}';
+    }
 }

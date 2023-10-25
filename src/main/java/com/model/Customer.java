@@ -25,4 +25,11 @@ public class Customer extends Person {
         this.district = district;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "gender='" + gender + '\'' +
+                ", district='" + district + '\'' +
+                "} " + super.toString();
+    }
 }

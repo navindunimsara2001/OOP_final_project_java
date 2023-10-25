@@ -16,4 +16,11 @@ public class Staff extends Person {
         Manager,
         Admin
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "role=" + role +
+                "} " + super.toString();
+    }
 }

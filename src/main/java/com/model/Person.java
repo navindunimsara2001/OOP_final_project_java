@@ -57,5 +57,16 @@ public abstract class Person {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
+                ", DOB='" + DOB + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
