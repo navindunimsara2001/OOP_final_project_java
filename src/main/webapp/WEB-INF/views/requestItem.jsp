@@ -10,7 +10,7 @@
     <!--stylesheet-->
     <link rel="stylesheet" href="assets/styles/Request.css">
     <link rel="stylesheet" href="assets/styles/form.css">
-    <script src="../assets/js/Request.js"></script>
+    <script src="assets/js/Request.js"></script>
 
 </head>
 <body>
@@ -58,7 +58,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Request Item</h5>
-                <button type="button" class="close btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="close btn btn-outline-secondary" data-bs-dismiss="modal"
+                        aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
