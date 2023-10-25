@@ -51,6 +51,8 @@ public class UserProfileServlet extends HttpServlet {
             logger.log(Level.WARNING, "No user in db for id " + ID);
         }
 
+        System.out.println(cus);
+
         request.setAttribute("ID", cus.getID());
         request.setAttribute("name", cus.getName());
         request.setAttribute("email", cus.getEmail());
@@ -75,7 +77,7 @@ public class UserProfileServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
-        int ID = SessionUtil.getId(request, userType, 7);
+        int ID = SessionUtil.getUserId(request, 7);
 
         // get values from edit page
         String name = request.getParameter("name");
@@ -92,7 +94,7 @@ public class UserProfileServlet extends HttpServlet {
         cus.setDOB(DOB);
         cus.setDistrict(district);
         cus.setPassword(password);
-
+        System.out.println(cus);
         // pass values to update database
         customerService.updateCustomer(ID, cus);
 
