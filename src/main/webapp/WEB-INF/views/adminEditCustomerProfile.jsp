@@ -1,3 +1,4 @@
+<%@ page import="java.util.Objects" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -20,87 +21,60 @@
     <jsp:include page="/includes/dashboard_sidebar.jsp"/>
     <main>
 
-        <div class="container">
-            <h2>User Profile</h2>
+        <div class="profile-container">
+            <h2 class="profile-header">User Profile</h2>
             <div class="profile-pic">
-                <img src="assets/images/Icons/user.svg" alt="">
+                <ion-icon name="person-circle-outline" style="font-size: 128px"></ion-icon>
             </div>
 
             <div class="row">
-                <div class="col-3"></div>
                 <div class="col d-flex justify-content-center" id="col">
-                    <form action="staff/editUser" method="post">
+                    <form action="${requestScope.get("url")}" method="post">
                         <table>
-                            <tr>
-                                <th>
-                                    <div class="field">
-                                        <label class="label" for="ID">ID : </label>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="field">
-                                        <input type="text" name=""
-                                               value="<%=request.getAttribute("ID")%>" disabled>
-                                    </div>
-                                </th>
+                            <tr class="field">
+                                <td>
+                                    <label class="label" for="Name">Name : </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="name" id="name"
+                                           value="<%=request.getAttribute("name")%>"
+                                    >
+                                </td>
                             </tr>
-                            <tr>
-                            <tr>
-                                <th>
-                                    <div class="field">
-                                        <label class="label" for="Name">Name : </label>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="field">
-                                        <input type="text" name="name"
-                                               value="<%=request.getAttribute("name")%>">
-                                    </div>
-                                </th>
+                            <tr class="field">
+                                <td>
+                                    <label class="label" for="phone">Phone : </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="phone" id="phone"
+                                           value="<%=request.getAttribute("phone")%>"
+                                    >
+                                </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    <div class="field">
-                                        <label class="label" for="Phone Number">Phone : </label>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="field">
-                                        <input type="text" name="phone"
-                                               value="<%=request.getAttribute("phone")%>">
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
+                            <tr class="field">
 
-                                <th>
-                                    <div class="field">
-                                        <label class="label" for="DOB">DOB : </label>
-                                    </div>
-                                </th>
-
-
-                                <th>
-                                    <div class="field">
-                                        <input type="date" name="DOB" id="DOB"
-                                               value="<%=request.getAttribute("DOB")%>">
-                                    </div>
-                                </th>
+                                <td>
+                                    <label class="label" for="DOB">DOB : </label>
+                                </td>
+                                <td>
+                                    <input type="date" name="DOB" id="DOB"
+                                           value="<%=request.getAttribute("DOB")%>"
+                                    >
+                                </td>
 
                             </tr>
-                            <tr>
-                                <th>
-                                    <div class="field">
-                                        <label class="label" for="district"> District : </label>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="field">
-                                        <input type="text" name="district" id="district"
-                                               value="<%=request.getAttribute("district")%>">
-                                    </div>
-                                </th>
+                            <% if (!Objects.isNull(request.getAttribute("district"))) {%>
+                            <tr class="field">
+                                <td>
+                                    <label class="label" for="district"> District : </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="district" id="district"
+                                           value="<%=request.getAttribute("district")%>"
+                                    >
+                                </td>
                             </tr>
+                            <%}%>
                         </table>
                         <input type="hidden" name="ID" value="<%=request.getAttribute("ID")%>">
                         <div>

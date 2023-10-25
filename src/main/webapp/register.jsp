@@ -16,7 +16,7 @@
 
     <section class="container">
         <header class="header">Registration Form</header>
-        <form action="./registerUser" method="post" class="form">
+        <form action="registerUser" method="post" class="form">
             <div class="input-box">
                 <label>Full Name :
                     <input type="text" placeholder="Enter full name" name="name" required>
@@ -95,7 +95,7 @@
                     </select> </label>
             </div>
             <button type="submit">Submit</button>
-            <div class="a"><a href="./login">Already have an account?</a></div>
+            <div class="a"><a href="login">Already have an account?</a></div>
         </form>
     </section>
 </main>

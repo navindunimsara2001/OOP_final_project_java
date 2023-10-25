@@ -21,16 +21,14 @@ import com.util.Views;
 public class AdminEditUserServlet extends HttpServlet {
     // create service object
     final CustomerService cs = new CustomerService();
-    // create customer object
-    Customer cus = new Customer();
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         int ID = Integer.parseInt(request.getParameter("ID"));
         // get customer details using ID and set to request
-
-        cus = cs.getCustomerById(ID);
+        Customer cus = cs.getCustomerById(ID);
         request.setAttribute("ID", ID);
         request.setAttribute("name", cus.getName());
         request.setAttribute("phone", cus.getPhone());
@@ -47,6 +45,11 @@ public class AdminEditUserServlet extends HttpServlet {
             throws IOException {
         // get edited data from form
         int ID = Integer.parseInt(request.getParameter("ID"));
+
+        // create customer object
+        Customer cus = cs.getCustomerById(ID);
+        System.out.println(cus);
+        System.out.println(request.getParameterMap().keySet());
         cus.setName(request.getParameter("name"));
         cus.setPhone(request.getParameter("phone"));
         cus.setDOB(request.getParameter("DOB"));
