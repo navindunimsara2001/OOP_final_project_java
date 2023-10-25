@@ -17,11 +17,13 @@ import java.util.Objects;
 public class AuthFilter extends HttpFilter {
 
     private boolean isAdmin;
+    private SessionUtil.UserType type;
 
     @Override
     public void init(FilterConfig config) {
         String admin = config.getInitParameter("admin");
         this.isAdmin = !Objects.isNull(admin) && Boolean.parseBoolean(admin);
+        this.type = isAdmin ? SessionUtil.UserType.Staff : SessionUtil.UserType.User;
     }
 
     @Override
@@ -34,17 +36,11 @@ public class AuthFilter extends HttpFilter {
             return;
         }
 
-        try {
-            if (this.isAdmin) {
-                SessionUtil.getStaffId(request);
-            } else {
-                SessionUtil.getUserId(request);
-            }
-        } catch (SessionUtil.NotLoggedInException e) {
-            this.redirect(request, (HttpServletResponse) res);
-            return;
-        }
-
+        System.out.println("filter called");
+//        if (!SessionUtil.isLoggedIn(request, this.type)) {
+//            this.redirect(request, (HttpServletResponse) res);
+//            return;
+//        }
 
         chain.doFilter(req, res);
     }

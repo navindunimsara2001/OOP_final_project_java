@@ -4,6 +4,9 @@ import com.model.Customer;
 import com.model.Staff;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Type;
+import java.util.Enumeration;
 import java.util.Objects;
 
 public class SessionUtil {
@@ -13,70 +16,74 @@ public class SessionUtil {
         public NotLoggedInException() {
             super("User is not logged in");
         }
+
+        public NotLoggedInException(String err) {
+            super("User is not logged in: " + err);
+        }
     }
 
     public enum UserType {
         User, Staff
     }
 
-    public static int getId(HttpServletRequest req, UserType type) {
-        return type == UserType.User ? getUserId(req) : getStaffId(req);
-    }
-
+   
     public static int getId(HttpServletRequest req, UserType type, int def) {
         return type == UserType.User ? getUserId(req, def) : getStaffId(req, def);
     }
 
-    public static int getUserId(HttpServletRequest req) {
-        Customer cus = getCustomer(req);
-        if (Objects.isNull(cus)) {
-            throw new NotLoggedInException();
+    public static boolean isLoggedIn(HttpServletRequest req, UserType type) {
+        try {
+            getId(req, type);
+            return true;
+        } catch (NotLoggedInException e) {
+            return false;
         }
-        return cus.getID();
     }
 
 
     public static int getUserId(HttpServletRequest req, int defaultV) {
         try {
-            return getUserId(req);
+            return getId(req, UserType.User);
         } catch (NotLoggedInException e) {
             System.out.println("Falling back to default value " + defaultV);
             return defaultV;
         }
-    }
-
-    public static int getStaffId(HttpServletRequest req) {
-        Staff staff = getStaff(req);
-        if (Objects.isNull(staff)) {
-            throw new NotLoggedInException();
-        }
-        return staff.getID();
     }
 
 
     public static int getStaffId(HttpServletRequest req, int defaultV) {
         try {
-            return getStaffId(req);
+            return getId(req, UserType.Staff);
         } catch (NotLoggedInException e) {
             System.out.println("Falling back to default value " + defaultV);
             return defaultV;
         }
     }
 
-    private static Customer getCustomer(HttpServletRequest req) {
-        try {
-            return (Customer) req.getSession(false).getAttribute("user");
-        } catch (NullPointerException | ClassCastException ignored) {
-            return null;
+    private static int getId(HttpServletRequest req, UserType type) {
+        HttpSession session = req.getSession(false);
+        if (Objects.isNull(session)) {
+            throw new NotLoggedInException();
         }
+
+        Object idObj = session.getAttribute("id");
+        if (Objects.isNull(idObj) || !(idObj instanceof Integer)) {
+            throw new NotLoggedInException("user id not set");
+        }
+        int ID = (int) idObj;
+
+        Object isStaffObj = session.getAttribute("isStaff");
+        if (Objects.isNull(isStaffObj) || !(isStaffObj instanceof Boolean)) {
+            throw new NotLoggedInException("isStaff not set");
+        }
+
+        boolean shouldBeStaff = type == UserType.Staff;
+        if (isStaffObj.equals(shouldBeStaff)) {
+            throw new NotLoggedInException("wrong session type");
+        }
+
+        return ID;
     }
 
 
-    private static Staff getStaff(HttpServletRequest req) {
-        try {
-            return (Staff) req.getSession(false).getAttribute("user");
-        } catch (NullPointerException | ClassCastException ignored) {
-            return null;
-        }
-    }
 }
