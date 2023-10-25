@@ -19,6 +19,7 @@ public class URLS {
     public static final String UPDATE_FUEL = "staff/UpdateFuelServlet";
     public static final String MANAGE_APPOINTMENT = "staff/manageAppointment";
     public static final String STAFF_PROFILE = "staff/profile";
+    public static final String REQUSET_MGT = "staff/ManageItemRequest";
 
     public static String urlFor(HttpServletRequest req, String s) {
         return req.getContextPath() + "/" + s;
