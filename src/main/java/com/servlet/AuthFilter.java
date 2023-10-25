@@ -1,6 +1,7 @@
 package com.servlet;
 
 import com.model.Person;
+import com.util.NotifyUtil;
 import com.util.SessionUtil;
 import com.util.URLS;
 
@@ -58,7 +59,8 @@ public class AuthFilter extends HttpFilter {
         }
 
         if (!checkAccess(req, res)) {
-            System.out.println("Tried to access blocked url");
+            logger.log(Level.INFO, "Tried to access blocked url");
+            NotifyUtil.addNotify(request, NotifyUtil.Type.Error, "Unable to Access Page: Permission Denied");
             ((HttpServletResponse) res).sendRedirect(URLS.urlFor(request, this.homeURL));
             return;
         }
