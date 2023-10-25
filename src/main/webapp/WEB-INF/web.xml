@@ -24,7 +24,7 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-	<!-- For customer registration -->
+    <!-- For customer registration -->
     <servlet>
         <servlet-name>CustomerRegisterServlet</servlet-name>
         <servlet-class>com.servlet.CustomerRegisterServlet</servlet-class>
@@ -34,8 +34,8 @@
         <servlet-name>CustomerRegisterServlet</servlet-name>
         <url-pattern>/registerUser</url-pattern>
     </servlet-mapping>
-	 
-	<!-- For customer-->
+
+    <!-- For customer-->
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>com.servlet.LoginServlet</servlet-class>
@@ -45,8 +45,8 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-	
-	<!-- For all logout -->
+
+    <!-- For all logout -->
     <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>com.servlet.LogoutServlet</servlet-class>
@@ -56,7 +56,7 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    
+
     <!-- For all staff log in -->
     <servlet>
         <servlet-name>staffLogin</servlet-name>
@@ -71,7 +71,7 @@
         <servlet-name>staffLogin</servlet-name>
         <url-pattern>/staff/login</url-pattern>
     </servlet-mapping>
-    
+
     <!-- For make an appointment -->
     <servlet>
         <servlet-name>createAppointment</servlet-name>
@@ -80,9 +80,9 @@
 
     <servlet-mapping>
         <servlet-name>createAppointment</servlet-name>
-        <url-pattern>user/createAppointment</url-pattern>
+        <url-pattern>/user/createAppointment</url-pattern>
     </servlet-mapping>
-    
+
     <!-- For user profile view -->
     <servlet>
         <servlet-name>showUserProfile</servlet-name>
@@ -91,9 +91,9 @@
 
     <servlet-mapping>
         <servlet-name>showUserProfile</servlet-name>
-        <url-pattern>user/profile</url-pattern>
+        <url-pattern>/user/profile</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>showUserAppointments</servlet-name>
         <servlet-class>com.servlet.ShowUserAppointments</servlet-class>
@@ -137,8 +137,8 @@
         <servlet-name>adminManageUsers</servlet-name>
         <url-pattern>/staff/manageUsers</url-pattern>
     </servlet-mapping>
-    
-	<!-- Admin & Manager manage Staff -->
+
+    <!-- Admin & Manager manage Staff -->
     <servlet>
         <servlet-name>adminManageStaff</servlet-name>
         <servlet-class>com.servlet.admin.AdminManageStaff</servlet-class>
@@ -181,8 +181,8 @@
         <servlet-name>manageAppointment</servlet-name>
         <url-pattern>/staff/manageAppointment</url-pattern>
     </servlet-mapping>
-	
-	<!-- Staff member request Item -->
+
+    <!-- Staff member request Item -->
     <servlet>
         <servlet-name>requestItem</servlet-name>
         <servlet-class>com.servlet.staff.RequestItemServlet</servlet-class>
@@ -192,19 +192,19 @@
         <servlet-name>requestItem</servlet-name>
         <url-pattern>/staff/requestItem</url-pattern>
     </servlet-mapping>
-    
+
     <!-- Staff member view Item list -->
     <servlet>
-		<servlet-name>ViewItemListServlet</servlet-name>
-		<servlet-class>com.servlet.admin.ViewItemListServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ViewItemListServlet</servlet-name>
-		<url-pattern>/staff/viewItemList</url-pattern>
-	</servlet-mapping>
-	
-	<!-- Staff view previous Item requests -->
+        <servlet-name>ViewItemListServlet</servlet-name>
+        <servlet-class>com.servlet.admin.ViewItemListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewItemListServlet</servlet-name>
+        <url-pattern>/staff/viewItemList</url-pattern>
+    </servlet-mapping>
+
+    <!-- Staff view previous Item requests -->
     <servlet>
         <servlet-name>staffViewRequests</servlet-name>
         <servlet-class>com.servlet.staff.ShowRequestItemsServlet</servlet-class>
@@ -214,29 +214,29 @@
         <servlet-name>staffViewRequests</servlet-name>
         <url-pattern>/staff/requestedItem</url-pattern>
     </servlet-mapping>
-    
+
     <!-- staff member update sold fuel count -->
     <servlet>
-		<servlet-name>FuelManageServlet</servlet-name>
-		<servlet-class>com.servlet.admin.FuelManageServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>FuelManageServlet</servlet-name>
-		<url-pattern>/staff/FuelManageServlet</url-pattern>
-	</servlet-mapping>
-	
-	<!-- Manager & Admin update fuel stock -->
-	<servlet>
-		<servlet-name>UpdateFuelServlet</servlet-name>
-		<servlet-class>com.servlet.admin.UpdateFuelServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>UpdateFuelServlet</servlet-name>
-		<url-pattern>/staff/UpdateFuelServlet</url-pattern>
-	</servlet-mapping>
-	
+        <servlet-name>FuelManageServlet</servlet-name>
+        <servlet-class>com.servlet.admin.FuelManageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FuelManageServlet</servlet-name>
+        <url-pattern>/staff/FuelManageServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- Manager & Admin update fuel stock -->
+    <servlet>
+        <servlet-name>UpdateFuelServlet</servlet-name>
+        <servlet-class>com.servlet.admin.UpdateFuelServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateFuelServlet</servlet-name>
+        <url-pattern>/staff/UpdateFuelServlet</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>AuthFilter</filter-name>
