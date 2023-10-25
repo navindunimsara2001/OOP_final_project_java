@@ -20,7 +20,7 @@ public class ShowRequestedItemsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int ID = SessionUtil.getStaffId(request, 12);
+        int ID = SessionUtil.getStaffId(request, 7);
 
         ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(ID);
         for (ItemRequest itemRequest : itmReqList) {

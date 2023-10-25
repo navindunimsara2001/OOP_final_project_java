@@ -29,11 +29,6 @@
             <img src="assets/images/Icons/cube-alt-2-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">All Items</div>
         </a>
-        <a class="sidebar-option" href="staff/manageAppointment">
-            <img src="assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
-            <div class="sidebar-option-text">Appointments</div>
-        </a>
-
         <a class="sidebar-option" href="staff/fuelSales">
             <img src="assets/images/Icons/square-list-svgrepo-com.svg" width="40px">
             <div class="sidebar-option-text">Fuel Sales</div>

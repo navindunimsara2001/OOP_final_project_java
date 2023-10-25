@@ -127,6 +127,16 @@
         <url-pattern>/staff/profile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>deleteStaff</servlet-name>
+        <servlet-class>com.servlet.admin.DeleteStaffProfile</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteStaff</servlet-name>
+        <url-pattern>/staff/DeleteStaffProfile</url-pattern>
+    </servlet-mapping>
+
     <!-- AdminCreateStaffServlet -->
     <servlet>
         <servlet-name>adminCreateStaffMember</servlet-name>

@@ -22,7 +22,7 @@ import com.util.Views;
 public class DeleteStaffProfile extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int ID = Integer.parseInt(request.getParameter("ID"));
+        int ID = Integer.parseInt(request.getParameter("id"));
 
         new StaffService().removeStaff(ID);
 
