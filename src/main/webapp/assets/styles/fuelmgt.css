@@ -59,25 +59,25 @@ html {
 
 .feattop h1 {
     font-size: 60px;
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 
 #f1:hover {
     background-color: #de343f;
     color: #fff;
-    box-shadow: 0px 0px 10px 10px rgb(79, 112, 156, 0.5);
+    box-shadow: 0 0 10px 10px rgb(79, 112, 156, 0.5);
 }
 
 #f2:hover {
     background-color: #f4332a;
     color: #fff;
-    box-shadow: 0px 0px 10px 10px rgb(79, 112, 156, 0.5);
+    box-shadow: 0 0 10px 10px rgb(79, 112, 156, 0.5);
 }
 
 #f3:hover {
     background-color: #ffc239;
     color: #001435;
-    box-shadow: 0px 0px 10px 10px rgb(79, 112, 156, 0.5);
+    box-shadow: 0 0 10px 10px rgb(79, 112, 156, 0.5);
 }
 
 #f3:hover h4 {
@@ -156,7 +156,7 @@ input[type="text"] {
     border-radius: 4px;
     font-size: 16px;
     margin-right: 10px;
-} 
+}
 
 input[type="number"] {
     width: 80%;
@@ -165,7 +165,7 @@ input[type="number"] {
     border-radius: 4px;
     font-size: 16px;
     margin-right: 10px;
-} 
+}
 
 #container button {
     height: 55px;

@@ -84,39 +84,38 @@ public class FuelService implements IFuelService {
     /**
      * Updates the data of the fuel type with the given id.
      *
-     * @param ID   id of fuel type
-     * @param fuel the new data of the fuel object
+     * @param ID     id of fuel type
+     * @param amount the new data of the fuel object
      */
     @Override
-    public void updateFuelAmount(int ID , double amount) {
+    public void updateFuelAmount(int ID, double amount) {
         try (Connection con = DBUtil.connect();
              PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL_AMOUNT)) {
-            stmt.setDouble(1,amount);
+            stmt.setDouble(1, amount);
             stmt.setInt(2, ID);
-            
+
             stmt.executeUpdate();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to update fuel", e);
         }
     }
-    
+
     /**
-     * 
-     * @param ID the id of fuel type
-     * @param price new price
-     * @param  amount the new amount
+     * @param ID     the id of fuel type
+     * @param price  new price
+     * @param amount the new amount
      */
     @Override
-	public void changeFuel(int ID , double price , double amount) {
-    	try (Connection con = DBUtil.connect();
-                PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL)) {
-    		stmt.setDouble(1, price);
-    		stmt.setDouble(2, amount);
-    		stmt.setDouble(3, ID);
-    		
-    		stmt.executeUpdate();
-    	} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    public void changeFuel(int ID, double price, double amount) {
+        try (Connection con = DBUtil.connect();
+             PreparedStatement stmt = con.prepareStatement(UPDATE_FUEL)) {
+            stmt.setDouble(1, price);
+            stmt.setDouble(2, amount);
+            stmt.setDouble(3, ID);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

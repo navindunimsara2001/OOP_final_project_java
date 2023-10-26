@@ -180,7 +180,7 @@ nav.main-menu > .header.item {
     color: #000;
     text-decoration: none;
     width: 100%;
-    padding: 8px 0px;
+    padding: 8px 0;
     text-align: center;
 }
 
@@ -275,7 +275,6 @@ footer .copyright {
 }
 
 .social li a {
-    display: inline-block;
     width: 48px;
     height: 48px;
     background: #ffffff;

@@ -102,7 +102,8 @@
 </main>
 
 <script>
-    let form =document.getElementById("reg");
+    let form = document.getElementById("reg");
+
     function checkPasswordMatch() {
         console.log("called")
         var password = document.getElementById("password").value;
@@ -122,7 +123,6 @@
     form.addEventListener("input", checkPasswordMatch);
 </script>
 
-</script>
 
 <jsp:include page="/includes/footer.jsp"/>
 
