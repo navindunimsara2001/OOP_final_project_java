@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Customer;
+import com.model.Staff;
 import com.service.impl.CustomerService;
 import com.util.*;
 import com.util.SessionUtil.UserType;
@@ -50,7 +51,6 @@ public class UserProfileServlet extends HttpServlet {
             logger.log(Level.WARNING, "No user in db for id " + ID);
         }
 
-        System.out.println(cus);
 
         request.setAttribute("ID", cus.getID());
         request.setAttribute("name", cus.getName());
@@ -78,13 +78,17 @@ public class UserProfileServlet extends HttpServlet {
         // get user id
         int ID = SessionUtil.getUserId(request);
 
+        if (Objects.equals(request.getParameter("action"), "password")) {
+            changePassword(ID, request, response);
+            return;
+        }
+
         try {
             // get values from edit page
             String name = Parse.Name(request.getParameter("name"));
             String phone = Parse.Phone(request.getParameter("phone"));
             String DOB = Parse.Date(request.getParameter("DOB"));
             String district = request.getParameter("district");
-            String password = Parse.Password(request.getParameter("password"));
 
             // assign values to customer object
             Customer cus = customerService.getCustomerById(ID);
@@ -93,10 +97,33 @@ public class UserProfileServlet extends HttpServlet {
             cus.setPhone(phone);
             cus.setDOB(DOB);
             cus.setDistrict(district);
-            cus.setPassword(password);
             // pass values to update database
             customerService.updateCustomer(ID, cus);
             Notify.add(request, Notify.Type.Success, "Profile updated successfully");
+        } catch (ValidationError e) {
+            Notify.add(request, Notify.Type.Error, e.getMessage());
+        }
+
+        //redirect
+        response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
+    }
+
+    private void changePassword(int ID, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            String password = Parse.Password(request.getParameter("password"));
+
+            // assign values to customer object
+            Customer cus = customerService.getCustomerById(ID);
+            if (Objects.isNull(cus)) {
+                throw new ValidationError("Staff member does not exist");
+            }
+
+            cus.setPassword(password);
+
+            // pass values to update database
+            customerService.updateCustomer(ID, cus);
+
+            Notify.add(request, Notify.Type.Success, "Password changed successfully");
         } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }

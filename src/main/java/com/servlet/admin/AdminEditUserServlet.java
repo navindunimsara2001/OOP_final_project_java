@@ -23,24 +23,6 @@ public class AdminEditUserServlet extends HttpServlet {
     final CustomerService cs = new CustomerService();
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        int ID = Integer.parseInt(request.getParameter("ID"));
-        // get customer details using ID and set to request
-        Customer cus = cs.getCustomerById(ID);
-        request.setAttribute("ID", ID);
-        request.setAttribute("name", cus.getName());
-        request.setAttribute("phone", cus.getPhone());
-        request.setAttribute("DOB", cus.getDOB());
-        request.setAttribute("district", cus.getDistrict());
-
-        // redirect
-        RequestDispatcher dispatcher = request.getRequestDispatcher(Views.USER_PROFILE_EDIT_ADMIN);
-        dispatcher.forward(request, response);
-
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         try {

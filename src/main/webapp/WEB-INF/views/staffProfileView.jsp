@@ -4,6 +4,7 @@
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>My Profile - WinFuel Dashboard</title>
     <link rel="stylesheet" href="assets/styles/userProfileView.css">
+    <link rel="stylesheet" href="assets/styles/form.css">
     <style>
         body {
             background-image: none;

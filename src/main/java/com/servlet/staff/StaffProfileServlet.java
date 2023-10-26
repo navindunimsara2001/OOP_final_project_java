@@ -70,12 +70,17 @@ public class StaffProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
         int ID = SessionUtil.getStaffId(request);
+
+        if (Objects.equals(request.getParameter("action"), "password")) {
+            changePassword(ID, request, response);
+            return;
+        }
+
         try {
             // get values from edit page
             String name = Parse.Name(request.getParameter("name"));
             String phone = Parse.Phone(request.getParameter("phone"));
             String DOB = Parse.Date(request.getParameter("DOB"));
-            String password = Parse.Password(request.getParameter("password"));
 
             // assign values to customer object
             Staff staff = staffService.getStaffById(ID);
@@ -86,7 +91,6 @@ public class StaffProfileServlet extends HttpServlet {
             staff.setName(name);
             staff.setPhone(phone);
             staff.setDOB(DOB);
-            staff.setPassword(password);
 
             // pass values to update database
             staffService.updateStaff(ID, staff);
@@ -101,5 +105,28 @@ public class StaffProfileServlet extends HttpServlet {
         response.sendRedirect(URLS.urlFor(request, URLS.STAFF_PROFILE));
     }
 
+    private void changePassword(int ID, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            String password = Parse.Password(request.getParameter("password"));
+
+            // assign values to customer object
+            Staff staff = staffService.getStaffById(ID);
+            if (Objects.isNull(staff)) {
+                throw new ValidationError("Staff member does not exist");
+            }
+
+            staff.setPassword(password);
+
+            // pass values to update database
+            staffService.updateStaff(ID, staff);
+
+            Notify.add(request, Notify.Type.Success, "Password changed successfully");
+        } catch (ValidationError e) {
+            Notify.add(request, Notify.Type.Error, e.getMessage());
+        }
+
+        //redirect
+        response.sendRedirect(URLS.urlFor(request, URLS.STAFF_PROFILE));
+    }
 
 }
