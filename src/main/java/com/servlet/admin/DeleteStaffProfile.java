@@ -23,7 +23,7 @@ public class DeleteStaffProfile extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int ID = Parse.Number(request.getParameter("id"));
+            int ID = Parse.Number(request.getParameter("id"), "Staff ID");
 
             staffService.removeStaff(ID);
 

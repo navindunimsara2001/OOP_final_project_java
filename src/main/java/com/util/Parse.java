@@ -63,11 +63,12 @@ public class Parse {
         return s;
     }
 
-    public static int Number(String s) {
-        return Number(s, "");
-    }
 
     public static int Number(String s, String name) {
+        if (!name.isEmpty()) {
+            name += ": ";
+        }
+
         if (Objects.isNull(s)) {
             throw new ValidationError(name + "Invalid number");
         }
@@ -79,11 +80,12 @@ public class Parse {
         }
     }
 
-    public static Double Float(String s) {
-        return Float(s, "");
-    }
 
     public static Double Float(String s, String name) {
+        if (!name.isEmpty()) {
+            name += ": ";
+        }
+
         if (Objects.isNull(s)) {
             throw new ValidationError(name + "Invalid number");
         }
@@ -100,7 +102,7 @@ public class Parse {
             throw new ValidationError("Empty role");
         }
 
-        int role = Number(s);
+        int role = Number(s, "role");
         if (role < 0 || role > 1) {
             throw new ValidationError("Invalid role selected");
         }
