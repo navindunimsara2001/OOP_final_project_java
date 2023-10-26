@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <jsp:include page="/includes/header.jsp"/>
-    <title>Registration Page</title>
+    <title>Register - WinFuel</title>
     <link rel="stylesheet" href="assets/styles/registrationstyle.css">
 </head>
 

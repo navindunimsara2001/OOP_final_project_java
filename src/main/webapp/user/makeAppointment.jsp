@@ -3,7 +3,7 @@
 
 <head>
     <jsp:include page="/includes/header.jsp"/>
-    <title>Create Appointment</title>
+    <title>Create Appointment - WinFuel</title>
     <link rel="stylesheet" href="assets/styles/appointmentStyle.css">
 
 </head>

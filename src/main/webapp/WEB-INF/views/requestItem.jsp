@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Request Items</title>
+    <title>Request Items - WinFuel Dashboard</title>
 
     <!--stylesheet-->
     <link rel="stylesheet" href="assets/styles/Request.css">

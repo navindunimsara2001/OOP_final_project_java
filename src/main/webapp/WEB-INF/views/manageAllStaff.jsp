@@ -5,7 +5,7 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Staff Management</title>
+    <title>Manage Staff - WinFuel Dashboard</title>
     <link rel="stylesheet" href="assets/styles/form.css">
 </head>
 <body>

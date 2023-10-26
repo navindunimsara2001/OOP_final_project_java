@@ -5,7 +5,7 @@
 
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>User Login</title>
+    <title>Staff Login</title>
     <link rel="stylesheet" href="assets/styles/loginStyle.css">
 
 </head>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <jsp:include page="/includes/header.jsp"/>
-    <title>Contact Us</title>
+    <title>Privacy Policy - WinFuel</title>
     <style>
 
         .container {

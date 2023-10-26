@@ -4,7 +4,7 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Update Fuel</title>
+    <title>Manage Fuel Stock - WinFuel Dashboard</title>
     <link rel="stylesheet" href="assets/styles/fuelrestock.css">
 </head>
 

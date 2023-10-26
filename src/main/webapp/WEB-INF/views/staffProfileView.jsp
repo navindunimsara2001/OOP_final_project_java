@@ -2,7 +2,7 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Title</title>
+    <title>My Profile - WinFuel Dashboard</title>
     <link rel="stylesheet" href="assets/styles/userProfileView.css">
     <style>
         body {

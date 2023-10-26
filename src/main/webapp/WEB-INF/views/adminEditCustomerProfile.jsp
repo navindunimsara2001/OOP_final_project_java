@@ -7,7 +7,7 @@
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <link rel="stylesheet" href="assets/styles/userProfileView.css">
-    <title>User Profile</title>
+    <title>Edit Customer Profile - WinFuel Dashboard</title>
     <style>
         body {
             background-image: none !important;

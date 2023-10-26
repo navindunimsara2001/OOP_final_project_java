@@ -7,7 +7,7 @@
 
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Manage Users</title>
+    <title>Manage Customers - WinFuel Dashboard</title>
 </head>
 
 <body>

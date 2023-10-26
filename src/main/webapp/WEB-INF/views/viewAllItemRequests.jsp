@@ -5,7 +5,7 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Requested Items</title>
+    <title>Manage Item Requests - WinFuel Dashboard</title>
 </head>
 <body>
 <jsp:include page="/includes/dashboard_menu.jsp"/>
@@ -34,9 +34,11 @@
                     <td>${ItemRequest.qty}</td>
                     <td>${ItemRequest.status}</td>
                     <td>
-                   
-                    <a class="btn btn-success" href="staff/ManageItemRequest?ID=${ItemRequest.ID}&status=Approve"  ${ItemRequest.status == "Pending" ? "" : "hidden"} >Approve</a>
-                    <a class="btn btn-danger" href="staff/ManageItemRequest?ID=${ItemRequest.ID}&status=Deny" ${ItemRequest.status == "Pending" ? "" : "hidden"}>Deny</a>
+
+                        <a class="btn btn-success"
+                           href="staff/ManageItemRequest?ID=${ItemRequest.ID}&status=Approve"  ${ItemRequest.status == "Pending" ? "" : "hidden"} >Approve</a>
+                        <a class="btn btn-danger"
+                           href="staff/ManageItemRequest?ID=${ItemRequest.ID}&status=Deny" ${ItemRequest.status == "Pending" ? "" : "hidden"}>Deny</a>
                     </td>
                 </tr>
             </c:forEach>

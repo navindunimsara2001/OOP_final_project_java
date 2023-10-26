@@ -5,7 +5,7 @@
 <html>
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
-    <title>Requested Items</title>
+    <title>My Requested Items - WinFuel Dashboard</title>
 </head>
 <body>
 <jsp:include page="/includes/dashboard_menu.jsp"/>

@@ -6,7 +6,7 @@
 
 <head>
     <jsp:include page="/includes/header.jsp"/>
-    <title>User Profile</title>
+    <title>My Profile - WinFuel</title>
     <link rel="stylesheet" href="assets/styles/userProfileView.css">
 
 </head>
