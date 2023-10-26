@@ -6,6 +6,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.Format;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
@@ -81,6 +82,11 @@ public class AdminAuthFilter extends AuthFilter {
         Staff.Role requiredRole = URL_AUTH.get(requestURI);
         if (Objects.isNull(requiredRole)) {
             logger.log(Level.SEVERE, "No role set for url " + requestURI);
+            return false;
+        }
+
+        if (!Objects.equals(role, requiredRole)) {
+            logger.log(Level.INFO, "Tried access blocked url " + requestURI + " role " + role + " required role " + requiredRole);
             return false;
         }
 
