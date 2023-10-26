@@ -195,7 +195,7 @@ public class AppointmentService implements IAppointmentService {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to get appointment", e);
         }
 
         return appList;
@@ -215,7 +215,7 @@ public class AppointmentService implements IAppointmentService {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to get appointment", e);
         }
         return appList;
     }

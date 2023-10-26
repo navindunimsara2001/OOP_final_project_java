@@ -101,7 +101,7 @@ public class ItemService implements IItemService {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to update item by id");
         }
     }
 }

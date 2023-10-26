@@ -115,7 +115,7 @@ public class FuelService implements IFuelService {
 
             stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to update fuel", e);
         }
     }
 }

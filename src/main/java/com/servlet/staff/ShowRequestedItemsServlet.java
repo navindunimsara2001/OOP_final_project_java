@@ -23,9 +23,6 @@ public class ShowRequestedItemsServlet extends HttpServlet {
         int ID = SessionUtil.getStaffId(request);
 
         ArrayList<ItemRequest> itmReqList = new ItemRequestService().getItemRequestByStaffId(ID);
-        for (ItemRequest itemRequest : itmReqList) {
-            System.out.println(itemRequest);
-        }
 
         request.setAttribute("requestedItems", itmReqList);
         RequestDispatcher dispatcher = request.getRequestDispatcher(Views.SHOW_REQUEST_ITEMS);
