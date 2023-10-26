@@ -50,13 +50,15 @@ public class AuthFilter extends HttpFilter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
 
-        // checks if the user is logged in
+        // checks if the page is a login page.
+        // if the page is a login page, bypass the session check
         if (isLoginPage(request)) {
             logger.log(Level.INFO, "Trying to access login page ");
             chain.doFilter(req, res);
             return;
         }
 
+        // checks if the user has a session
         HttpSession sess = request.getSession(false);
         if (Objects.isNull(sess)) {
             logger.log(Level.INFO, "No session set for user");
@@ -64,12 +66,14 @@ public class AuthFilter extends HttpFilter {
             return;
         }
 
+        // check if the user is logged in
         if (!SessionUtil.isLoggedIn(request, this.type)) {
             logger.log(Level.INFO, "Not logged in or wrong session type");
             this.redirect(request, (HttpServletResponse) res);
             return;
         }
 
+        // check if the user can access the page
         if (!checkAccess(req, res)) {
             logger.log(Level.INFO, "Tried to access blocked url");
             Notify.add(request, Notify.Type.Error, "Unable to Access Page: Permission Denied");
@@ -77,6 +81,7 @@ public class AuthFilter extends HttpFilter {
             return;
         }
 
+        // call the next filter
         chain.doFilter(req, res);
     }
 
@@ -84,6 +89,12 @@ public class AuthFilter extends HttpFilter {
         return true;
     }
 
+    /**
+     * Checks if the given request is trying to access a login page
+     *
+     * @param request the request
+     * @return if the page is a login page
+     */
     private boolean isLoginPage(ServletRequest request) {
         String requestURI = ((HttpServletRequest) request).getRequestURI();
         String loginURI = URLS.urlFor((HttpServletRequest) request, this.loginURL);
@@ -91,6 +102,13 @@ public class AuthFilter extends HttpFilter {
         return (requestURI.equals(loginURI));
     }
 
+
+    /**
+     * Redirects the user to the login page after setting the `to` url parameter
+     *
+     * @param request the request
+     * @param res     the response (used for redirecting)
+     */
     private void redirect(HttpServletRequest request, HttpServletResponse res) throws IOException {
         String redirect = this.loginURL;
         try {
