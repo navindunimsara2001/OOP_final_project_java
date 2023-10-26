@@ -16,6 +16,10 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+/**
+ * A filter used to check if a user is authenticated
+ */
 public class AuthFilter extends HttpFilter {
 
     Logger logger = Logger.getLogger(AuthFilter.class.getName());
@@ -24,6 +28,14 @@ public class AuthFilter extends HttpFilter {
     private String loginURL;
     private String homeURL;
 
+
+    /**
+     * Reads the config of the filter from web.xml
+     *
+     * @param config the <code>FilterConfig</code> object
+     *               that contains configuration
+     *               information for this filter
+     */
     @Override
     public void init(FilterConfig config) {
         String admin = config.getInitParameter("admin");
@@ -38,6 +50,7 @@ public class AuthFilter extends HttpFilter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
 
+        // checks if the user is logged in
         if (isLoginPage(request)) {
             logger.log(Level.INFO, "Trying to access login page ");
             chain.doFilter(req, res);
