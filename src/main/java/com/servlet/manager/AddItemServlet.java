@@ -16,7 +16,7 @@ import com.util.exceptions.ValidationError;
 /**
  * Servlet implementation class AddItemServlet
  */
-@WebServlet("/AddItemServlet")
+@WebServlet
 public class AddItemServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -28,8 +28,8 @@ public class AddItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            String name = Parse.Name("name");
-            int qty = Parse.Number("qty", "Item amount");
+            String name = Parse.Name(request.getParameter("itemName"));
+            int qty = Parse.Number(request.getParameter("amount"), "Item amount");
 
             new ItemService().addItem(name, qty);
             Notify.add(request, Notify.Type.Success, "Added Item Successfully");

@@ -12,28 +12,27 @@ import com.service.IItemService;
 import com.util.DBUtil;
 
 public class ItemService implements IItemService {
-	private final static String ADD_QUERY = "INERT INTO `item`(`name`,`in_stock`) VALUES( ? , ?)";
+    private final static String ADD_QUERY = "INSERT INTO `item`(`name`,`in_stock`) VALUES( ? , ?)";
     private final static String GET_QUERY = "SELECT * FROM `item` WHERE `id`= ?";
     private final static String GET_ALL_QUERY = "SELECT * FROM `item`";
     private final static String SEARCH_QUERY = "SELECT * FROM `item` where `name` LIKE ?";
     private final static String UPDATE_QUERY = "UPDATE `item` SET `in_stock` = `in_stock`+ ? where `id` = ?";
-    
+
     /**
-     * 
      * @param name the name of item
-     * @param qty the quantity of items
+     * @param qty  the quantity of items
      */
-    public void addItem(String name , int qty) {
-    	try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(ADD_QUERY)) {
-    		stmt.setString(1, name);
-    		stmt.setInt(2, qty);
-    		stmt.executeUpdate();
-    		
-    	} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    public void addItem(String name, int qty) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(ADD_QUERY)) {
+            stmt.setString(1, name);
+            stmt.setInt(2, qty);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to add Item", e);
+        }
     }
-    
+
     @Override
     public Item getItemById(int ID) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
@@ -93,16 +92,16 @@ public class ItemService implements IItemService {
 
         return itmList;
     }
-    
-    public void updateItemByID(int ID , int qty) {
-    	 try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
-    		 stmt.setInt(1,	qty);
-    		 stmt.setInt(2, ID);
-    		 
-    		 stmt.executeUpdate();
-    		 
-    	 } catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+    public void updateItemByID(int ID, int qty) {
+        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
+            stmt.setInt(1, qty);
+            stmt.setInt(2, ID);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

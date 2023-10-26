@@ -89,7 +89,7 @@
                         <div class="input-box">
                             <label>
                                 Type:
-                                <select name="role">
+                                <select name="role" id="role" class="select-box">
                                     <option value="0">Staff</option>
                                     <option value="1">Manager</option>
                                 </select>

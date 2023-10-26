@@ -26,7 +26,6 @@ public class AdminCreateStaffServlet extends HttpServlet {
             String email = Parse.Email(request.getParameter("email"));
             String phone = Parse.Phone(request.getParameter("phone"));
             String DOB = Parse.Date(request.getParameter("DOB"));
-            String password = Parse.Password(request.getParameter("password"));
             Staff.Role role = Parse.Role(request.getParameter("role"));
 
             // create Staff object
@@ -35,7 +34,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
             stf.setEmail(email);
             stf.setPhone(phone);
             stf.setDOB(DOB);
-            stf.setPassword(password);
+            stf.setPassword("changeThis");
             stf.setRole(role);
             stfS.addStaff(stf);
 

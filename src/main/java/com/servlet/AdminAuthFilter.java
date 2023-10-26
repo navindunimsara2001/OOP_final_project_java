@@ -27,13 +27,15 @@ public class AdminAuthFilter extends AuthFilter {
 
         String[] managerUrls = new String[]{
                 "/staff/manageStaff",
+                "/staff/manageUsers",
                 "/staff/adminCreateStaff",
                 "/staff/viewItemList",
                 "/staff/manageAppointment",
                 "/staff/ManageItemRequest",
                 "/staff/UpdateFuelServlet",
                 "/staff/DeleteStaffProfile",
-                "/staff/manageUsers",
+                "/staff/editUser",
+                "/staff/createItem",
                 "/staff/editUser",
                 "/staff/deleteUser",
 

@@ -20,6 +20,7 @@ $(".staff-edit-btn").each((_, e) => {
         model.find('#email').val(e.dataset['email']);
         model.find('#phone').val(e.dataset['phone']);
         model.find('#DOB')[0].valueAsNumber = Date.parse(e.dataset['dob']);
+        console.log("role", e.dataset['role'])
         model.find('#role').val(e.dataset['role']);
         model.modal('show');
     });

@@ -54,23 +54,23 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="staff/viewItemList"></form>
-            <div class="modal-body">
-                <section class="container" id="container">
-                    <form action="" method="post" class="form">
+            <form action="staff/createItem" method="post">
+                <div class="modal-body">
+                    <section class="container" id="container">
                         <div class="input-box">
                             <label>Item name :
                                 <input type="text" name="itemName" required id="itemName"></label>
                         </div>
                         <div class="input-box">
                             <label>Amount :
-                                <input type="number" placeholder="" name="amount" min=0> </label>
+                                <input type="number" placeholder="Enter Amount" id="amount" name="amount" min=0>
+                            </label>
                         </div>
                         <input type="hidden" name="itemId" id="itemId" value="">
                         <button type="submit">Submit</button>
-                    </form>
-                </section>
-            </div>
+                    </section>
+                </div>
+            </form>
         </div>
     </div>
 </div>
