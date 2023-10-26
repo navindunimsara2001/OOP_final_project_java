@@ -1,5 +1,7 @@
 .main {
     background-image: url(../images/appointment/staffindex.png);
+    /* background-image: url(../images/appointment/adminindex.png); ***admin index img***
+    background-image: url(../images/appointment/managerindex.png);  ***manager index img */
     display: flex;
     align-items: center;
 }
