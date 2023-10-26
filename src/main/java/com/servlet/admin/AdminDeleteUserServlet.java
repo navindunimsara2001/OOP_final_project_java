@@ -9,6 +9,7 @@ import com.service.impl.CustomerService;
 import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class AdminDeleteUserServlet
@@ -28,7 +29,7 @@ public class AdminDeleteUserServlet extends HttpServlet {
             cs.removeCustomer(ID);
 
             Notify.add(request, Notify.Type.Success, "Deleted User Successfully.");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

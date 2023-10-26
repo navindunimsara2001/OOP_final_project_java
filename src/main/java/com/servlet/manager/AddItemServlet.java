@@ -11,6 +11,7 @@ import com.service.impl.ItemService;
 import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class AddItemServlet
@@ -32,7 +33,7 @@ public class AddItemServlet extends HttpServlet {
 
             new ItemService().addItem(name, qty);
             Notify.add(request, Notify.Type.Success, "Added Item Successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

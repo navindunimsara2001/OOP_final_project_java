@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Customer;
 import com.service.impl.CustomerService;
-import com.util.Notify;
-import com.util.URLS;
-import com.util.Parse;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class AdminEditUser
@@ -65,7 +63,7 @@ public class AdminEditUserServlet extends HttpServlet {
             cs.updateCustomer(ID, cus);
 
             Notify.add(request, Notify.Type.Success, "Customer Data Updated Successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

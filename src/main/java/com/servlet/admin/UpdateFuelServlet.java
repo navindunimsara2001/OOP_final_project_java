@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Fuel;
 import com.service.impl.FuelService;
-import com.util.Notify;
-import com.util.Parse;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 
 @WebServlet
@@ -44,17 +42,17 @@ public class UpdateFuelServlet extends HttpServlet {
             double amount = Parse.Float(request.getParameter("amount"), "Fuel amount");
 
             if (price <= 0) {
-                throw new Parse.ValidationError("Invalid fuel price");
+                throw new ValidationError("Invalid fuel price");
             }
 
             if (amount < 0) {
-                throw new Parse.ValidationError("Invalid amount");
+                throw new ValidationError("Invalid amount");
             }
 
             fuelService.changeFuel(ID, price, amount);
 
             Notify.add(request, Notify.Type.Success, "Updated Fuel Amount Successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         response.sendRedirect(URLS.urlFor(request, URLS.UPDATE_FUEL));

@@ -1,5 +1,7 @@
 package com.util;
 
+import com.util.exceptions.NotLoggedInException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
@@ -11,16 +13,6 @@ public class SessionUtil {
 
     private static final boolean NO_SESSIONS = false;
     private static final int DEFAULT_ID = 7;
-
-    public static class NotLoggedInException extends RuntimeException {
-        public NotLoggedInException() {
-            super("User is not logged in");
-        }
-
-        public NotLoggedInException(String err) {
-            super("User is not logged in: " + err);
-        }
-    }
 
     public enum UserType {
         User, Staff

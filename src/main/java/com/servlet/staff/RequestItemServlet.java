@@ -20,6 +20,7 @@ import com.service.impl.ItemRequestService;
 import com.service.impl.ItemService;
 import com.service.impl.StaffService;
 import com.util.*;
+import com.util.exceptions.ValidationError;
 
 
 @WebServlet
@@ -63,7 +64,7 @@ public class RequestItemServlet extends HttpServlet {
             this.requestService.addItemRequest(iReq);
 
             Notify.add(request, Notify.Type.Error, "Request Added successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         response.sendRedirect(URLS.urlFor(request, URLS.ITEM_REQUEST));

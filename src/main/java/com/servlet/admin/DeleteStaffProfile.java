@@ -12,6 +12,7 @@ import com.service.impl.StaffService;
 import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class EditStaffProfile
@@ -27,7 +28,7 @@ public class DeleteStaffProfile extends HttpServlet {
             staffService.removeStaff(ID);
 
             Notify.add(request, Notify.Type.Success, "Deleted Staff Account Successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_STAFF));

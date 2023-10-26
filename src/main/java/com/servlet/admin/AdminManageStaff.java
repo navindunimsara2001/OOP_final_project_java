@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.Staff;
 import com.model.Staff.Role;
 import com.service.impl.StaffService;
-import com.util.Notify;
-import com.util.URLS;
-import com.util.Parse;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class AdminManageStaff
@@ -51,7 +49,7 @@ public class AdminManageStaff extends HttpServlet {
 
             Staff stf = staffService.getStaffById(ID);
             if (Objects.isNull(stf)) {
-                throw new Parse.ValidationError("Invalid Staff ID");
+                throw new ValidationError("Invalid Staff ID");
             }
 
             stf.setName(name);
@@ -64,7 +62,7 @@ public class AdminManageStaff extends HttpServlet {
 
             staffService.updateStaff(ID, stf);
             Notify.add(request, Notify.Type.Success, "Staff Member Updated Successfully.");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

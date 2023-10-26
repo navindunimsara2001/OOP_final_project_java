@@ -3,6 +3,7 @@ package com.servlet.staff;
 import com.model.Staff;
 import com.service.impl.StaffService;
 import com.util.*;
+import com.util.exceptions.ValidationError;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -79,7 +80,7 @@ public class StaffProfileServlet extends HttpServlet {
             // assign values to customer object
             Staff staff = staffService.getStaffById(ID);
             if (Objects.isNull(staff)) {
-                throw new Parse.ValidationError("Staff member does not exist");
+                throw new ValidationError("Staff member does not exist");
             }
 
             staff.setName(name);
@@ -92,7 +93,7 @@ public class StaffProfileServlet extends HttpServlet {
 
 
             Notify.add(request, Notify.Type.Success, "Profile updated successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

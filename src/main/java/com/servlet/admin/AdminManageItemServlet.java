@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Item;
 import com.service.impl.ItemService;
-import com.util.Notify;
-import com.util.Parse;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class ViewItemListServlet
@@ -44,7 +42,7 @@ public class AdminManageItemServlet extends HttpServlet {
             itemService.updateItemByID(ID, qty);
 
             Notify.add(request, Notify.Type.Success, "Item Amount Updated Successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         response.sendRedirect(URLS.urlFor(request, URLS.VIEW_ITEM_LIST));

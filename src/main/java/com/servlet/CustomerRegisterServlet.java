@@ -5,6 +5,7 @@ import com.service.impl.CustomerService;
 import com.util.Notify;
 import com.util.Parse;
 import com.util.URLS;
+import com.util.exceptions.ValidationError;
 
 import java.io.IOException;
 
@@ -46,7 +47,7 @@ public class CustomerRegisterServlet extends HttpServlet {
 
             cs.addCustomer(cus);
 
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
             response.sendRedirect(URLS.urlFor(request, URLS.USER_REGISTER));
             return;

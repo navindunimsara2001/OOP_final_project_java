@@ -5,6 +5,7 @@ import com.service.impl.StaffService;
 import com.util.Notify;
 import com.util.URLS;
 import com.util.Parse;
+import com.util.exceptions.ValidationError;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class AdminCreateStaffServlet extends HttpServlet {
 
             Notify.add(request, Notify.Type.Success, "Created User Successfully.");
 
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

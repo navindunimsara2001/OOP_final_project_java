@@ -1,6 +1,7 @@
 package com.util;
 
 import com.model.Staff;
+import com.util.exceptions.ValidationError;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -8,12 +9,6 @@ import java.util.regex.Pattern;
 public class Parse {
     private final static Pattern EMAIL_PATTERN = Pattern.compile("^(.+)@(.+)$");
     private final static Pattern PHONE_PATTERN = Pattern.compile("^\\d{10}$");
-
-    public static class ValidationError extends RuntimeException {
-        public ValidationError(String err) {
-            super(err);
-        }
-    }
 
     public static String Username(String s) {
         if (Objects.isNull(s) || s.length() < 6) {
@@ -107,7 +102,7 @@ public class Parse {
 
         int role = Number(s);
         if (role < 0 || role > 1) {
-            throw new Parse.ValidationError("Invalid role selected");
+            throw new ValidationError("Invalid role selected");
         }
 
         return Staff.Role.values()[role];

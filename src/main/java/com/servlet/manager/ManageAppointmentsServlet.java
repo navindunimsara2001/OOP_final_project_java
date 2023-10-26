@@ -15,10 +15,8 @@ import com.model.Appointment;
 import com.model.Staff;
 import com.service.impl.AppointmentService;
 import com.service.impl.StaffService;
-import com.util.Notify;
-import com.util.Parse;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 @WebServlet
 public class ManageAppointmentsServlet extends HttpServlet {
@@ -56,7 +54,7 @@ public class ManageAppointmentsServlet extends HttpServlet {
             // get Appointment object
             Appointment app = appService.getAppointmentById(appID);
             if (Objects.isNull(app)) {
-                throw new Parse.ValidationError("Appointment does not exist");
+                throw new ValidationError("Appointment does not exist");
             }
             app.setStatus(request.getParameter("status"));
 
@@ -64,7 +62,7 @@ public class ManageAppointmentsServlet extends HttpServlet {
                 int staffID = Parse.Number(request.getParameter("assigned"), "Assigned Staff Member");
                 Staff stf = stfService.getStaffById(staffID);
                 if (Objects.isNull(stf)) {
-                    throw new Parse.ValidationError("Staff member does not exist");
+                    throw new ValidationError("Staff member does not exist");
                 }
                 app.setStaff(stf);
             } else {
@@ -76,7 +74,7 @@ public class ManageAppointmentsServlet extends HttpServlet {
             appService.updateAppointment(appID, app);
 
             Notify.add(request, Notify.Type.Success, "Appointment updated successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
         // redirect

@@ -15,6 +15,7 @@ import com.model.Customer;
 import com.service.impl.CustomerService;
 import com.util.*;
 import com.util.SessionUtil.UserType;
+import com.util.exceptions.ValidationError;
 
 
 public class UserProfileServlet extends HttpServlet {
@@ -96,7 +97,7 @@ public class UserProfileServlet extends HttpServlet {
             // pass values to update database
             customerService.updateCustomer(ID, cus);
             Notify.add(request, Notify.Type.Success, "Profile updated successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

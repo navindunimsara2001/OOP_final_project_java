@@ -13,10 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.ItemRequest;
 import com.service.impl.ItemRequestService;
-import com.util.Notify;
-import com.util.Parse;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 
 @WebServlet
@@ -34,7 +32,7 @@ public class ManageItemRequest extends HttpServlet {
                 response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_REQUEST));
 
                 Notify.add(request, Notify.Type.Success, "Request Updated Successfully");
-            } catch (Parse.ValidationError e) {
+            } catch (ValidationError e) {
                 Notify.add(request, Notify.Type.Error, e.getMessage());
             }
 

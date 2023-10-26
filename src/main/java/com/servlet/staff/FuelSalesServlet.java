@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.Fuel;
 import com.service.impl.FuelService;
-import com.util.Notify;
-import com.util.Parse;
-import com.util.URLS;
-import com.util.Views;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 @WebServlet
 public class FuelSalesServlet extends HttpServlet {
@@ -45,7 +43,7 @@ public class FuelSalesServlet extends HttpServlet {
             fuelService.updateFuelAmount(ID, amount);
 
             Notify.add(request, Notify.Type.Success, "Added Fuel Sale Successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 

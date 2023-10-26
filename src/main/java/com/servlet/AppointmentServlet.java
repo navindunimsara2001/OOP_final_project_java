@@ -12,10 +12,8 @@ import com.service.IAppointmentService;
 import com.service.ICustomerService;
 import com.service.impl.AppointmentService;
 import com.service.impl.CustomerService;
-import com.util.Notify;
-import com.util.Parse;
-import com.util.SessionUtil;
-import com.util.URLS;
+import com.util.*;
+import com.util.exceptions.ValidationError;
 
 /**
  * Servlet implementation class AppointmentServlet
@@ -52,7 +50,7 @@ public class AppointmentServlet extends HttpServlet {
             appointmentService.addAppointment(app);
 
             Notify.add(request, Notify.Type.Success, "Appointment created successfully");
-        } catch (Parse.ValidationError e) {
+        } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
