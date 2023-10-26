@@ -48,7 +48,7 @@ html {
     display: inline-block;
     border: none;
     font-size: 20px;
-    background-color: rgb(251, 232, 123);
+    background-color: rgb(213, 213, 213);
     font-weight: 500;
     color: #001435;
     text-align: center;
@@ -57,7 +57,7 @@ html {
 }
 
 #features input:hover {
-    background-color: rgb(229, 210, 131);
+    background-color: rgb(197, 197, 197);
 }
 
 .header h4 {

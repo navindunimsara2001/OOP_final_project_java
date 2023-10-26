@@ -26,20 +26,23 @@ public class AdminAuthFilter extends AuthFilter {
         };
 
         String[] managerUrls = new String[]{
-                "/staff/manageStaff",
-                "/staff/manageUsers",
-                "/staff/adminCreateStaff",
                 "/staff/viewItemList",
                 "/staff/manageAppointment",
                 "/staff/ManageItemRequest",
                 "/staff/UpdateFuelServlet",
-                "/staff/DeleteStaffProfile",
-                "/staff/editUser",
                 "/staff/createItem",
-                "/staff/editUser",
-                "/staff/deleteUser",
 
         };
+
+        String[] adminUrls = new String[]{
+                "/staff/manageStaff",
+                "/staff/manageUsers",
+                "/staff/adminCreateStaff",
+                "/staff/DeleteStaffProfile",
+                "/staff/editUser",
+                "/staff/deleteUser",
+        };
+
 
         for (String url : staffUrls) {
             URL_AUTH.put(url, Staff.Role.Staff);
@@ -47,6 +50,10 @@ public class AdminAuthFilter extends AuthFilter {
 
         for (String url : managerUrls) {
             URL_AUTH.put(url, Staff.Role.Manager);
+        }
+
+        for (String url : adminUrls) {
+            URL_AUTH.put(url, Staff.Role.Admin);
         }
 
 
@@ -68,7 +75,6 @@ public class AdminAuthFilter extends AuthFilter {
 
 
         Staff.Role role = (Staff.Role) roleObj;
-        role = role == Staff.Role.Admin ? Staff.Role.Manager : role;
 
         String requestURI = ((HttpServletRequest) request).getRequestURI();
         String ctxPath = ((HttpServletRequest) request).getContextPath();
