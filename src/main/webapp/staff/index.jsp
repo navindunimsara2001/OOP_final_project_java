@@ -23,13 +23,13 @@
                     <h4>You have Access to: </h4>
                 </div>
                 <div class="main-content-body-item">
-                    <ul><i>
-                        <li>Request Items</li>
-                        <li>Show Requested Items</li>
-                        <li>Fuel Sales</li>
-                        <li>Assigned Appointments</li>
-                    </i></ul>
-            </div>
+                    <ul>
+                        <li><i>Request Items</i></li>
+                        <li><i>Show Requested Items</i></li>
+                        <li><i>Fuel Sales</i></li>
+                        <li><i>Assigned Appointments</i></li>
+                    </ul>
+                </div>
     </main>
 </div>
 </body>
