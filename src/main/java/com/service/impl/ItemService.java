@@ -19,13 +19,14 @@ public class ItemService implements IItemService {
     private final static String UPDATE_QUERY = "UPDATE `item` SET `in_stock` = `in_stock`+ ? where `id` = ?";
 
     /**
-     * @param name the name of item
-     * @param qty  the quantity of items
+     * Adds a new item to the db
+     *
+     * @param item the item
      */
-    public void addItem(String name, int qty) {
+    public void addItem(Item item) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(ADD_QUERY)) {
-            stmt.setString(1, name);
-            stmt.setInt(2, qty);
+            stmt.setString(1, item.getName());
+            stmt.setInt(2, item.getInStock());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -33,6 +34,12 @@ public class ItemService implements IItemService {
         }
     }
 
+    /**
+     * Gets the item with the given id
+     *
+     * @param ID the id of the item
+     * @return the item
+     */
     @Override
     public Item getItemById(int ID) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
@@ -62,6 +69,12 @@ public class ItemService implements IItemService {
     }
 
 
+    /**
+     * gets all items that match the given string
+     *
+     * @param str the search query
+     * @return items
+     */
     public ArrayList<Item> getAllItemListBySearch(String str) {
         ArrayList<Item> itmList = new ArrayList<>();
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(SEARCH_QUERY)) {
@@ -78,6 +91,11 @@ public class ItemService implements IItemService {
         return itmList;
     }
 
+    /**
+     * Gets a list of all items
+     *
+     * @return all items
+     */
     public ArrayList<Item> getAllItemList() {
         ArrayList<Item> itmList = new ArrayList<>();
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)) {
@@ -93,6 +111,12 @@ public class ItemService implements IItemService {
         return itmList;
     }
 
+    /**
+     * updates the quantity of the item
+     *
+     * @param ID  the id of the item
+     * @param qty the new quantity
+     */
     public void updateItemByID(int ID, int qty) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
             stmt.setInt(1, qty);

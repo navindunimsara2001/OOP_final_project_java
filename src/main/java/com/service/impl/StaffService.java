@@ -17,7 +17,6 @@ public class StaffService implements IStaffService {
     private static final String GET_QUERY_EMAIL = "select * from `staff` where email=?";
     private static final String GET_ALL_QUERY = "select * from `staff`";
     private static final String GET_ALL_STAFF_QUERY = "select * from `staff` where role = " + Staff.Role.Staff.ordinal();
-    private static final String GET_ALL_MANAGERS_QUERY = "select * from `staff` where role = " + Staff.Role.Manager.ordinal();
     private static final String UPDATE_QUERY = "update `staff` set `name`=?, `email`=?, `phone`=?, `dob`=?, role=? where id=?";
     private static final String REMOVE_QUERY = "delete from `staff` where id=?";
 
@@ -88,25 +87,15 @@ public class StaffService implements IStaffService {
         return allStaff;
     }
 
+    /**
+     * gets a list of all staff members (staff members not manager)
+     *
+     * @return a list of all staff members
+     */
     public ArrayList<Staff> getOnlyStaffs() {
         ArrayList<Staff> staff = new ArrayList<>();
 
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_STAFF_QUERY)) {
-            ResultSet result = stmt.executeQuery();
-            while (result.next()) {
-                staff.add(loadStaff(result));
-            }
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Failed to get staffs", e);
-        }
-
-        return staff;
-    }
-
-    public ArrayList<Staff> getOnlyManagers() {
-        ArrayList<Staff> staff = new ArrayList<>();
-
-        try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(GET_ALL_MANAGERS_QUERY)) {
             ResultSet result = stmt.executeQuery();
             while (result.next()) {
                 staff.add(loadStaff(result));

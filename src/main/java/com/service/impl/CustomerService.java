@@ -41,20 +41,6 @@ public class CustomerService implements ICustomerService {
         }
     }
 
-    public static void testCreate() {
-        CustomerService cs = new CustomerService();
-        Customer c = new Customer();
-        c.setName("test");
-        c.setEmail("a@b.com");
-        c.setPassword("SecurePassword");
-        c.setPhone("0717171717");
-        c.setDistrict("District 1");
-        c.setDOB("2000/01/01");
-        c.setGender("Male");
-
-        cs.addCustomer(c);
-    }
-
     /**
      * get customer details by using id
      *
@@ -165,6 +151,11 @@ public class CustomerService implements ICustomerService {
         }
     }
 
+    /**
+     * Removes the customer with the given id from the db
+     *
+     * @param ID the id of the customer
+     */
     @Override
     public void removeCustomer(int ID) {
         try (Connection con = DBUtil.connect(); PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)) {
