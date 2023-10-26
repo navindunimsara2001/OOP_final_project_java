@@ -4,6 +4,9 @@
     background-image: url(../images/appointment/managerindex.png);  ***manager index img */
     display: flex;
     align-items: center;
+    background-position: bottom right;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .main-header {
@@ -11,7 +14,7 @@
     color: aliceblue;
     padding: 10px 20px;
     text-align: center;
-    width:fit-content;
+    width: fit-content;
     border-radius: 20px;
 }
 

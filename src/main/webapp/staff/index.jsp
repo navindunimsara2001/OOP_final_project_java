@@ -14,10 +14,11 @@
         <div class="main-content">
             <div class="main-content-body">
                 <div class="main-header">
-                    <h1><b>Staff Dashboard</b></h1>
+                    <h1><b>${sessionScope.get("role").toString()} Dashboard</b></h1>
                 </div>
                 <div class="main-content-header">
-                    <p>Welcome to the staff dashboard, here you can manage your account and view your bookings.</p>
+                    <p>Welcome to the ${sessionScope.get("role").toString().toLowerCase()} dashboard, here you can
+                        manage your account and view your bookings.</p>
                 </div>
                 <div class="main-content-body-item">
                     <h4>You have Access to: </h4>
