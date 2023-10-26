@@ -75,12 +75,12 @@ CREATE TABLE
     `year`        varchar(255) NOT NULL,
     `type`        varchar(50)  NOT NULL,
     `date`        date         NOT NULL,
-    `customer_id` int          NOT NULL,
+    `customer_id` int unsigned NOT NULL,
     `status`      varchar(50)  DEFAULT NULL,
     `assigned`    int unsigned DEFAULT NULL,
     `comment`     varchar(255) DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `appt_staff_FK` (`assigned`),
-    CONSTRAINT `appt_cus_FK` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
-    CONSTRAINT `appt_staff_FK` FOREIGN KEY (`assigned`) REFERENCES `staff` (`id`)
+    CONSTRAINT `appt_cus_FK` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)  ON DELETE CASCADE,
+    CONSTRAINT `appt_staff_FK` FOREIGN KEY (`assigned`) REFERENCES `staff` (`id`) ON DELETE CASCADE
 );
