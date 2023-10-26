@@ -17,6 +17,7 @@
     <section class="container">
         <div class="header">
             <h3>Previous Appointments</h3>
+            <a class="btn btn-primary" href="user/makeAppointment.jsp"> Make Appointment</a>
         </div>
         <table
                 class="table table-striped table-hover table-bordered table-responsive" id="tab">
