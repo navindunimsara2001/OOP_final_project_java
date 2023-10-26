@@ -2,6 +2,9 @@ package com.util;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * URLS contains urls used for redirects in servlets
+ */
 public class URLS {
     public static final String HOME = "index.jsp";
     public static final String LOGOUT = "logout";
@@ -23,6 +26,13 @@ public class URLS {
     public static final String STAFF_PROFILE = "staff/profile";
     public static final String STAFF_HOME = "staff/index.jsp";
 
+    /**
+     * Changes the given url according to the servlet context
+     *
+     * @param req the request
+     * @param s   the url
+     * @return a modified url for redirecting
+     */
     public static String urlFor(HttpServletRequest req, String s) {
         return req.getContextPath() + "/" + s;
     }

@@ -12,6 +12,9 @@ public class Notify {
     private static final Logger logger = Logger.getLogger(Notify.class.getName());
 
 
+    /**
+     * Type is the type of the notification type.
+     */
     public enum Type {
         Info, Success, Error
     }
@@ -34,6 +37,13 @@ public class Notify {
         }
     }
 
+    /**
+     * Creates a new notification message for this session
+     *
+     * @param request the servlet request
+     * @param level   the message leve
+     * @param msg     the message to display
+     */
     public static void add(HttpServletRequest request, Type level, String msg) {
         ArrayList<Message> msgList = getNotifications(request);
         if (Objects.isNull(msgList)) {
@@ -45,6 +55,13 @@ public class Notify {
         session.setAttribute("notify", msgList);
     }
 
+
+    /**
+     * Fetch gets all the notifications for the given session after removing them from the session
+     *
+     * @param request the servlet request
+     * @return a list of Messages
+     */
     public static ArrayList<Message> fetch(HttpServletRequest request) {
         ArrayList<Message> msgs = getNotifications(request);
         if (!Objects.isNull(msgs) && !msgs.isEmpty()) {
@@ -54,6 +71,12 @@ public class Notify {
         return msgs;
     }
 
+    /**
+     * gets a list of notifications for the session
+     *
+     * @param request the servlet request
+     * @return a list of Messages or null
+     */
     private static ArrayList<Message> getNotifications(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if (Objects.isNull(session)) {

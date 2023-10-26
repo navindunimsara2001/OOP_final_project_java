@@ -1,5 +1,9 @@
 package com.util;
 
+
+/**
+ * Contains the paths of jsp files used in servlets
+ */
 public class Views {
     public static final String USER_PROFILE_VIEW = "/WEB-INF/views/userProfileView.jsp";
     public static final String USER_LOGIN = "/WEB-INF/views/customerLogin.jsp";
