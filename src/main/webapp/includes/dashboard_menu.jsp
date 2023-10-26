@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav class="menu mini-menu fixed floating">
+<nav class="menu mini-menu fixed floating ">
     <a href="staff/index.jsp" class="logo item">
         <img src="assets/images/winfuel%20connect.png" alt="Logo" height="32px">
         <b>${sessionScope.get("role")} Dashboard</b>

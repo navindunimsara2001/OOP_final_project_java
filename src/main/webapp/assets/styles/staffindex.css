@@ -1,12 +1,21 @@
 .main {
-    background-image: url(../images/appointment/staffindex.png);
-    /* background-image: url(../images/appointment/adminindex.png); ***admin index img***
-    background-image: url(../images/appointment/managerindex.png);  ***manager index img */
     display: flex;
     align-items: center;
     background-position: bottom right;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.main.staff-bg {
+    background-image: url(../images/appointment/staffindex.png);
+}
+
+.main.admin-bg {
+    background-image: url(../images/appointment/adminindex.png);
+}
+
+.main.manager-bg {
+    background-image: url(../images/appointment/managerindex.png);
 }
 
 .main-header {
