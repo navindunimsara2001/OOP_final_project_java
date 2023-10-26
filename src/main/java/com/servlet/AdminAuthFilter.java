@@ -11,8 +11,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.logging.Level;
 
-public class AdminAuthFilter extends AuthFilter {
 
+public class AdminAuthFilter extends AuthFilter {
+	
     private final static HashMap<String, Staff.Role> URL_AUTH = new HashMap<>();
     private final static HashSet<String> COMMON_URLS = new HashSet<>();
 

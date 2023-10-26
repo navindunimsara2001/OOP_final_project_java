@@ -180,7 +180,7 @@ public class AppointmentService implements IAppointmentService {
             logger.log(Level.SEVERE, "Failed to delete appointment", e);
         }
     }
-
+    
     @Override
     public ArrayList<Appointment> getAppointmentBystaffId(int ID) {
         ArrayList<Appointment> appList = new ArrayList<>();
