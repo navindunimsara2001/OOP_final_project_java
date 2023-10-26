@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-    <title>Appointment Management</title>
+    <title>Manage Appointments - WinFuel Dashboard</title>
     <jsp:include page="/includes/dashboard_header.jsp"/>
 </head>
 
@@ -14,7 +14,7 @@
 <div class="sidebar-container">
     <jsp:include page="/includes/dashboard_sidebar.jsp"/>
     <main>
-        <h3>Manage Appointments - WinFuel Dashboard</h3>
+        <h3>Manage Appointments</h3>
         <table
                 class="table table-striped table-hover table-bordered table-responsive">
             <thead class="text-center">
