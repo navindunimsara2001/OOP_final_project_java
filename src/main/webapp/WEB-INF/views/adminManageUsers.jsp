@@ -8,6 +8,7 @@
 <head>
     <jsp:include page="/includes/dashboard_header.jsp"/>
     <title>Manage Customers - WinFuel Dashboard</title>
+    <link rel="stylesheet" href="assets/styles/form.css">
 </head>
 
 <body>
@@ -40,20 +41,72 @@
                     <td>${Customer.gender}</td>
                     <td>${Customer.district}</td>
                     <td class="text-center">
-                        <button class="btn btn-primary">
-                            <a class="text-decoration-none text-white" href="staff/editUser?ID=${Customer.ID}">Edit</a>
-                        </button>
-                        <button class="btn btn-danger">
-                            <a class="text-decoration-none text-white"
-                               href="staff/deleteUser?ID=${Customer.ID}">Delete</a>
-                        </button>
+                            <%--                        href="staff/editUser?ID=${Customer.ID}"--%>
+                        <a class="btn btn-primary edit-user-btn"
+                           data-id="${Customer.ID}"
+                           data-name="${Customer.name}"
+                           data-phone="${Customer.phone}"
+                           data-dob="${Customer.DOB}"
+                           data-district="${Customer.district}"
+                        >Edit</a>
+
+                        <a class="btn btn-danger" href="staff/deleteUser?ID=${Customer.ID}">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </main>
+
 </div>
+
+<div class="modal" tabindex="-1" role="dialog" id="userEditModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Add Staff Member</h5>
+                <button type="button" class="close btn btn-outline-secondary" data-bs-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" class="form">
+                <div class="modal-body">
+                    <div class="input-box">
+                        <label>Full Name :
+                            <input type="text" placeholder="Enter full name" name="name" id="name" required>
+                        </label>
+                    </div>
+                    <div class="column">
+                        <div class="input-box">
+                            <label>Phone Number :
+                                <input type="text" placeholder="Enter phone number" name="phone" id="phone"
+                                       required>
+                            </label>
+                        </div>
+                        <div class="input-box">
+                            <label>Birth Date :
+                                <input type="date" name="DOB" id="DOB" required>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>District :
+                            <input type="text" name="district" id="district" required>
+                        </label>
+                    </div>
+                </div>
+                <input type="hidden" name="ID" id="ID">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="modalAction">Update User</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src="assets/js/user_edit.js"></script>
 
 </body>
 
