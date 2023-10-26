@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <jsp:include page="/includes/header.jsp"/>
     <title>Register - WinFuel</title>
+    <link rel="stylesheet" href="assets/styles/form.css">
     <link rel="stylesheet" href="assets/styles/registrationstyle.css">
 </head>
 
@@ -16,7 +17,7 @@
 
     <section class="container">
         <header class="header">Registration Form</header>
-        <form action="registerUser" method="post" class="form">
+        <form action="registerUser" method="post" class="form" id="reg">
             <div class="input-box">
                 <label>Full Name :
                     <input type="text" placeholder="Enter full name" name="name" required>
@@ -94,11 +95,34 @@
                         <option value="Kegalle">Kegalle</option>
                     </select> </label>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit" disabled>Submit</button>
             <div class="a"><a href="login">Already have an account?</a></div>
         </form>
     </section>
 </main>
+
+<script>
+    let form =document.getElementById("reg");
+    function checkPasswordMatch() {
+        console.log("called")
+        var password = document.getElementById("password").value;
+        var repassword = document.getElementById("repassword").value;
+        var submit = document.getElementById("submit");
+        console.log(password, repassword, submit)
+
+        if (password === repassword || password.length < 8) {
+            submit.disabled = false; // Enable the submit button
+            form.classList.remove("invalid-inp");
+        } else {
+            submit.disabled = true; // Disable the submit button
+            form.classList.add("invalid-inp");
+        }
+    }
+
+    form.addEventListener("input", checkPasswordMatch);
+</script>
+
+</script>
 
 <jsp:include page="/includes/footer.jsp"/>
 

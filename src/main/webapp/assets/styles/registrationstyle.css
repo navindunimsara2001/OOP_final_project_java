@@ -145,3 +145,8 @@ main {
         flex-wrap: wrap;
     }
 }
+
+form.invalid-inp #submit:hover {
+    background-color: #f81e1e !important;
+    color: aliceblue !important;
+}
