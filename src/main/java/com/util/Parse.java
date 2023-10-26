@@ -105,6 +105,6 @@ public class Parse {
             throw new ValidationError("Invalid role selected");
         }
 
-        return Staff.Role.values()[role];
+        return Staff.Role.byId(role);
     }
 }

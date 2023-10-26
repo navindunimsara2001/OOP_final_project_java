@@ -134,7 +134,7 @@ public class StaffService implements IStaffService {
         stf.setPassword(result.getString("password"));
         stf.setPhone(result.getString("phone"));
         stf.setDOB(result.getString("dob"));
-        stf.setRole(Staff.Role.values()[result.getInt("role")]);
+        stf.setRole(Staff.Role.byId(result.getInt("role")));
         return stf;
     }
 

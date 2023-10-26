@@ -14,7 +14,15 @@ public class Staff extends Person {
     public enum Role {
         Staff,
         Manager,
-        Admin
+        Admin;
+
+        public static Role byId(int id) {
+            if (id < 0 || id > 2) {
+                throw new RuntimeException("Invalid value for role: " + id);
+            }
+            return Role.values()[id];
+        }
+
     }
 
     @Override
