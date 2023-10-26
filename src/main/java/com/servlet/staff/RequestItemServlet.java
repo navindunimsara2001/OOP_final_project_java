@@ -63,7 +63,7 @@ public class RequestItemServlet extends HttpServlet {
 
             this.requestService.addItemRequest(iReq);
 
-            Notify.add(request, Notify.Type.Error, "Request Added successfully");
+            Notify.add(request, Notify.Type.Success, "Request Added successfully");
         } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
