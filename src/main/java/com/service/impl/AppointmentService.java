@@ -180,7 +180,13 @@ public class AppointmentService implements IAppointmentService {
             logger.log(Level.SEVERE, "Failed to delete appointment", e);
         }
     }
-    
+
+    /**
+     * Gets the list of appointments assigned to the staff member with the given id.
+     *
+     * @param ID the id of staff
+     * @return the staff member or null
+     */
     @Override
     public ArrayList<Appointment> getAppointmentBystaffId(int ID) {
         ArrayList<Appointment> appList = new ArrayList<>();
@@ -201,6 +207,12 @@ public class AppointmentService implements IAppointmentService {
         return appList;
     }
 
+    /**
+     * Gets the list of appointments created by the customer with the given id.
+     *
+     * @param ID the id of customer
+     * @return the staff member or null
+     */
     @Override
     public ArrayList<Appointment> getAppointmentByCustomerId(int ID) {
         ArrayList<Appointment> appList = new ArrayList<>();

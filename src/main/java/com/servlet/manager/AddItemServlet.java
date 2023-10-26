@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.Item;
 import com.service.impl.ItemService;
 import com.util.Notify;
 import com.util.Parse;
@@ -31,7 +32,11 @@ public class AddItemServlet extends HttpServlet {
             String name = Parse.Name(request.getParameter("itemName"));
             int qty = Parse.Number(request.getParameter("amount"), "Item amount");
 
-            new ItemService().addItem(name, qty);
+            Item item = new Item();
+            item.setName(name);
+            item.setInStock(qty);
+
+            new ItemService().addItem(item);
             Notify.add(request, Notify.Type.Success, "Added Item Successfully");
         } catch (ValidationError e) {
             Notify.add(request, Notify.Type.Error, e.getMessage());

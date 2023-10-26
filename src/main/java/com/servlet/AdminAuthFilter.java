@@ -19,7 +19,6 @@ public class AdminAuthFilter extends AuthFilter {
 
     static {
         String[] staffUrls = new String[]{
-                "/staff/profile",
                 "/staff/requestItem",
                 "/staff/assignedAppointments",
                 "/staff/requestedItem",
@@ -61,6 +60,8 @@ public class AdminAuthFilter extends AuthFilter {
         COMMON_URLS.add("/staff/index.jsp");
         COMMON_URLS.add("/staff/");
         COMMON_URLS.add("/staff");
+        COMMON_URLS.add("/staff/profile");
+
 
     }
 
