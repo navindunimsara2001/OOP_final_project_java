@@ -4,17 +4,15 @@
     <jsp:include page="/includes/header.jsp"/>
     <title>Terms Of Service - WinFuel</title>
     <style>
-
         .container {
-            max-width: 1300px;
-            max-height: 300px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            display: grid;
-            grid-template-columns: 2fr 1fr;
+            background-image: url("assets/images/appointment/tos.png");
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position-x: right;
+            padding-left: 0;
+            padding-right: 0;
         }
 
         .container a {
@@ -43,41 +41,20 @@
             font-size: small;
         }
 
-        .contact-info {
-            overflow-y: auto;
-            margin-top: 20px;
+        .privacy-text {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px 20px;
         }
 
-        .contact-info p {
-            margin: 10px 0;
-        }
-
-        .map-container {
-            text-align: center;
-        }
-
-        @media screen and (max-width: 800px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-
-            .imgcontainer {
-                display: none;
-            }
+        .privacy-text p {
+            padding: 30px 10px;
         }
     </style>
-    <script>
-        window.onload = function () {
-            var imgcontainer = document.querySelector('.imgcontainer');
-            var container = document.querySelector('.container');
-            container.style.maxHeight = imgcontainer.offsetHeight + 'px';
-        }
-    </script>
 </head>
 <body>
 <jsp:include page="/includes/site_menu.jsp"/>
 <main class="container">
-    <div class="contact-info">
+    <div class="privacy-text">
 
         <h1><u>Terms of Service</u></h1>
         <br><br>
@@ -175,9 +152,6 @@
             contact@winfuel.com
         </address>
         <br><br><br><br><br>
-    </div>
-    <div class="imgcontainer">
-        <img src="assets/images/appointment/tos.png">
     </div>
 </main>
 </body>
