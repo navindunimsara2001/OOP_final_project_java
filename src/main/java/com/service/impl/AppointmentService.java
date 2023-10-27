@@ -20,7 +20,6 @@ public class AppointmentService implements IAppointmentService {
     private final static String GET_ALL_QUERY = "SELECT * FROM `appointment`";
     private final static String UPDATE_QUERY = "UPDATE `appointment` SET `status`=?, `assigned`=? WHERE `id`= ?";
     private final static String DELETE_QUERY = "DELETE FROM `appointment` WHERE `id` = ?";
-    private final static String STAFF_QUERY = "SELECT * FROM `appointment` WHERE `assigned` = ?";
     private final static String USER_QUERY = "SELECT * FROM `appointment` WHERE `customer_id` = ?";
 
     /**
@@ -31,8 +30,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public void addAppointment(Appointment app) {
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(ADD_QUERY)
-        ) {
+                PreparedStatement stmt = con.prepareStatement(ADD_QUERY)) {
 
             stmt.setString(1, app.getBrand());
             stmt.setString(2, app.getModel());
@@ -83,8 +81,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public Appointment getAppointmentById(int id) {
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(GET_QUERY)
-        ) {
+                PreparedStatement stmt = con.prepareStatement(GET_QUERY)) {
             stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
@@ -109,8 +106,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public ArrayList<Appointment> getAppointments() {
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)
-        ) {
+                PreparedStatement stmt = con.prepareStatement(GET_ALL_QUERY)) {
 
             ArrayList<Appointment> appList = new ArrayList<>();
 
@@ -138,9 +134,8 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public void updateAppointment(int ID, Appointment app) {
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)
-        ) {
-            //for query
+                PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY)) {
+            // for query
             stmt.setString(1, app.getStatus());
 
             if (Objects.isNull(app.getStaff())) {
@@ -158,7 +153,6 @@ public class AppointmentService implements IAppointmentService {
             logger.log(Level.SEVERE, "Failed to update appointment", e);
         }
 
-
     }
 
     /**
@@ -169,8 +163,7 @@ public class AppointmentService implements IAppointmentService {
     @Override
     public void removeAppointment(int ID) {
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)
-        ) {
+                PreparedStatement stmt = con.prepareStatement(DELETE_QUERY)) {
 
             stmt.setInt(1, ID);
 
@@ -191,8 +184,7 @@ public class AppointmentService implements IAppointmentService {
     public ArrayList<Appointment> getAppointmentBystaffId(int ID) {
         ArrayList<Appointment> appList = new ArrayList<>();
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(USER_QUERY)
-        ) {
+                PreparedStatement stmt = con.prepareStatement(USER_QUERY)) {
             stmt.setInt(1, ID);
             ResultSet rs = stmt.executeQuery();
 
@@ -217,8 +209,7 @@ public class AppointmentService implements IAppointmentService {
     public ArrayList<Appointment> getAppointmentByCustomerId(int ID) {
         ArrayList<Appointment> appList = new ArrayList<>();
         try (Connection con = DBUtil.connect();
-             PreparedStatement stmt = con.prepareStatement(USER_QUERY)
-        ) {
+                PreparedStatement stmt = con.prepareStatement(USER_QUERY)) {
             stmt.setInt(1, ID);
             ResultSet rs = stmt.executeQuery();
 

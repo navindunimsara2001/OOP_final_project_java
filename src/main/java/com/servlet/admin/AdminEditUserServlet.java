@@ -2,8 +2,6 @@ package com.servlet.admin;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +20,6 @@ public class AdminEditUserServlet extends HttpServlet {
     // create service object
     final CustomerService cs = new CustomerService();
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         try {
@@ -34,7 +31,6 @@ public class AdminEditUserServlet extends HttpServlet {
             String phone = Parse.Phone(request.getParameter("phone"));
             String DOB = Parse.Date(request.getParameter("DOB"));
             String district = request.getParameter("district");
-
 
             cus.setName(name);
             cus.setPhone(phone);
@@ -49,7 +45,7 @@ public class AdminEditUserServlet extends HttpServlet {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
-        //redirect
+        // redirect
         response.sendRedirect(URLS.urlFor(request, URLS.MANAGE_USERS));
     }
 

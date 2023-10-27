@@ -12,21 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.Customer;
-import com.model.Staff;
 import com.service.impl.CustomerService;
 import com.util.*;
-import com.util.SessionUtil.UserType;
 import com.util.exceptions.ValidationError;
-
 
 public class UserProfileServlet extends HttpServlet {
 
     private final Logger logger = Logger.getLogger(UserProfileServlet.class.getName());
     private final CustomerService customerService = new CustomerService();
-
-
-    private UserType userType;
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,15 +35,14 @@ public class UserProfileServlet extends HttpServlet {
 
     }
 
-    private void showProfile(int ID, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showProfile(int ID, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // create person object
         Customer cus = this.customerService.getCustomerById(ID);
-
 
         if (Objects.isNull(cus)) {
             logger.log(Level.WARNING, "No user in db for id " + ID);
         }
-
 
         request.setAttribute("ID", cus.getID());
         request.setAttribute("name", cus.getName());
@@ -63,7 +55,7 @@ public class UserProfileServlet extends HttpServlet {
         boolean isEditing = Objects.equals(request.getParameter("edit"), "true");
         request.setAttribute("edit", isEditing);
 
-        //redirect
+        // redirect
         RequestDispatcher dispatcher = request.getRequestDispatcher(Views.USER_PROFILE_VIEW);
         dispatcher.forward(request, response);
     }
@@ -72,7 +64,6 @@ public class UserProfileServlet extends HttpServlet {
         this.customerService.removeCustomer(ID);
         response.sendRedirect(URLS.urlFor(request, URLS.LOGOUT));
     }
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // get user id
@@ -104,7 +95,7 @@ public class UserProfileServlet extends HttpServlet {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
-        //redirect
+        // redirect
         response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
     }
 
@@ -128,9 +119,8 @@ public class UserProfileServlet extends HttpServlet {
             Notify.add(request, Notify.Type.Error, e.getMessage());
         }
 
-        //redirect
+        // redirect
         response.sendRedirect(URLS.urlFor(request, URLS.USER_PROFILE));
     }
-
 
 }
